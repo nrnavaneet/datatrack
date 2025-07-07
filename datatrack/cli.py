@@ -6,7 +6,7 @@ from  datatrack import tracker
 from datatrack import diff as diff_module
 from datatrack import verifier
 
-app = typer.Typer(help="📊 Datatrack: Schema tracking CLI")
+app = typer.Typer(help="Datatrack: Schema tracking CLI")
 
 CONFIG_DIR = ".datatrack"
 CONFIG_FILE = "config.yaml"
@@ -19,7 +19,7 @@ def init():
     """
     config_path = Path(CONFIG_DIR)
     if config_path.exists():
-        typer.echo("✅ Datatrack is already initialized.")
+        typer.echo("Datatrack is already initialized.")
         raise typer.Exit()
 
     # Create .datatrack directory
@@ -36,19 +36,19 @@ def init():
     with open(config_path / CONFIG_FILE, "w") as f:
         yaml.dump(default_config, f)
 
-    typer.echo("🎉 Datatrack initialized in .datatrack/")
+    typer.echo("Datatrack initialized in .datatrack/")
 
 @app.command()
 def snapshot():
     """
     Capture the current schema atate and save a snapshot.
     """
-    typer.echo("📸 Capturing schema snapshot...")
+    typer.echo("\nCapturing schema snapshot...")
 
     schema= tracker.get_mock_schema()
     file_path = tracker.save_schema_snapshot(schema)
 
-    typer.echo(f"Snapshot saved to {file_path}")
+    typer.echo(f"Snapshot saved to {file_path}\n")
 
 
 @app.command()
@@ -69,7 +69,7 @@ def verify():
     """
     Check schema against configured rules (e.g. snake_case, reserved words).
     """
-    typer.echo("\n🔍 Verifying schema...\n")
+    typer.echo("\nVerifying schema...\n")
 
     try:
         schema = verifier.load_latest_snapshot()
@@ -77,15 +77,42 @@ def verify():
         violations = verifier.verify_schema(schema, rules) 
 
         if not violations:
-            typer.secho("All schema rules passed!", fg=typer.colors.GREEN)
+            typer.secho("All schema rules passed!\n", fg=typer.colors.GREEN)
         else:
             for v in violations:
                 typer.secho(v, fg=typer.colors.RED)
             raise typer.Exit(code=1)
 
     except Exception as e:
-        typer.secho(f"Error during verification: {str(e)}", fg=typer.colors.RED)
+        typer.secho(f"Error during verification: {str(e)}\n", fg=typer.colors.RED)
         raise typer.Exit(code=1)
+    
+@app.command()
+def history():
+    """
+    List al schema snapshots taken so far.
+    """
+    typer.echo("\nListing schema snapshots...\n")
 
+    typer.secho("Snapshots found:\n", fg=typer.colors.BLUE)
+    snap_dir = Path(".datatrack/snapshots")
+    if not snap_dir.exists():
+        typer.secho("No snapshots found.", fg=typer.colors.RED)
+        raise typer.Exit(code=1)
+    
+    snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
+    if not snapshots:
+        typer.secho("No snapshots found.", fg=typer.colors.RED)
+        raise typer.Exit(code=1)  
+    
+    for snap_file in snapshots:
+        try:
+            with open(snap_file) as f:
+                data = yaml.safe_load(f)
+                num_tables = len(data.get("tables", []))
+                typer.secho(f"{snap_file.name} - {num_tables} tables", fg=typer.colors.BLUE)
+        except Exception as e:
+            typer.secho(f"Error reading {snap_file.name}: {str(e)}", fg=typer.colors.RED)
+    print()
 if __name__ == "__main__":
     app()
