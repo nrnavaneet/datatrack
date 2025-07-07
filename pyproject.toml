@@ -1,0 +1,15 @@
+[project]
+name = "datatrack"
+version = "0.1.0"
+description = "CLI tool for schema tracking"
+authors = [
+  { name = "N R Navaneet", email = "navaneetnr@gmail.com" }
+]
+readme = "README.md"
+dependencies = [
+  "typer[all]",
+  "PyYAML"
+]
+
+[project.scripts]
+datatrack = "datatrack.cli:app"
