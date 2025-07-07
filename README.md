@@ -24,7 +24,7 @@ pip install -e .
 
 ##  How to Use
 
-### 1.  Initialize Tracking
+### 1. Initialize Tracking
 
 ```bash
 datatrack init
@@ -33,7 +33,7 @@ datatrack init
 Creates `.datatrack/`, `.databases/`, and optional initial files.
 
 
-### 2.  Create Example SQLite DB (Optional)
+### 2. Create Example SQLite DB (Optional)
 
 ```python
 import sqlite3
@@ -48,14 +48,14 @@ conn.commit()
 conn.close()
 ```
 
-### 3. 📸 Take a Schema Snapshot
+### 3. Take a Schema Snapshot
 
 ```bash
 datatrack snapshot --source sqlite:///.databases/example.db
 ```
 
 
-### 4. 🧹 Run Linter
+### 4. Run Linter
 
 ```bash
 datatrack lint
@@ -64,7 +64,7 @@ datatrack lint
 Warns if ambiguous names, overly generic types, etc.
 
 
-### 5. 🔐 Schema Verification
+### 5. Schema Verification
 
 ```bash
 datatrack verify
@@ -73,7 +73,7 @@ datatrack verify
 By default reads rules from `schema_rules.yaml` in project root.
 
 
-### 6. 🔍 Show Schema Differences
+### 6. Show Schema Differences
 
 ```bash
 datatrack diff
@@ -82,7 +82,7 @@ datatrack diff
 Compares latest 2 snapshots.
 
 
-### 7. 📤 Export Snapshot or Diff
+### 7. Export Snapshot or Diff
 
 ```bash
 datatrack export --type snapshot --format json --output output/snapshot.json
@@ -91,7 +91,7 @@ datatrack export --type diff --format yaml --output output/diff.yaml
 ```
 
 
-### 8. 🕓 View Snapshot History
+### 8. View Snapshot History
 
 ```bash
 datatrack history
@@ -100,7 +100,7 @@ datatrack history
 Lists snapshot filenames.
 
 
-### 9. 🛠 Run Full Pipeline
+### 9. Run Full Pipeline
 
 ```bash
 datatrack run --source sqlite:///.databases/example.db
