@@ -5,6 +5,7 @@ from pathlib import Path
 from  datatrack import tracker
 from datatrack import diff as diff_module
 from datatrack import verifier
+from datatrack import exporter
 
 app = typer.Typer(help="Datatrack: Schema tracking CLI")
 
@@ -113,6 +114,33 @@ def history():
                 typer.secho(f"{snap_file.name} - {num_tables} tables", fg=typer.colors.BLUE)
         except Exception as e:
             typer.secho(f"Error reading {snap_file.name}: {str(e)}", fg=typer.colors.RED)
+    print()
+
+@app.command()
+def export(
+    type: str = typer.Option(..., help="snapshot or diff"),
+    format: str = typer.Option("json", help="Output format: json or yaml"),
+    output: str = typer.Option(..., help="Output file path"),
+):
+    """
+    Export latest snapshot or diff as JSON/YAML.
+    """
+    typer.echo(f"\nExporting {type} as {format}...\n")
+
+    try:
+        if type == "snapshot":
+            exporter.export_snapshot(output, format)
+        elif type == "diff":
+            exporter.export_diff(output, format)
+        else:
+            typer.echo("Invalid export type. Use 'snapshot' or 'diff'.")
+            raise typer.Exit(code=1)
+
+        typer.secho(f"Exported to {output}", fg=typer.colors.GREEN)
+
+    except Exception as e:
+        typer.secho(f"Export failed: {str(e)}", fg=typer.colors.RED)
+        raise typer.Exit(code=1)
     print()
 if __name__ == "__main__":
     app()
