@@ -1,2 +1,6 @@
 typer[all]
-PyYAMLpre-commit
+PyYAML
+pre-commit
+sqlalchemy
+psycopg2-binary
+pymysql

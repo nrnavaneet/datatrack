@@ -5,7 +5,7 @@ import typer
 import yaml
 
 from datatrack import diff as diff_module
-from datatrack import exporter, history, linter, tracker, verifier
+from datatrack import exporter, history, linter, pipeline, tracker, verifier
 
 app = typer.Typer(help="Datatrack: Schema tracking CLI")
 
@@ -41,16 +41,17 @@ def init():
 
 
 @app.command()
-def snapshot():
+def snapshot(source: str = typer.Option(..., help="Database source URI")):
     """
-    Capture the current schema atate and save a snapshot.
+    Capture the current schema state from a real database and save a snapshot.
     """
-    typer.echo("\nCapturing schema snapshot...")
+    typer.echo("\nCapturing schema snapshot from source...")
 
-    schema = tracker.get_mock_schema()
-    file_path = tracker.save_schema_snapshot(schema)
-
-    typer.echo(f"Snapshot saved to {file_path}\n")
+    try:
+        tracker.snapshot(source)
+        typer.echo("Snapshot successfully captured and saved.\n")
+    except Exception as e:
+        typer.echo(f"Error capturing snapshot: {e}")
 
 
 @app.command()
@@ -146,6 +147,8 @@ def lint():
         typer.secho(f"Error during linting: {str(e)}\n", fg=typer.colors.RED)
         raise typer.Exit(code=1)
 
+
+app.add_typer(pipeline.app, name="pipeline")
 
 if __name__ == "__main__":
     app()

@@ -3,6 +3,9 @@ from pathlib import Path
 
 import yaml
 
+EXPORT_DIR = Path(".databases/exports")
+EXPORT_DIR.mkdir(parents=True, exist_ok=True)
+
 
 def load_latest_snapshots(n=2):
     snap_dir = Path(".datatrack/snapshots")
@@ -14,14 +17,16 @@ def load_latest_snapshots(n=2):
     return [yaml.safe_load(open(s)) for s in snapshots[:n]]
 
 
-def export_snapshot(output_path, fmt):
+def export_snapshot(fmt="json"):
     latest = load_latest_snapshots(n=1)[0]
+    output_path = EXPORT_DIR / f"latest_snapshot.{fmt}"
     _write_to_file(latest, output_path, fmt)
 
 
-def export_diff(output_path, fmt):
+def export_diff(fmt="json"):
     snap_new, snap_old = load_latest_snapshots(n=2)
     diff = _generate_diff(snap_old, snap_new)
+    output_path = EXPORT_DIR / f"latest_diff.{fmt}"
     _write_to_file(diff, output_path, fmt)
 
 
@@ -58,7 +63,7 @@ def _generate_diff(old, new):
                 "modified_columns": common_cols,
             }
 
-        return diff_result
+    return diff_result
 
 
 def _write_to_file(data, path, fmt):

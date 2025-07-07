@@ -2,3 +2,6 @@
 datatrack.egg-info
 __pycache__
 snapshots
+.pipeline_output
+.databases
+example.db
