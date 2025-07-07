@@ -1,12 +1,11 @@
 import os
-import yaml
-import typer
 from pathlib import Path
-from datatrack import tracker
+
+import typer
+import yaml
+
 from datatrack import diff as diff_module
-from datatrack import verifier
-from datatrack import exporter
-from datatrack import linter
+from datatrack import exporter, linter, tracker, verifier
 
 app = typer.Typer(help="Datatrack: Schema tracking CLI")
 
@@ -64,9 +63,6 @@ def diff():
         diff_module.diff_schemas(old, new)
     except Exception as e:
         typer.secho(f"{str(e)}", fg=typer.colors.RED)
-
-
-from datatrack import verifier
 
 
 @app.command()

@@ -1,6 +1,7 @@
-import yaml
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
+import yaml
 
 SNAPSHORT_DIR = Path(".datatrack/snapshots")
 

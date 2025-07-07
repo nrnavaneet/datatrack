@@ -1,8 +1,7 @@
-import yaml
-import os
 import json
 from pathlib import Path
-from datatrack.diff import diff_schemas
+
+import yaml
 
 
 def load_latest_snapshots(n=2):
@@ -52,6 +51,12 @@ def _generate_diff(old, new):
             for c in set(old_cols) & set(new_cols)
             if old_cols[c] != new_cols[c]
         }
+        if added_cols or removed_cols or common_cols:
+            diff_result["changed_tables"][t] = {
+                "added_columns": sorted(list(added_cols)),
+                "removed_columns": sorted(list(removed_cols)),
+                "modified_columns": common_cols,
+            }
 
         return diff_result
 

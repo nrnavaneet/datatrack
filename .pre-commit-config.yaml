@@ -1,15 +1,42 @@
+# .pre-commit-config.yaml
+# Pre-commit hooks for Datatrack CLI project (Python)
+
 repos:
+  # 1. Autoformat Python code with Black
   - repo: https://github.com/psf/black
-    rev: 24.3.0  # latest stable as of now
+    rev: 24.3.0
     hooks:
       - id: black
         language_version: python3
 
+  # 2. Linting with Ruff (faster alternative to flake8, pylint, etc.)
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.4.5
+    hooks:
+      - id: ruff
+        args: [--fix]  # auto-fixes common issues
+
+  # 3. Sort Python imports with isort
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
+    hooks:
+      - id: isort
+        name: isort (import sorter)
+
+  # 4. Common file hygiene checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
-      - id: check-added-large-files
       - id: check-yaml
+      - id: check-added-large-files
       - id: debug-statements
+
+  # 5. Safety: Scan for insecure Python packages
+  - repo: https://github.com/pycqa/bandit
+    rev: 1.7.6
+    hooks:
+      - id: bandit
+        name: Security audit with Bandit
+        args: ["-r", "datatrack"]

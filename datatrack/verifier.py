@@ -1,8 +1,9 @@
 # datatrack/verifier.py
 
-import yaml
 import re
 from pathlib import Path
+
+import yaml
 
 DEFAULT_RULES = {
     "enforce_snake_case": True,
