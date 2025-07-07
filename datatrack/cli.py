@@ -5,7 +5,7 @@ import typer
 import yaml
 
 from datatrack import diff as diff_module
-from datatrack import exporter, linter, tracker, verifier
+from datatrack import exporter, history, linter, tracker, verifier
 
 app = typer.Typer(help="Datatrack: Schema tracking CLI")
 
@@ -89,36 +89,10 @@ def verify():
         raise typer.Exit(code=1)
 
 
-@app.command()
-def history():
-    """
-    List al schema snapshots taken so far.
-    """
-    typer.echo("\nListing schema snapshots...\n")
-
-    typer.secho("Snapshots found:\n", fg=typer.colors.BLUE)
-    snap_dir = Path(".datatrack/snapshots")
-    if not snap_dir.exists():
-        typer.secho("No snapshots found.", fg=typer.colors.RED)
-        raise typer.Exit(code=1)
-
-    snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
-    if not snapshots:
-        typer.secho("No snapshots found.", fg=typer.colors.RED)
-        raise typer.Exit(code=1)
-
-    for snap_file in snapshots:
-        try:
-            with open(snap_file) as f:
-                data = yaml.safe_load(f)
-                num_tables = len(data.get("tables", []))
-                typer.secho(
-                    f"{snap_file.name} - {num_tables} tables", fg=typer.colors.BLUE
-                )
-        except Exception as e:
-            typer.secho(
-                f"Error reading {snap_file.name}: {str(e)}", fg=typer.colors.RED
-            )
+@app.command("history")
+def history_command():
+    """View schema snapshot history timeline"""
+    history.print_history()
     print()
 
 
