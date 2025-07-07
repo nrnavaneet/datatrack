@@ -4,6 +4,7 @@ import typer
 from pathlib import Path
 from  datatrack import tracker
 from datatrack import diff as diff_module
+from datatrack import verifier
 
 app = typer.Typer(help="📊 Datatrack: Schema tracking CLI")
 
@@ -61,6 +62,30 @@ def diff():
     except Exception as e:
         typer.secho(f"{str(e)}", fg=typer.colors.RED)
 
+from datatrack import verifier
+
+@app.command()
+def verify():
+    """
+    Check schema against configured rules (e.g. snake_case, reserved words).
+    """
+    typer.echo("\n🔍 Verifying schema...\n")
+
+    try:
+        schema = verifier.load_latest_snapshot()
+        rules = verifier.load_rules() 
+        violations = verifier.verify_schema(schema, rules) 
+
+        if not violations:
+            typer.secho("All schema rules passed!", fg=typer.colors.GREEN)
+        else:
+            for v in violations:
+                typer.secho(v, fg=typer.colors.RED)
+            raise typer.Exit(code=1)
+
+    except Exception as e:
+        typer.secho(f"Error during verification: {str(e)}", fg=typer.colors.RED)
+        raise typer.Exit(code=1)
 
 if __name__ == "__main__":
     app()

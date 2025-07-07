@@ -1,0 +1,42 @@
+# schema_rules.yaml
+
+rules:
+  # Enforce that all table and column names follow snake_case (e.g., customer_id)
+  enforce_snake_case: true
+
+  # List of reserved keywords that are NOT allowed as table or column names
+  reserved_keywords:
+    - select
+    - from
+    - table
+    - drop
+    - insert
+    - update
+    - delete
+    - where
+    - join
+    - and
+    - or
+    - like
+    - between
+    - exists
+    - as
+    - on
+    - in
+    - not
+    - is
+    - null
+    - group
+    - by
+    - having
+    - order
+    - limit
+    - offset
+    - union
+    - intersect
+    - except
+    - create
+    - alter
+    - rename
+    - truncate
+    
