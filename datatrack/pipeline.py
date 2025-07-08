@@ -1,19 +1,21 @@
-from pathlib import Path
 import typer
 
-from datatrack.linter import lint_schema, load_latest_snapshot as load_lint_snapshot
+from datatrack.diff import diff_schemas, load_snapshots
+from datatrack.exporter import export_diff, export_snapshot
+from datatrack.linter import lint_schema
+from datatrack.linter import load_latest_snapshot as load_lint_snapshot
 from datatrack.tracker import snapshot
-from datatrack.verifier import load_latest_snapshot as load_ver_snapshot, load_rules, verify_schema
-from datatrack.diff import load_snapshots, diff_schemas
-from datatrack.exporter import export_snapshot, export_diff
+from datatrack.verifier import load_latest_snapshot as load_ver_snapshot
+from datatrack.verifier import load_rules, verify_schema
 
 app = typer.Typer()
+
 
 @app.command("run")
 def run_pipeline(
     source: str = typer.Option(..., help="Database source URI"),
     export_dir: str = typer.Option(".pipeline_output", help="Where to save outputs"),
-    verbose: bool = typer.Option(True, help="Print detailed output")
+    verbose: bool = typer.Option(True, help="Print detailed output"),
 ):
     print("=" * 50)
     print("           Running DataTrack Pipeline")
