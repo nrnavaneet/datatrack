@@ -1,5 +1,5 @@
 .datatrack
-datatrack.egg-info
+dbtracker.egg-info
 __pycache__
 snapshots
 .pipeline_output
