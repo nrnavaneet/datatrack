@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dbtracker"
-version = "0.1.2"
+version = "0.1.3"
 description = "CLI tool for schema tracking"
-readme = "pyREADME.md"
+readme = "pypiREADME.md"
 requires-python = ">=3.7"
 license = {text = "MIT"}
 authors = [
