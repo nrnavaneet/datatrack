@@ -15,12 +15,20 @@ Datatrack is a minimal open-source CLI tool to **track schema changes** across v
 
 ##  Installation
 
+Option 1: Install from GitHub (for development)
 ```bash
 git clone https://github.com/nrnavaneet/datatrack.git
 cd datatrack
 pip install -r requirements.txt
 pip install -e .
 ```
+This method is ideal if you want to contribute or modify the tool.
+
+Option 2: Install from PyPI (production use)
+```bash
+pip install dbtracker
+```
+This is the easiest and recommended way to use datatracker as a CLI tool in your workflows.
 
 ##  How to Use
 
