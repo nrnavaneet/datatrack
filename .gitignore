@@ -5,3 +5,5 @@ snapshots
 .pipeline_output
 .databases
 example.db
+dist
+MANIFEST.in
