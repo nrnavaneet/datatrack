@@ -1,138 +1,62 @@
-# Datatrack - Lightweight Schema Change Tracker
+<p align="center">
+  <a href="https://pypi.org/project/dbtracker/">
+    <img alt="PyPI" src="https://img.shields.io/pypi/v/dbtracker?color=0052FF&labelColor=090422" />
+  </a>
+  <a href="https://pypi.org/project/dbtracker/">
+    <img alt="Downloads" src="https://img.shields.io/pypi/dm/dbtracker?color=0052FF&labelColor=090422" />
+  </a>
+  <a href="https://github.com/nrnavaneet/datatrack">
+    <img src="https://img.shields.io/github/stars/nrnavaneet/datatrack?color=0052FF&labelColor=090422" />
+  </a>
+  <a href="https://github.com/nrnavaneet/datatrack/pulse">
+    <img src="https://img.shields.io/github/commit-activity/m/nrnavaneet/datatrack?color=0052FF&labelColor=090422" />
+  </a>
+</p>
 
-Datatrack is a minimal open-source CLI tool to **track schema changes** across versions in your data systems. It's built for **Data Engineers** and **Platform Teams** who want **automated schema linting, verification, diffs, and export** across snapshots.
+<p align="center">
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md">Installation</a>
+  ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md">Usage</a>
+  ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CONTRIBUTING.md">Contributing</a>
+  ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md">Code of Conduct</a>
+</p>
 
+# Datatracker
 
+Datatracker is a lightweight and open-source command-line tool that helps data engineers and platform teams track database schema changes across versions. It ensures that schema updates are transparent and auditable, helping prevent silent failures in downstream pipelines.
 
-## Features
+## Key Features
 
-- Snapshot schemas from any SQL-compatible DB
-- Lint schema naming issues
-- Enforce verification rules
-- Compare schema snapshots (diff)
-- Export to JSON/YAML for auditing or CI
-- Full pipeline in one command
+- Capture schema snapshots from SQL-compatible databases (PostgreSQL, SQLite, MySQL, etc.)
+- Lint schemas for naming issues and red flags
+- Verify schema compliance against defined rules
+- Compare schema versions and generate diffs
+- Export snapshots and diffs to JSON or YAML formats
+- Execute the entire schema audit workflow with a single command
 
-##  Installation
+## Why Use Datatracker
 
-Option 1: Install from GitHub (for development)
-```bash
-git clone https://github.com/nrnavaneet/datatrack.git
-cd datatrack
-pip install -r requirements.txt
-pip install -e .
-```
-This method is ideal if you want to contribute or modify the tool.
+Managing schema changes in dynamic environments is challenging. A small change in column name, type, or constraints can break data pipelines silently. Datatracker helps mitigate this by enabling:
 
-Option 2: Install from PyPI (production use)
-```bash
-pip install dbtracker
-```
-This is the easiest and recommended way to use datatracker as a CLI tool in your workflows.
+- Version control for schemas (similar to Git for code)
+- Transparent collaboration within data teams
+- Faster debugging with automatic diffs and validations
 
-##  How to Use
+## Documentation
 
-### 1. Initialize Tracking
+Please refer to the following docs for detailed guidance:
 
-```bash
-datatrack init
-```
+- [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
+- [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)
+- [Contributing Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/CONTRIBUTING.md)
+- [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/CODE_OF_CONDUCT.md)
 
-Creates `.datatrack/`, `.databases/`, and optional initial files.
+## License
 
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/nrnavaneet/datatrack/blob/main/LICENSE) file for details.
 
-### 2. Create Example SQLite DB (Optional)
+## Maintainer
 
-```python
-import sqlite3
-from pathlib import Path
-
-Path(".databases").mkdir(parents=True, exist_ok=True)
-conn = sqlite3.connect(".databases/example.db")
-c = conn.cursor()
-c.execute("CREATE TABLE users (id INTEGER, name TEXT, created_at TEXT)")
-c.execute("CREATE TABLE orders (order_id INTEGER, user_id INTEGER, amount REAL)")
-conn.commit()
-conn.close()
-```
-
-### 3. Take a Schema Snapshot
-
-```bash
-datatrack snapshot --source sqlite:///.databases/example.db
-```
-
-
-### 4. Run Linter
-
-```bash
-datatrack lint
-```
-
-Warns if ambiguous names, overly generic types, etc.
-
-
-### 5. Schema Verification
-
-```bash
-datatrack verify
-```
-
-By default reads rules from `schema_rules.yaml` in project root.
-
-
-### 6. Show Schema Differences
-
-```bash
-datatrack diff
-```
-
-Compares latest 2 snapshots.
-
-
-### 7. Export Snapshot or Diff
-
-```bash
-datatrack export --type snapshot --format json --output output/snapshot.json
-
-datatrack export --type diff --format yaml --output output/diff.yaml
-```
-
-
-### 8. View Snapshot History
-
-```bash
-datatrack history
-```
-
-Lists snapshot filenames.
-
-
-### 9. Run Full Pipeline
-
-```bash
-datatrack run --source sqlite:///.databases/example.db
-```
-
-This runs:
-
-- `lint`
-- `snapshot`
-- `verify`
-- `diff`
-- `export`
-
-To change export location:
-
-```bash
-datatrack run --source sqlite:///.databases/example.db --export-dir my_output_dir
-```
-
-## 👤 Author
-
-Built with ❤️ by [@nrnavaneet](https://github.com/nrnavaneet)
-
-
-## 📝 License
-
-MIT License
+Developed and maintained by [N R Navaneet](https://github.com/nrnavaneet).
