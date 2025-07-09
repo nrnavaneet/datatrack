@@ -46,11 +46,11 @@ DEFAULT_RULES = {
 
 def load_latest_snapshot():
     db_name = get_connected_db_name()
-    snap_dir = Path(".datatrack/snapshots") / db_name
+    snap_dir = Path(".databases/exports") / db_name / "snapshots"
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
 
     if not snapshots:
-        raise ValueError(f"❗ No snapshots found for database '{db_name}'.")
+        raise ValueError(f"No snapshots found for database '{db_name}'.")
 
     with open(snapshots[0]) as f:
         return yaml.safe_load(f)

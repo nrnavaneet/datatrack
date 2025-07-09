@@ -12,7 +12,7 @@ def print_history():
         print(f"Failed to resolve connected database: {e}")
         return
 
-    snapshot_dir = Path(f".datatrack/snapshots/{db_name}")
+    snapshot_dir = Path(f".databases/exports/{db_name}/snapshots")
     if not snapshot_dir.exists():
         print(f"No snapshot directory found for database: `{db_name}`")
         return

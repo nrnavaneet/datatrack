@@ -193,5 +193,88 @@ def test_connection():
         typer.secho(result, fg=typer.colors.GREEN)
 
 
+@app.command("help")
+def show_help():
+    banner = """
+    ██████╗   █████╗ ████████╗ █████╗ ████████╗██████╗   █████╗   ██████╗ ██╗  ██╗
+    ██╔══██╗ ██╔══██╗╚══██╔══╝██╔══██╗╚══██╔══╝██╔══██╗ ██╔══██╗ ██╔════╝ ██║ ██╔╝
+    ██║  ██║ ███████║   ██║   ███████║   ██║   ██████╔╝ ███████║ ██║      █████╔╝
+    ██║  ██║ ██╔══██║   ██║   ██╔══██║   ██║   ██╔══██╗ ██╔══██║ ██║      ██╔═██╗
+    ██████╔╝ ██║  ██║   ██║   ██║  ██║   ██║   ██║  ██║ ██║  ██║ ╚██████╗ ██║  ██╗
+    ╚═════╝  ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═╝  ╚═╝  ╚═════╝ ╚═╝  ╚═╝
+
+                       “Version Control for Your Database Schema”
+    """
+    typer.echo(banner)
+
+    typer.echo("USAGE:")
+    typer.echo("  datatrack <command> [options]\n")
+
+    typer.echo("COMMANDS:")
+    typer.echo(
+        "  init                 Initialize Datatrack config in the current directory."
+    )
+    typer.echo(
+        "  connect              Connect to a database and save the connection string."
+    )
+    typer.echo("  disconnect           Remove the saved database connection.")
+    typer.echo("  snapshot             Capture a schema snapshot and save it to disk.")
+    typer.echo("  diff                 Compare the latest two schema snapshots.")
+    typer.echo("  lint                 Run a basic linter to flag schema smells.")
+    typer.echo(
+        "  verify               Apply custom schema verification rules from config."
+    )
+    typer.echo("  export               Export latest snapshot or diff as JSON/YAML.")
+    typer.echo("  history              View schema snapshot history.")
+    typer.echo(
+        "  pipeline run         Run snapshot, diff, lint, and verify in one step."
+    )
+    typer.echo("  help                 Show this help message.\n")
+
+    typer.echo("EXPORT OPTIONS:")
+    typer.echo(
+        "  --type [snapshot|diff]     Type of export to generate (default: snapshot)"
+    )
+    typer.echo("  --format [json|yaml]       Output format (default: json)\n")
+
+    typer.echo("EXAMPLES:")
+    typer.echo("  # Connect to PostgreSQL:")
+    typer.echo(
+        "  datatrack connect postgresql+psycopg2://postgres:pass123@localhost:5433/testdb"
+    )
+    typer.echo("\n  # Connect to MySQL:")
+    typer.echo("  datatrack connect mysql+pymysql://root:pass123@localhost:3306/testdb")
+    typer.echo("\n  # Take a snapshot:")
+    typer.echo("  datatrack snapshot")
+    typer.echo("\n  # Show differences between last 2 snapshots:")
+    typer.echo("  datatrack diff")
+    typer.echo("\n  # Export latest snapshot as YAML:")
+    typer.echo("  datatrack export --type snapshot --format yaml")
+    typer.echo("\n  # Export latest diff as JSON:")
+    typer.echo("  datatrack export --type diff --format json")
+    typer.echo("\n  # Lint the schema:")
+    typer.echo("  datatrack lint")
+    typer.echo("\n  # Verify with custom rules:")
+    typer.echo("  datatrack verify")
+    typer.echo("\n  # Show snapshot history:")
+    typer.echo("  datatrack history")
+    typer.echo("\n  # Run full pipeline (snapshot + diff + lint + verify):")
+    typer.echo("  datatrack pipeline run\n")
+
+    typer.echo("NOTES:")
+    typer.echo("  • Datatrack supports PostgreSQL and MySQL (via SQLAlchemy URIs).")
+    typer.echo(
+        "  • Snapshots are saved under `.databases/exports/<db_name>/snapshots/`."
+    )
+    typer.echo(
+        "  • Use a `schema_rules.yaml` file to define custom rules for verification."
+    )
+    typer.echo(
+        "  • Ideal for teams integrating schema change tracking in CI/CD pipelines.\n"
+    )
+
+    typer.echo("Documentation: https://github.com/nrnavaneet/datatrack")
+
+
 if __name__ == "__main__":
     app()

@@ -23,26 +23,26 @@
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md">Code of Conduct</a>
 </p>
 
-# Datatracker
+# Datatrack
 
-Datatracker is a lightweight and open-source command-line tool that helps data engineers and platform teams track database schema changes across versions. It ensures that schema updates are transparent and auditable, helping prevent silent failures in downstream pipelines.
+**Datatrack** is a lightweight and open-source command-line tool designed to help data engineers and platform teams track database schema changes across versions. It ensures that schema updates are transparent and auditable, helping prevent silent failures in downstream pipelines.
 
 ## Key Features
 
 - Capture schema snapshots from SQL-compatible databases (PostgreSQL, SQLite, MySQL, etc.)
-- Lint schemas for naming issues and red flags
-- Verify schema compliance against defined rules
+- Lint schemas for naming issues and structural smells
+- Verify schema compliance against custom rules
 - Compare schema versions and generate diffs
 - Export snapshots and diffs to JSON or YAML formats
-- Execute the entire schema audit workflow with a single command
+- Run the full schema audit pipeline with a single command
 
-## Why Use Datatracker
+## Why Use Datatrack
 
-Managing schema changes in dynamic environments is challenging. A small change in column name, type, or constraints can break data pipelines silently. Datatracker helps mitigate this by enabling:
+Managing schema changes in evolving environments is complex. Even a small change in column name, type, or structure can silently break dashboards or data pipelines. **Datatrack** helps prevent that by enabling:
 
-- Version control for schemas (similar to Git for code)
-- Transparent collaboration within data teams
-- Faster debugging with automatic diffs and validations
+- Git-like version control for database schemas
+- Transparent collaboration and visibility within teams
+- Faster issue detection with automatic diffs and rule checks
 
 ## Documentation
 

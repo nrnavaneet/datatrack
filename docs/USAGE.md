@@ -1,7 +1,6 @@
 # Usage Guide for Datatrack
 
-After installing Datatrack, you can use it to track schema changes in your SQL databases.
-
+Datatrack is a CLI tool for tracking, linting, verifying, and exporting database schema changes.
 
 ## 1. Initialize a Datatrack Project
 
@@ -9,70 +8,97 @@ After installing Datatrack, you can use it to track schema changes in your SQL d
 datatrack init
 ```
 
-This creates a `.datatrack/` folder with configuration files.
+Creates a `.datatrack/` folder with configuration.
 
-## 2. Take a Schema Snapshot
+## 2. Connect to a Database
+
+Save your DB connection for future use:
+
+### MySQL
 
 ```bash
-datatrack snapshot --source sqlite:///.databases/example.db
+datatrack connect mysql+pymysql://root:mysecurepassword@localhost:3306/mydatabase
 ```
 
-This saves the current database schema to a snapshot.
+### PostgreSQL
 
-## 3. Lint the Schema
+```bash
+datatrack connect postgresql+psycopg2://postgres:mysecurepassword@localhost:5432/mydatabase
+```
+
+
+## 3. Take a Schema Snapshot
+
+```bash
+datatrack snapshot
+```
+
+Saves the current schema to `.databases/exports/<db_name>/snapshots/`.
+
+## 4. Lint the Schema
 
 ```bash
 datatrack lint
 ```
 
-Detects issues in schema naming or structure.
+Detects issues in naming and structure.
 
-## 4. Verify Schema Rules
+## 5. Verify Schema Rules
 
 ```bash
 datatrack verify
 ```
 
-Checks schema against rules defined in `schema_rules.yaml`.
+Validates schema against `schema_rules.yaml`.
 
-## 5. View Schema Differences
+## 6. View Schema Differences
 
 ```bash
 datatrack diff
 ```
 
-Shows differences between the latest two schema snapshots.
+Shows table and column changes between the latest two snapshots.
 
+## 7. Export Snapshots or Diffs
 
-## 6. Export Snapshots or Diffs
-
+Export latest snapshot as YAML (default)
 ```bash
-
-
-datatrack export --type diff --format yaml --output output/diff.yaml
+datatrack export
 ```
 
-## 7. View Snapshot History
+Explicitly export snapshot as YAML
+```bash
+datatrack export --type snapshot --format yaml
+```
+Export latest diff as JSON
+```bash
+datatrack export --type diff --format json
+```
+
+Output is saved in `.databases/exports/<db_name>/`.
+
+## 8. View Snapshot History
 
 ```bash
 datatrack history
 ```
 
-Lists all schema snapshots stored so far.
+Displays all snapshot timestamps and table counts.
 
-
-## 8. Run the Full Pipeline
-
-```bash
-datatrack pipeline run --source sqlite:///.databases/example.db
-```
-
-This runs `lint`, `snapshot`, `verify`, `diff`, and `export` in one step.
-
-You can specify the export directory:
+## 9. Run the Full Pipeline
 
 ```bash
-datatrack pipeline run --source sqlite:///.databases/example.db --export-dir my_output_dir
+datatrack pipeline run
 ```
 
-For advanced usage and integration into CI/CD, refer to the full documentation.
+Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
+
+Optionally specify a custom source or output directory:
+
+```bash
+datatrack pipeline run --source sqlite:///.databases/example.db --export-dir output_dir
+```
+
+For advanced use cases and integration into CI/CD, visit:
+
+**https://github.com/nrnavaneet/datatrack**

@@ -22,6 +22,7 @@ def save_schema_snapshot(schema: dict, db_name: str):
     with open(snapshot_file, "w") as f:
         yaml.dump(schema, f)
 
+    print(f"Snapshot saved at: {snapshot_file}")
     return snapshot_file
 
 

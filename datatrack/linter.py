@@ -15,6 +15,7 @@ AMBIGUOUS_NAMES = {
     "entity",
     "metadata",
 }
+
 GENERIC_TYPES = {
     "string",
     "integer",
@@ -25,12 +26,13 @@ GENERIC_TYPES = {
     "text",
     "json",
 }
+
 MAX_NAME_LENGTH = 30
 
 
 def load_latest_snapshot():
     db_name = get_connected_db_name()
-    snap_dir = Path(".datatrack/snapshots") / db_name
+    snap_dir = Path(".databases/exports") / db_name / "snapshots"
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
 
     if not snapshots:

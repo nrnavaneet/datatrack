@@ -10,7 +10,7 @@ def load_snapshots():
     Load the two most recent snapshots from the connected database's folder.
     """
     db_name = get_connected_db_name()
-    snap_dir = Path(".datatrack/snapshots") / db_name
+    snap_dir = Path(".databases/exports") / db_name / "snapshots"
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
 
     if len(snapshots) < 2:

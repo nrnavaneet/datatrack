@@ -10,6 +10,13 @@ Use this if you just want to use `datatrack` as a command-line tool in your proj
 ```bash
 pip install dbtracker
 ```
+## Initialize a Datatrack Project
+
+```bash
+datatrack init
+```
+Creates a `.datatrack/` folder with configuration.
+
 
 Once installed, you can start using the `datatrack` CLI directly.
 

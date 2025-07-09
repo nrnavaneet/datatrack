@@ -29,7 +29,7 @@ def get_export_dir(db_name):
 
 
 def get_snapshot_dir(db_name):
-    path = Path(f".datatrack/snapshots/{db_name}")
+    path = Path(f".databases/exports/{db_name}/snapshots")
     path.mkdir(parents=True, exist_ok=True)
     return path
 
@@ -42,7 +42,12 @@ def load_latest_snapshots(n=2):
         raise ValueError(
             f"Not enough snapshots found for {db_name}. Found {len(snapshots)}, need {n}."
         )
-    return [yaml.safe_load(open(s)) for s in snapshots[:n]]
+
+    data = []
+    for s in snapshots[:n]:
+        with open(s) as f:
+            data.append(yaml.safe_load(f))
+    return data
 
 
 def export_snapshot(fmt="json", output_path=None):
@@ -55,6 +60,7 @@ def export_snapshot(fmt="json", output_path=None):
         output_path = Path(output_path)
 
     _write_to_file(latest, output_path, fmt)
+    print(f"Snapshot exported to {output_path}")
 
 
 def export_diff(fmt="json", output_path=None):
@@ -68,6 +74,7 @@ def export_diff(fmt="json", output_path=None):
         output_path = Path(output_path)
 
     _write_to_file(diff, output_path, fmt)
+    print(f"Diff exported to {output_path}")
 
 
 def _generate_diff(old, new):
@@ -76,9 +83,9 @@ def _generate_diff(old, new):
     old_tables = {t["name"]: t for t in old["tables"]}
     new_tables = {t["name"]: t for t in new["tables"]}
 
-    added = set(new_tables.keys()) - set(old_tables.keys())
-    removed = set(old_tables.keys()) - set(new_tables.keys())
-    common = set(new_tables.keys()) & set(old_tables.keys())
+    added = set(new_tables) - set(old_tables)
+    removed = set(old_tables) - set(new_tables)
+    common = set(new_tables) & set(old_tables)
 
     for t in added:
         diff_result["added_tables"].append(t)
@@ -89,18 +96,19 @@ def _generate_diff(old, new):
         old_cols = {c["name"]: c["type"] for c in old_tables[t]["columns"]}
         new_cols = {c["name"]: c["type"] for c in new_tables[t]["columns"]}
 
-        added_cols = set(new_cols.keys()) - set(old_cols.keys())
-        removed_cols = set(old_cols.keys()) - set(new_cols.keys())
-        common_cols = {
+        added_cols = set(new_cols) - set(old_cols)
+        removed_cols = set(old_cols) - set(new_cols)
+        modified = {
             c: {"from": old_cols[c], "to": new_cols[c]}
-            for c in set(old_cols) & set(new_cols)
+            for c in (set(old_cols) & set(new_cols))
             if old_cols[c] != new_cols[c]
         }
-        if added_cols or removed_cols or common_cols:
+
+        if added_cols or removed_cols or modified:
             diff_result["changed_tables"][t] = {
-                "added_columns": sorted(list(added_cols)),
-                "removed_columns": sorted(list(removed_cols)),
-                "modified_columns": common_cols,
+                "added_columns": sorted(added_cols),
+                "removed_columns": sorted(removed_cols),
+                "modified_columns": modified,
             }
 
     return diff_result
@@ -115,5 +123,5 @@ def _write_to_file(data, path, fmt):
     with open(path, "w") as f:
         if fmt == "json":
             json.dump(data, f, indent=2)
-        elif fmt == "yaml":
+        else:
             yaml.dump(data, f)
