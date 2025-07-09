@@ -1,31 +1,56 @@
 import json
 from pathlib import Path
+from urllib.parse import urlparse
 
 import yaml
 
-EXPORT_DIR = Path(".databases/exports")
-EXPORT_DIR.mkdir(parents=True, exist_ok=True)
+DB_LINK_FILE = Path(".datatrack/db_link.yaml")
+
+
+def get_database_name():
+    if not DB_LINK_FILE.exists():
+        raise FileNotFoundError("No connection found. Run `datatrack connect` first.")
+    with open(DB_LINK_FILE) as f:
+        link = yaml.safe_load(f).get("link")
+    if not link:
+        raise ValueError("Invalid DB link in config.")
+
+    parsed = urlparse(link)
+    db_name = parsed.path.lstrip("/")
+    if not db_name:
+        raise ValueError("Could not extract database name from connection string.")
+    return db_name
+
+
+def get_export_dir(db_name):
+    path = Path(f".databases/exports/{db_name}")
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def get_snapshot_dir(db_name):
+    path = Path(f".datatrack/snapshots/{db_name}")
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
 
 def load_latest_snapshots(n=2):
-    snap_dir = Path(".datatrack/snapshots")
+    db_name = get_database_name()
+    snap_dir = get_snapshot_dir(db_name)
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
     if len(snapshots) < n:
         raise ValueError(
-            f"Not enough snapshots found to compare. Found {len(snapshots)}, need {n}."
+            f"Not enough snapshots found for {db_name}. Found {len(snapshots)}, need {n}."
         )
     return [yaml.safe_load(open(s)) for s in snapshots[:n]]
 
 
 def export_snapshot(fmt="json", output_path=None):
-    """
-    Export the latest schema snapshot.
-    If no output_path is provided, uses .databases/exports/latest_snapshot.<fmt>
-    """
     latest = load_latest_snapshots(n=1)[0]
 
     if output_path is None:
-        output_path = EXPORT_DIR / f"latest_snapshot.{fmt}"
+        db_name = get_database_name()
+        output_path = get_export_dir(db_name) / f"latest_snapshot.{fmt}"
     else:
         output_path = Path(output_path)
 
@@ -33,15 +58,12 @@ def export_snapshot(fmt="json", output_path=None):
 
 
 def export_diff(fmt="json", output_path=None):
-    """
-    Export the diff between latest two schema snapshots.
-    If no output_path is provided, uses .databases/exports/latest_diff.<fmt>
-    """
     snap_new, snap_old = load_latest_snapshots(n=2)
     diff = _generate_diff(snap_old, snap_new)
 
     if output_path is None:
-        output_path = EXPORT_DIR / f"latest_diff.{fmt}"
+        db_name = get_database_name()
+        output_path = get_export_dir(db_name) / f"latest_diff.{fmt}"
     else:
         output_path = Path(output_path)
 

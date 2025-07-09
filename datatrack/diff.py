@@ -2,16 +2,21 @@ from pathlib import Path
 
 import yaml
 
+from datatrack.connect import get_connected_db_name
+
 
 def load_snapshots():
     """
-    Load the two most recent snapshots from the disk.
+    Load the two most recent snapshots from the connected database's folder.
     """
-    snap_dir = Path(".datatrack/snapshots")
+    db_name = get_connected_db_name()
+    snap_dir = Path(".datatrack/snapshots") / db_name
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
 
     if len(snapshots) < 2:
-        raise FileNotFoundError("Need at least 2 snapshots to run a diff.")
+        raise FileNotFoundError(
+            f"Need at least 2 snapshots to run a diff for '{db_name}'."
+        )
 
     with open(snapshots[0], "r") as f1, open(snapshots[1], "r") as f2:
         newer = yaml.safe_load(f1)
@@ -24,7 +29,6 @@ def diff_schemas(old, new):
     """
     Print diff of tables and columns between two schema snapshots.
     """
-
     old_tables = {t["name"]: t for t in old["tables"]}
     new_tables = {t["name"]: t for t in new["tables"]}
 
@@ -51,7 +55,7 @@ def diff_schemas(old, new):
     if not table_changes:
         print("\tNo tables added or removed.")
 
-    # Column-level diff for unchanged tables
+    # Column-level diff
     print("\nColumn Changes:")
     for table in common_tables:
         old_cols = {col["name"]: col["type"] for col in old_tables[table]["columns"]}
@@ -77,6 +81,7 @@ def diff_schemas(old, new):
                 line = f"~ Changed column: {col} ({old_cols[col]} -> {new_cols[col]})"
                 print(line)
                 column_changes.append(line)
+
     if not column_changes:
         print("\tNo columns added, removed or changed in common tables.")
 

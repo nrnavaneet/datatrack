@@ -1,5 +1,3 @@
-# datatrack/pipeline.py
-
 import typer
 
 from datatrack.connect import get_saved_connection
@@ -28,8 +26,17 @@ def run_pipeline(
         print("No saved DB connection found. Run `datatrack connect <db_uri>` first.")
         raise typer.Exit(code=1)
 
+    # Snapshot
+    print("\n[1] Taking snapshot...")
+    try:
+        snapshot(source)
+        print("Snapshot saved successfully.")
+    except Exception as e:
+        print(f"Snapshot error: {e}")
+        raise typer.Exit(code=1)
+
     # Linting
-    print("\n[1] Linting schema...")
+    print("\n[2] Linting schema...")
     try:
         linted = load_lint_snapshot()
         lint_warnings = lint_schema(linted)
@@ -42,15 +49,6 @@ def run_pipeline(
             print("No linting issues found.")
     except Exception as e:
         print(f"Error during linting: {e}")
-        raise typer.Exit(code=1)
-
-    # Snapshot
-    print("\n[2] Taking snapshot...")
-    try:
-        snapshot(source)
-        print("Snapshot saved successfully.")
-    except Exception as e:
-        print(f"Snapshot error: {e}")
         raise typer.Exit(code=1)
 
     # Verify

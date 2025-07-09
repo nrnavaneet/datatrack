@@ -2,6 +2,8 @@ from pathlib import Path
 
 import yaml
 
+from datatrack.connect import get_connected_db_name
+
 AMBIGUOUS_NAMES = {
     "data",
     "value",
@@ -27,10 +29,13 @@ MAX_NAME_LENGTH = 30
 
 
 def load_latest_snapshot():
-    snap_dir = Path(".datatrack/snapshots")
+    db_name = get_connected_db_name()
+    snap_dir = Path(".datatrack/snapshots") / db_name
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
+
     if not snapshots:
-        raise ValueError("No snapshots found to verify.")
+        raise ValueError(f"No snapshots found for database '{db_name}'.")
+
     with open(snapshots[0]) as f:
         return yaml.safe_load(f)
 

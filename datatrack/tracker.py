@@ -4,16 +4,20 @@ from pathlib import Path
 import yaml
 from sqlalchemy import create_engine, inspect
 
-SNAPSHORT_DIR = Path(".datatrack/snapshots")
+from datatrack.connect import get_connected_db_name, get_saved_connection
+
+EXPORT_BASE_DIR = Path(".databases/exports")
 
 
-def save_schema_snapshot(schema: dict):
+def save_schema_snapshot(schema: dict, db_name: str):
     """
-    Save the given schema dict into a timestamped YAML file.
+    Save the given schema dict into a timestamped YAML file under .databases/exports/<db_name>/snapshots/
     """
-    SNAPSHORT_DIR.mkdir(parents=True, exist_ok=True)
+    snapshot_dir = EXPORT_BASE_DIR / db_name / "snapshots"
+    snapshot_dir.mkdir(parents=True, exist_ok=True)
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    snapshot_file = SNAPSHORT_DIR / f"snapshot_{timestamp}.yaml"
+    snapshot_file = snapshot_dir / f"snapshot_{timestamp}.yaml"
 
     with open(snapshot_file, "w") as f:
         yaml.dump(schema, f)
@@ -21,11 +25,20 @@ def save_schema_snapshot(schema: dict):
     return snapshot_file
 
 
-def snapshot(source: str):
+def snapshot(source: str = None):
     """
-    Connect to the given database source and extract schema details.
-    Save the schema snapshot to a timestamped file.
+    Connect to the database (from saved link or given source) and extract schema details.
+    Save the schema snapshot to a timestamped file under .databases/exports/<db_name>/snapshots/
     """
+    if source is None:
+        source = get_saved_connection()
+        if not source:
+            raise ValueError(
+                "No DB source provided or saved. Run `datatrack connect` first."
+            )
+
+    db_name = get_connected_db_name()
+
     engine = create_engine(source)
     insp = inspect(engine)
 
@@ -42,5 +55,5 @@ def snapshot(source: str):
             }
         )
 
-    file_path = save_schema_snapshot(schema_data)
+    file_path = save_schema_snapshot(schema_data, db_name)
     return file_path

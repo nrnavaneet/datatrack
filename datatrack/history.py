@@ -2,28 +2,36 @@ from pathlib import Path
 
 import yaml
 
+from datatrack.connect import get_connected_db_name
+
 
 def print_history():
-    snapshot_dir = Path(".datatrack/snapshots")
+    try:
+        db_name = get_connected_db_name()
+    except Exception as e:
+        print(f"Failed to resolve connected database: {e}")
+        return
+
+    snapshot_dir = Path(f".datatrack/snapshots/{db_name}")
     if not snapshot_dir.exists():
-        print("No snapshot directory found.")
+        print(f"No snapshot directory found for database: `{db_name}`")
         return
 
     snapshots = sorted(snapshot_dir.glob("*.yaml"), reverse=True)
-
     if not snapshots:
-        print("No snapshots found.")
+        print(f"No snapshots found for `{db_name}`.")
         return
 
-    print("\nSnapshot History (latest first):\n")
+    print(f"\nSnapshot History for `{db_name}`:\n")
     print(f"{'Timestamp':<25} | {'Tables':<7} | Filename")
     print("-" * 60)
 
     for snap_file in snapshots:
-        timestamp = snap_file.stem  # filename without .yaml
+        timestamp = snap_file.stem  # removes ".yaml"
         try:
-            snap_data = yaml.safe_load(open(snap_file))
-            table_count = len(snap_data.get("tables", []))
+            with open(snap_file) as f:
+                snap_data = yaml.safe_load(f)
+                table_count = len(snap_data.get("tables", []))
         except Exception:
             table_count = "ERR"
 

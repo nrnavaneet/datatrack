@@ -170,7 +170,6 @@ def connect(link: str = typer.Argument(..., help="Database connection URI")):
     Save the database connection link for future commands.
     """
     connect_module.save_connection(link)
-    typer.secho("Database link saved successfully.", fg=typer.colors.GREEN)
 
 
 @app.command()
@@ -179,7 +178,6 @@ def disconnect():
     Remove the saved database connection link.
     """
     connect_module.remove_connection()
-    typer.secho("Removed saved database connection.", fg=typer.colors.YELLOW)
 
 
 @app.command("test-connection")

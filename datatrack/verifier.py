@@ -1,9 +1,9 @@
-# datatrack/verifier.py
-
 import re
 from pathlib import Path
 
 import yaml
+
+from datatrack.connect import get_connected_db_name
 
 DEFAULT_RULES = {
     "enforce_snake_case": True,
@@ -45,16 +45,19 @@ DEFAULT_RULES = {
 
 
 def load_latest_snapshot():
-    snap_dir = Path(".datatrack/snapshots")
+    db_name = get_connected_db_name()
+    snap_dir = Path(".datatrack/snapshots") / db_name
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
+
     if not snapshots:
-        raise ValueError("❗ No snapshots found to verify.")
+        raise ValueError(f"❗ No snapshots found for database '{db_name}'.")
+
     with open(snapshots[0]) as f:
         return yaml.safe_load(f)
 
 
 def load_rules():
-    rules_path = Path("schema_rules.yaml")  # 🔄 Now loading from root
+    rules_path = Path("schema_rules.yaml")
     if rules_path.exists():
         with open(rules_path) as f:
             config = yaml.safe_load(f)
