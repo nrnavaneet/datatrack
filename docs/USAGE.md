@@ -17,13 +17,13 @@ Save your DB connection for future use:
 ### MySQL
 
 ```bash
-datatrack connect mysql+pymysql://root:mysecurepassword@localhost:3306/mydatabase
+datatrack connect mysql+pymysql://root:<password>@localhost:3306/<database-name>
 ```
 
 ### PostgreSQL
 
 ```bash
-datatrack connect postgresql+psycopg2://postgres:mysecurepassword@localhost:5432/mydatabase
+datatrack connect postgresql+psycopg2://postgres:<password>@localhost:5432/<database-name>
 ```
 
 
@@ -93,11 +93,6 @@ datatrack pipeline run
 
 Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
 
-Optionally specify a custom source or output directory:
-
-```bash
-datatrack pipeline run --source sqlite:///.databases/example.db --export-dir output_dir
-```
 
 For advanced use cases and integration into CI/CD, visit:
 

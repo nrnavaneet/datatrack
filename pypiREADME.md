@@ -3,7 +3,6 @@
 Datatrack is a minimal open-source CLI tool to **track schema changes** across versions in your data systems. It's built for **Data Engineers** and **Platform Teams** who want **automated schema linting, verification, diffs, and export** across snapshots.
 
 
-
 ## Features
 
 - Snapshot schemas from any SQL-compatible DB
@@ -15,7 +14,14 @@ Datatrack is a minimal open-source CLI tool to **track schema changes** across v
 
 ##  Installation
 
-Option 1: Install from GitHub (for development)
+Option 1: Install from PyPI (production use)
+```bash
+pip install datatrack-core
+```
+This is the easiest and recommended way to use datatracker as a CLI tool in your workflows.
+
+
+Option 2: Install from GitHub (for development)
 ```bash
 git clone https://github.com/nrnavaneet/datatrack.git
 cd datatrack
@@ -24,11 +30,6 @@ pip install -e .
 ```
 This method is ideal if you want to contribute or modify the tool.
 
-Option 2: Install from PyPI (production use)
-```bash
-pip install dbtracker
-```
-This is the easiest and recommended way to use datatracker as a CLI tool in your workflows.
 
 ##  How to Use
 
@@ -41,98 +42,88 @@ datatrack init
 Creates `.datatrack/`, `.databases/`, and optional initial files.
 
 
-### 2. Create Example SQLite DB (Optional)
+### 2. Connect to a Database
 
-```python
-import sqlite3
-from pathlib import Path
+Save your DB connection for future use:
 
-Path(".databases").mkdir(parents=True, exist_ok=True)
-conn = sqlite3.connect(".databases/example.db")
-c = conn.cursor()
-c.execute("CREATE TABLE users (id INTEGER, name TEXT, created_at TEXT)")
-c.execute("CREATE TABLE orders (order_id INTEGER, user_id INTEGER, amount REAL)")
-conn.commit()
-conn.close()
-```
-
-### 3. Take a Schema Snapshot
+### MySQL
 
 ```bash
-datatrack snapshot --source sqlite:///.databases/example.db
+datatrack connect mysql+pymysql://root:<password>@localhost:3306/<database-name>
 ```
 
+### PostgreSQL
 
-### 4. Run Linter
+```bash
+datatrack connect postgresql+psycopg2://postgres:<password>@localhost:5432/<database-name>
+```
+
+## 3. Take a Schema Snapshot
+
+```bash
+datatrack snapshot
+```
+
+Saves the current schema to `.databases/exports/<db_name>/snapshots/`.
+
+## 4. Lint the Schema
 
 ```bash
 datatrack lint
 ```
 
-Warns if ambiguous names, overly generic types, etc.
+Detects issues in naming and structure.
 
-
-### 5. Schema Verification
+## 5. Verify Schema Rules
 
 ```bash
 datatrack verify
 ```
 
-By default reads rules from `schema_rules.yaml` in project root.
+Validates schema against `schema_rules.yaml`.
 
-
-### 6. Show Schema Differences
+## 6. View Schema Differences
 
 ```bash
 datatrack diff
 ```
 
-Compares latest 2 snapshots.
+Shows table and column changes between the latest two snapshots.
 
+## 7. Export Snapshots or Diffs
 
-### 7. Export Snapshot or Diff
-
+Export latest snapshot as YAML (default)
 ```bash
-datatrack export --type snapshot --format json --output output/snapshot.json
-
-datatrack export --type diff --format yaml --output output/diff.yaml
+datatrack export
 ```
 
+Explicitly export snapshot as YAML
+```bash
+datatrack export --type snapshot --format yaml
+```
+Export latest diff as JSON
+```bash
+datatrack export --type diff --format json
+```
 
-### 8. View Snapshot History
+Output is saved in `.databases/exports/<db_name>/`.
+
+## 8. View Snapshot History
 
 ```bash
 datatrack history
 ```
 
-Lists snapshot filenames.
+Displays all snapshot timestamps and table counts.
 
-
-### 9. Run Full Pipeline
-
-```bash
-datatrack pipeline run --source sqlite:///.databases/example.db
-```
-
-This runs:
-
-- `lint`
-- `snapshot`
-- `verify`
-- `diff`
-- `export`
-
-To change export location:
+## 9. Run the Full Pipeline
 
 ```bash
-datatrack run --source sqlite:///.databases/example.db --export-dir my_output_dir
+datatrack pipeline run
 ```
 
-## 👤 Author
+Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
 
-Built with ❤️ by [@nrnavaneet](https://github.com/nrnavaneet)
+For advanced use cases and integration into CI/CD, visit:
 
-
-## 📝 License
-
-MIT License
+**https://github.com/nrnavaneet/datatrack**

@@ -8,7 +8,7 @@ Datatrack is a lightweight CLI tool for tracking schema changes in databases. Yo
 Use this if you just want to use `datatrack` as a command-line tool in your projects.
 
 ```bash
-pip install dbtracker
+pip install datatrack-core
 ```
 ## Initialize a Datatrack Project
 
