@@ -27,6 +27,13 @@ datatrack connect postgresql+psycopg2://postgres:<password>@localhost:5432/<data
 ```
 
 
+### SQLite
+
+```bash
+datatrack connect sqlite:///.databases/<database-name>
+```
+
+
 ## 3. Take a Schema Snapshot
 
 ```bash

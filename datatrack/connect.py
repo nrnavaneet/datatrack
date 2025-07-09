@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -12,24 +13,42 @@ DB_LINK_FILE = CONFIG_DIR / "db_link.yaml"
 
 def get_connected_db_name():
     """
-    Returns the currently connected database name from the stored connection URI.
-    Raises informative errors if connection config is missing or invalid.
+    Returns a safe, filesystem-friendly name for the connected database.
+
+    - For SQLite: extracts the file name without extension.
+    - For other SQL DBs: extracts the database name from URI.
+    - Ensures the result is alphanumeric + underscores only.
     """
     if not DB_LINK_FILE.exists():
         raise ValueError("No database connection found. Please connect first.")
 
     with open(DB_LINK_FILE) as f:
         uri = yaml.safe_load(f).get("link", "")
-        db_name = urlparse(uri).path.lstrip("/")
-        if not db_name:
-            raise ValueError("Could not extract database name from URI.")
-        return db_name
+        parsed = urlparse(uri)
+
+        if parsed.scheme.startswith("sqlite"):
+            db_path = Path(parsed.path).name  # example.db
+            db_name = db_path.replace(".db", "")
+        else:
+            db_name = parsed.path.lstrip("/")
+
+        # Sanitize db_name: keep alphanumerics, underscores, dashes
+        safe_name = re.sub(r"[^\w\-]", "_", db_name)
+        if not safe_name:
+            raise ValueError("Could not determine a valid database name from URI.")
+
+        return safe_name
 
 
 def save_connection(link: str):
     """
-    Tries to connect to the given DB link, validates it, and saves it if successful.
+    Connects to the given DB link only if no connection exists or it's disconnected.
     """
+    if DB_LINK_FILE.exists():
+        print("A database is already connected. Please disconnect first using:")
+        print("  datatrack disconnect")
+        return
+
     try:
         engine = create_engine(link)
         with engine.connect() as conn:
@@ -39,7 +58,7 @@ def save_connection(link: str):
             print("Access denied: Please check your username or password.\n")
         elif "Can't connect to MySQL server" in str(e):
             print(
-                "Could not connect to the server. Check if MySQL is running and reachable.\n"
+                "Could not connect to the server. Check if the DB is running and reachable.\n"
             )
         else:
             print(f"Operational error: {e}\n")
@@ -47,7 +66,7 @@ def save_connection(link: str):
     except SQLAlchemyError as e:
         if "No module named" in str(e):
             print(
-                "Missing driver: Please ensure required DB drivers (e.g., pymysql) are installed.\n"
+                "Missing driver: Ensure required DB drivers (e.g., pymysql, psycopg2) are installed.\n"
             )
         else:
             print(f"Connection failed: {e}\n")

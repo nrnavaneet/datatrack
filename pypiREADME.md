@@ -1,6 +1,13 @@
-# Datatrack - Lightweight Schema Change Tracker
+# Datatrack - Version Control for Databases
 
-Datatrack is a minimal open-source CLI tool to **track schema changes** across versions in your data systems. It's built for **Data Engineers** and **Platform Teams** who want **automated schema linting, verification, diffs, and export** across snapshots.
+Datatrack is a lightweight and open-source CLI tool that brings Git-like version control to your database schemas. Built for Data Engineers, Analytics Engineers, and Platform Teams, it automates:
+	•	Schema snapshots
+	•	Diffs across versions
+	•	Linting for naming and structure
+	•	Verification against custom rules
+	•	Exporting to JSON/YAML
+
+Because in modern data systems, your schema is your contract—and when it breaks silently, everything else crumbles.
 
 
 ## Features
@@ -56,6 +63,12 @@ datatrack connect mysql+pymysql://root:<password>@localhost:3306/<database-name>
 
 ```bash
 datatrack connect postgresql+psycopg2://postgres:<password>@localhost:5432/<database-name>
+```
+
+### SQLite
+
+```bash
+datatrack connect sqlite:///.databases/<database-name>
 ```
 
 ## 3. Take a Schema Snapshot

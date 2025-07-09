@@ -1,25 +1,11 @@
 import json
 from pathlib import Path
-from urllib.parse import urlparse
 
 import yaml
 
+from datatrack.connect import get_connected_db_name
+
 DB_LINK_FILE = Path(".datatrack/db_link.yaml")
-
-
-def get_database_name():
-    if not DB_LINK_FILE.exists():
-        raise FileNotFoundError("No connection found. Run `datatrack connect` first.")
-    with open(DB_LINK_FILE) as f:
-        link = yaml.safe_load(f).get("link")
-    if not link:
-        raise ValueError("Invalid DB link in config.")
-
-    parsed = urlparse(link)
-    db_name = parsed.path.lstrip("/")
-    if not db_name:
-        raise ValueError("Could not extract database name from connection string.")
-    return db_name
 
 
 def get_export_dir(db_name):
@@ -35,7 +21,7 @@ def get_snapshot_dir(db_name):
 
 
 def load_latest_snapshots(n=2):
-    db_name = get_database_name()
+    db_name = get_connected_db_name()
     snap_dir = get_snapshot_dir(db_name)
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
     if len(snapshots) < n:
@@ -54,7 +40,7 @@ def export_snapshot(fmt="json", output_path=None):
     latest = load_latest_snapshots(n=1)[0]
 
     if output_path is None:
-        db_name = get_database_name()
+        db_name = get_connected_db_name()
         output_path = get_export_dir(db_name) / f"latest_snapshot.{fmt}"
     else:
         output_path = Path(output_path)
@@ -68,7 +54,7 @@ def export_diff(fmt="json", output_path=None):
     diff = _generate_diff(snap_old, snap_new)
 
     if output_path is None:
-        db_name = get_database_name()
+        db_name = get_connected_db_name()
         output_path = get_export_dir(db_name) / f"latest_diff.{fmt}"
     else:
         output_path = Path(output_path)

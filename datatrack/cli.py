@@ -244,6 +244,8 @@ def show_help():
     )
     typer.echo("\n  # Connect to MySQL:")
     typer.echo("  datatrack connect mysql+pymysql://root:pass123@localhost:3306/testdb")
+    typer.echo("\n  # Connect to SQLite:")
+    typer.echo("  datatrack connect sqlite:///.databases/example.db")
     typer.echo("\n  # Take a snapshot:")
     typer.echo("  datatrack snapshot")
     typer.echo("\n  # Show differences between last 2 snapshots:")
