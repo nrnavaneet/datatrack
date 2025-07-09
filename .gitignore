@@ -1,5 +1,6 @@
 .datatrack
 dbtracker.egg-info
+datatrack_core.egg-info
 __pycache__
 snapshots
 .pipeline_output
@@ -9,3 +10,4 @@ dist
 MANIFEST.in
 pyREADME.md
 .ruff_cache
+pyproject.toml
