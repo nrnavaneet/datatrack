@@ -11,3 +11,6 @@ MANIFEST.in
 pyREADME.md
 .ruff_cache
 pyproject.toml
+dependency_links.txt
+PKG-INFO
+SOURCES.txt

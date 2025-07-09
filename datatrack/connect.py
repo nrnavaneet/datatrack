@@ -3,7 +3,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 import yaml
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError, SQLAlchemyError
 
 # Config paths
@@ -52,7 +52,7 @@ def save_connection(link: str):
     try:
         engine = create_engine(link)
         with engine.connect() as conn:
-            conn.execute("SELECT 1")
+            conn.execute(text("SELECT 1"))  # FIXED: wrapped with `text()`
     except OperationalError as e:
         if "Access denied" in str(e):
             print("Access denied: Please check your username or password.\n")
@@ -72,7 +72,6 @@ def save_connection(link: str):
             print(f"Connection failed: {e}\n")
         return
 
-    # Save the link
     CONFIG_DIR.mkdir(parents=True, exist_ok=True)
     with open(DB_LINK_FILE, "w") as f:
         yaml.dump({"link": link}, f)

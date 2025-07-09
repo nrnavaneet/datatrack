@@ -41,7 +41,7 @@ This method is ideal if you want to contribute or modify the tool.
 
 Datatrack comes with built-in help and guidance for every command. Use this to quickly learn syntax and options:
 ```bash
-datatrack --help
+datatrack help
 ```
 
 ##  How to Use
