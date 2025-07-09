@@ -4,8 +4,11 @@ from pathlib import Path
 import typer
 import yaml
 
+from datatrack import connect as connect_module
 from datatrack import diff as diff_module
-from datatrack import exporter, history, linter, pipeline, tracker, verifier
+from datatrack import exporter, history, linter, pipeline
+from datatrack import test_connection as test_module
+from datatrack import tracker, verifier
 
 app = typer.Typer(help="Datatrack: Schema tracking CLI")
 
@@ -41,17 +44,24 @@ def init():
 
 
 @app.command()
-def snapshot(source: str = typer.Option(..., help="Database source URI")):
+def snapshot():
     """
-    Capture the current schema state from a real database and save a snapshot.
+    Capture the current schema state from the connected database and save a snapshot.
     """
+    source = connect_module.get_saved_connection()
+    if not source:
+        typer.echo(
+            "No database connection found. Please run 'datatrack connect <db_uri>' first."
+        )
+        raise typer.Exit(code=1)
+
     typer.echo("\nCapturing schema snapshot from source...")
 
     try:
         tracker.snapshot(source)
         typer.echo("Snapshot successfully captured and saved.\n")
     except Exception as e:
-        typer.echo(f"Error capturing snapshot: {e}")
+        typer.secho(f"Error capturing snapshot: {e}", fg=typer.colors.RED)
 
 
 @app.command()
@@ -99,30 +109,33 @@ def history_command():
 
 @app.command()
 def export(
-    type: str = typer.Option(..., help="snapshot or diff"),
+    type: str = typer.Option("snapshot", help="Export type: snapshot or diff"),
     format: str = typer.Option("json", help="Output format: json or yaml"),
-    output: str = typer.Option(..., help="Output file path"),
 ):
     """
     Export latest snapshot or diff as JSON/YAML.
+    Saves to default path in .databases/exports/
     """
     typer.echo(f"\nExporting {type} as {format}...\n")
 
     try:
         if type == "snapshot":
-            exporter.export_snapshot(output, format)
+            exporter.export_snapshot(fmt=format)
+            output_file = f".databases/exports/latest_snapshot.{format}"
         elif type == "diff":
-            exporter.export_diff(output, format)
+            exporter.export_diff(fmt=format)
+            output_file = f".databases/exports/latest_diff.{format}"
         else:
-            typer.echo("Invalid export type. Use 'snapshot' or 'diff'.")
+            typer.secho(
+                "Invalid export type. Use 'snapshot' or 'diff'.", fg=typer.colors.RED
+            )
             raise typer.Exit(code=1)
 
-        typer.secho(f"Exported to {output}", fg=typer.colors.GREEN)
+        typer.secho(f"Exported to {output_file}", fg=typer.colors.GREEN)
 
     except Exception as e:
         typer.secho(f"Export failed: {str(e)}", fg=typer.colors.RED)
         raise typer.Exit(code=1)
-    print()
 
 
 @app.command()
@@ -149,6 +162,38 @@ def lint():
 
 
 app.add_typer(pipeline.app, name="pipeline")
+
+
+@app.command()
+def connect(link: str = typer.Argument(..., help="Database connection URI")):
+    """
+    Save the database connection link for future commands.
+    """
+    connect_module.save_connection(link)
+    typer.secho("Database link saved successfully.", fg=typer.colors.GREEN)
+
+
+@app.command()
+def disconnect():
+    """
+    Remove the saved database connection link.
+    """
+    connect_module.remove_connection()
+    typer.secho("Removed saved database connection.", fg=typer.colors.YELLOW)
+
+
+@app.command("test-connection")
+def test_connection():
+    """
+    Test if the saved database connection works.
+    """
+    result = test_module.test_connection()
+    if "failed" in result.lower() or "no connection" in result.lower():
+        typer.secho(result, fg=typer.colors.RED)
+        raise typer.Exit(code=1)
+    else:
+        typer.secho(result, fg=typer.colors.GREEN)
+
 
 if __name__ == "__main__":
     app()

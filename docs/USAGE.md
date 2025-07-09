@@ -47,7 +47,8 @@ Shows differences between the latest two schema snapshots.
 ## 6. Export Snapshots or Diffs
 
 ```bash
-datatrack export --type snapshot --format json --output output/snapshot.json
+
+
 datatrack export --type diff --format yaml --output output/diff.yaml
 ```
 

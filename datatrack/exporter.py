@@ -17,16 +17,34 @@ def load_latest_snapshots(n=2):
     return [yaml.safe_load(open(s)) for s in snapshots[:n]]
 
 
-def export_snapshot(fmt="json"):
+def export_snapshot(fmt="json", output_path=None):
+    """
+    Export the latest schema snapshot.
+    If no output_path is provided, uses .databases/exports/latest_snapshot.<fmt>
+    """
     latest = load_latest_snapshots(n=1)[0]
-    output_path = EXPORT_DIR / f"latest_snapshot.{fmt}"
+
+    if output_path is None:
+        output_path = EXPORT_DIR / f"latest_snapshot.{fmt}"
+    else:
+        output_path = Path(output_path)
+
     _write_to_file(latest, output_path, fmt)
 
 
-def export_diff(fmt="json"):
+def export_diff(fmt="json", output_path=None):
+    """
+    Export the diff between latest two schema snapshots.
+    If no output_path is provided, uses .databases/exports/latest_diff.<fmt>
+    """
     snap_new, snap_old = load_latest_snapshots(n=2)
     diff = _generate_diff(snap_old, snap_new)
-    output_path = EXPORT_DIR / f"latest_diff.{fmt}"
+
+    if output_path is None:
+        output_path = EXPORT_DIR / f"latest_diff.{fmt}"
+    else:
+        output_path = Path(output_path)
+
     _write_to_file(diff, output_path, fmt)
 
 
@@ -67,13 +85,12 @@ def _generate_diff(old, new):
 
 
 def _write_to_file(data, path, fmt):
-    output_path = Path(path)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
 
     if fmt not in {"json", "yaml"}:
         raise ValueError(f"Unsupported format: {fmt}")
 
-    with open(output_path, "w") as f:
+    with open(path, "w") as f:
         if fmt == "json":
             json.dump(data, f, indent=2)
         elif fmt == "yaml":
