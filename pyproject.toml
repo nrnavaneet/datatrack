@@ -18,7 +18,8 @@ dependencies = [
   "sqlalchemy",
   "psycopg2-binary",
   "pymysql",
-  "pre-commit"
+  "pre-commit",
+  "pytest"
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
@@ -37,3 +38,7 @@ classifiers = [
 
 [project.scripts]
 datatrack = "datatrack.cli:app"
+test="pytest"
+
+[tool.isort]
+profile = "black"

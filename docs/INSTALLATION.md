@@ -35,7 +35,9 @@ pip install -e .
 
 Datatrack comes with built-in help and guidance for every command. Use this to quickly learn syntax and options:
 ```bash
-datatrack help
+datatrack --help
+or
+datatrack -h
 ```
 
 This sets up a local editable environment where you can test changes to the source code.

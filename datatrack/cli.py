@@ -10,7 +10,11 @@ from datatrack import exporter, history, linter, pipeline
 from datatrack import test_connection as test_module
 from datatrack import tracker, verifier
 
-app = typer.Typer(help="Datatrack: Schema tracking CLI")
+app = typer.Typer(
+    help="Datatrack: Schema tracking CLI",
+    add_help_option=False,
+    invoke_without_command=True,
+)
 
 CONFIG_DIR = ".datatrack"
 CONFIG_FILE = "config.yaml"
@@ -44,7 +48,18 @@ def init():
 
 
 @app.command()
-def snapshot():
+def snapshot(
+    include_data: bool = typer.Option(
+        False,
+        "--include-data",
+        help="Include sample table data in the snapshot (default: False)",
+    ),
+    max_rows: int = typer.Option(
+        100,
+        "--max-rows",
+        help="Maximum number of rows to capture per table (only if --include-data is used)",
+    ),
+):
     """
     Capture the current schema state from the connected database and save a snapshot.
     """
@@ -58,10 +73,16 @@ def snapshot():
     typer.echo("\nCapturing schema snapshot from source...")
 
     try:
-        tracker.snapshot(source)
-        typer.echo("Snapshot successfully captured and saved.\n")
+        snapshot_path = tracker.snapshot(
+            source, include_data=include_data, max_rows=max_rows
+        )
+        typer.secho(
+            "Snapshot successfully captured and saved.\n", fg=typer.colors.GREEN
+        )
+        typer.echo(f"Saved at: {snapshot_path}\n")
     except Exception as e:
         typer.secho(f"Error capturing snapshot: {e}", fg=typer.colors.RED)
+        raise typer.Exit(code=1)
 
 
 @app.command()
@@ -193,89 +214,106 @@ def test_connection():
         typer.secho(result, fg=typer.colors.GREEN)
 
 
-@app.command("help")
-def show_help():
-    banner = """
-    ██████╗   █████╗ ████████╗ █████╗ ████████╗██████╗   █████╗   ██████╗ ██╗  ██╗
-    ██╔══██╗ ██╔══██╗╚══██╔══╝██╔══██╗╚══██╔══╝██╔══██╗ ██╔══██╗ ██╔════╝ ██║ ██╔╝
-    ██║  ██║ ███████║   ██║   ███████║   ██║   ██████╔╝ ███████║ ██║      █████╔╝
-    ██║  ██║ ██╔══██║   ██║   ██╔══██║   ██║   ██╔══██╗ ██╔══██║ ██║      ██╔═██╗
-    ██████╔╝ ██║  ██║   ██║   ██║  ██║   ██║   ██║  ██║ ██║  ██║ ╚██████╗ ██║  ██╗
-    ╚═════╝  ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═╝  ╚═╝  ╚═════╝ ╚═╝  ╚═╝
+@app.callback()
+def main(
+    help: bool = typer.Option(
+        False, "--help", "-h", is_eager=True, help="Show this message and exit."
+    )
+):
+    if help:
+        banner = """
+        ██████╗   █████╗ ████████╗ █████╗ ████████╗██████╗   █████╗   ██████╗ ██╗  ██╗
+        ██╔══██╗ ██╔══██╗╚══██╔══╝██╔══██╗╚══██╔══╝██╔══██╗ ██╔══██╗ ██╔════╝ ██║ ██╔╝
+        ██║  ██║ ███████║   ██║   ███████║   ██║   ██████╔╝ ███████║ ██║      █████╔╝
+        ██║  ██║ ██╔══██║   ██║   ██╔══██║   ██║   ██╔══██╗ ██╔══██║ ██║      ██╔═██╗
+        ██████╔╝ ██║  ██║   ██║   ██║  ██║   ██║   ██║  ██║ ██║  ██║ ╚██████╗ ██║  ██╗
+        ╚═════╝  ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═╝  ╚═╝  ╚═════╝ ╚═╝  ╚═╝
 
-                       “Version Control for Your Database Schema”
-    """
-    typer.echo(banner)
+                        “Version Control for Your Database Schema”
+        """
+        typer.echo(banner)
 
-    typer.echo("USAGE:")
-    typer.echo("  datatrack <command> [options]\n")
+        typer.echo("USAGE:")
+        typer.echo("  datatrack <command> [options]\n")
 
-    typer.echo("COMMANDS:")
-    typer.echo(
-        "  init                 Initialize Datatrack config in the current directory."
-    )
-    typer.echo(
-        "  connect              Connect to a database and save the connection string."
-    )
-    typer.echo("  disconnect           Remove the saved database connection.")
-    typer.echo("  snapshot             Capture a schema snapshot and save it to disk.")
-    typer.echo("  diff                 Compare the latest two schema snapshots.")
-    typer.echo("  lint                 Run a basic linter to flag schema smells.")
-    typer.echo(
-        "  verify               Apply custom schema verification rules from config."
-    )
-    typer.echo("  export               Export latest snapshot or diff as JSON/YAML.")
-    typer.echo("  history              View schema snapshot history.")
-    typer.echo(
-        "  pipeline run         Run snapshot, diff, lint, and verify in one step."
-    )
-    typer.echo("  help                 Show this help message.\n")
+        typer.echo("COMMANDS:")
+        typer.echo(
+            "  init                 Initialize Datatrack config in the current directory."
+        )
+        typer.echo(
+            "  connect              Connect to a database and save the connection string."
+        )
+        typer.echo("  disconnect           Remove the saved database connection.")
+        typer.echo(
+            "  snapshot             Capture a schema snapshot and save it to disk."
+        )
+        typer.echo("  SNAPSHOT OPTIONS:")
+        typer.echo(" --include-data      Include row data in the snapshot.")
+        typer.echo(
+            " --max-rows <int>    Limit number of rows per table (used with --include-data)."
+        )
+        typer.echo("  diff                 Compare the latest two schema snapshots.")
+        typer.echo("  lint                 Run a basic linter to flag schema smells.")
+        typer.echo(
+            "  verify               Apply custom schema verification rules from config."
+        )
+        typer.echo(
+            "  export               Export latest snapshot or diff as JSON/YAML."
+        )
+        typer.echo("  history              View schema snapshot history.")
+        typer.echo(
+            "  pipeline run         Run snapshot, diff, lint, and verify in one step."
+        )
+        typer.echo("  help                 Show this help message.\n")
 
-    typer.echo("EXPORT OPTIONS:")
-    typer.echo(
-        "  --type [snapshot|diff]     Type of export to generate (default: snapshot)"
-    )
-    typer.echo("  --format [json|yaml]       Output format (default: json)\n")
+        typer.echo("EXPORT OPTIONS:")
+        typer.echo(
+            "  --type [snapshot|diff]     Type of export to generate (default: snapshot)"
+        )
+        typer.echo("  --format [json|yaml]       Output format (default: json)\n")
 
-    typer.echo("EXAMPLES:")
-    typer.echo("  # Connect to PostgreSQL:")
-    typer.echo(
-        "  datatrack connect postgresql+psycopg2://postgres:pass123@localhost:5433/testdb"
-    )
-    typer.echo("\n  # Connect to MySQL:")
-    typer.echo("  datatrack connect mysql+pymysql://root:pass123@localhost:3306/testdb")
-    typer.echo("\n  # Connect to SQLite:")
-    typer.echo("  datatrack connect sqlite:///.databases/example.db")
-    typer.echo("\n  # Take a snapshot:")
-    typer.echo("  datatrack snapshot")
-    typer.echo("\n  # Show differences between last 2 snapshots:")
-    typer.echo("  datatrack diff")
-    typer.echo("\n  # Export latest snapshot as YAML:")
-    typer.echo("  datatrack export --type snapshot --format yaml")
-    typer.echo("\n  # Export latest diff as JSON:")
-    typer.echo("  datatrack export --type diff --format json")
-    typer.echo("\n  # Lint the schema:")
-    typer.echo("  datatrack lint")
-    typer.echo("\n  # Verify with custom rules:")
-    typer.echo("  datatrack verify")
-    typer.echo("\n  # Show snapshot history:")
-    typer.echo("  datatrack history")
-    typer.echo("\n  # Run full pipeline (snapshot + diff + lint + verify):")
-    typer.echo("  datatrack pipeline run\n")
+        typer.echo("EXAMPLES:")
+        typer.echo("  # Connect to PostgreSQL:")
+        typer.echo(
+            "  datatrack connect postgresql+psycopg2://postgres:pass123@localhost:5433/testdb"
+        )
+        typer.echo("\n  # Connect to MySQL:")
+        typer.echo(
+            "  datatrack connect mysql+pymysql://root:pass123@localhost:3306/testdb"
+        )
+        typer.echo("\n  # Connect to SQLite:")
+        typer.echo("  datatrack connect sqlite:///.databases/example.db")
+        typer.echo("\n  # Take a snapshot:")
+        typer.echo("  datatrack snapshot")
+        typer.echo("\n  # Show differences between last 2 snapshots:")
+        typer.echo("  datatrack diff")
+        typer.echo("\n  # Export latest snapshot as YAML:")
+        typer.echo("  datatrack export --type snapshot --format yaml")
+        typer.echo("\n  # Export latest diff as JSON:")
+        typer.echo("  datatrack export --type diff --format json")
+        typer.echo("\n  # Lint the schema:")
+        typer.echo("  datatrack lint")
+        typer.echo("\n  # Verify with custom rules:")
+        typer.echo("  datatrack verify")
+        typer.echo("\n  # Show snapshot history:")
+        typer.echo("  datatrack history")
+        typer.echo("\n  # Run full pipeline (snapshot + diff + lint + verify):")
+        typer.echo("  datatrack pipeline run\n")
 
-    typer.echo("NOTES:")
-    typer.echo("  • Datatrack supports PostgreSQL and MySQL (via SQLAlchemy URIs).")
-    typer.echo(
-        "  • Snapshots are saved under `.databases/exports/<db_name>/snapshots/`."
-    )
-    typer.echo(
-        "  • Use a `schema_rules.yaml` file to define custom rules for verification."
-    )
-    typer.echo(
-        "  • Ideal for teams integrating schema change tracking in CI/CD pipelines.\n"
-    )
+        typer.echo("NOTES:")
+        typer.echo("  • Datatrack supports PostgreSQL and MySQL (via SQLAlchemy URIs).")
+        typer.echo(
+            "  • Snapshots are saved under `.databases/exports/<db_name>/snapshots/`."
+        )
+        typer.echo(
+            "  • Use a `schema_rules.yaml` file to define custom rules for verification."
+        )
+        typer.echo(
+            "  • Ideal for teams integrating schema change tracking in CI/CD pipelines.\n"
+        )
 
-    typer.echo("Documentation: https://github.com/nrnavaneet/datatrack")
+        typer.echo("Documentation: https://github.com/nrnavaneet/datatrack")
+        raise typer.Exit()
 
 
 if __name__ == "__main__":

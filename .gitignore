@@ -1,6 +1,6 @@
 .datatrack
 dbtracker.egg-info
-datatrack_core.egg-info
+datatrack_core.egg-info/
 __pycache__
 snapshots
 .pipeline_output
@@ -14,3 +14,4 @@ pyproject.toml
 dependency_links.txt
 PKG-INFO
 SOURCES.txt
+.venv/

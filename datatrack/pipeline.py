@@ -1,6 +1,24 @@
+"""
+DataTrack CLI Pipeline
+----------------------
+
+Executes the full schema validation workflow:
+
+Steps:
+  1. Snapshot: Save latest schema from DB
+  2. Linting: Run design lint rules (naming, ambiguity, types)
+  3. Verify: Enforce schema rules (snake_case, reserved, data structure)
+  4. Diff: Compare current vs previous snapshot
+  5. Export: Save outputs to disk (.json format)
+
+Artifacts are saved in: .databases/exports/
+
+Author: N R Navaneet
+"""
+
 import typer
 
-from datatrack.connect import get_saved_connection
+from datatrack.connect import get_connected_db_name, get_saved_connection
 from datatrack.diff import diff_schemas, load_snapshots
 from datatrack.exporter import export_diff, export_snapshot
 from datatrack.linter import lint_schema
@@ -11,81 +29,132 @@ from datatrack.verifier import load_rules, verify_schema
 
 app = typer.Typer()
 
+# Step result summary
+step_summary = {}
+
+# Export directory (hardcoded in current architecture)
+EXPORT_PATH = ".databases/exports/"
+
+
+def prompt_to_continue(step_name: str) -> bool:
+    return typer.confirm(
+        f"[{step_name}] failed. Do you want to continue?", default=False
+    )
+
+
+def print_summary(summary: dict):
+    print("\n┏" + "━" * 46 + "┓")
+    print("┃{:^46}┃".format("DataTrack: Schema Workflow"))
+    print("┣" + "━" * 46 + "┫")
+    for step, result in summary.items():
+        print(f"┃ {step:<20} ── {result:<21}┃")
+    print("┗" + "━" * 46 + "┛")
+
+
+def print_artifact_paths():
+    print("\nSaved artifacts:")
+    print(f"- Snapshot directory : {EXPORT_PATH}{get_connected_db_name()}/snapshots/")
+    print(
+        f"- Diff output        : {EXPORT_PATH}{get_connected_db_name()}/latest_diff.json"
+    )
+    print(f"- Exported files     : {EXPORT_PATH} (e.g., snapshot.json, diff.json)")
+
 
 @app.command("run")
 def run_pipeline(
-    export_dir: str = typer.Option(".pipeline_output", help="Where to save outputs"),
-    verbose: bool = typer.Option(True, help="Print detailed output"),
+    verbose: bool = typer.Option(True, help="Enable detailed output"),
+    strict: bool = typer.Option(False, help="Fail pipeline on lint warnings"),
 ):
-    print("=" * 50)
-    print("           Running DataTrack Pipeline")
-    print("=" * 50)
-
+    # 1. Snapshot
+    print("\n[1] Snapshotting schema...")
     source = get_saved_connection()
     if not source:
-        print("No saved DB connection found. Run `datatrack connect <db_uri>` first.")
+        step_summary["1. Snapshot"] = "✖ No DB connection"
+        print_summary(step_summary)
         raise typer.Exit(code=1)
 
-    # Snapshot
-    print("\n[1] Taking snapshot...")
     try:
         snapshot(source)
-        print("Snapshot saved successfully.")
+        step_summary["1. Snapshot"] = "✔ Success"
     except Exception as e:
-        print(f"Snapshot error: {e}")
+        step_summary["1. Snapshot"] = "✖ Error"
+        print(f"Snapshot failed: {e}")
+        print_summary(step_summary)
         raise typer.Exit(code=1)
 
-    # Linting
+    # 2. Linting
     print("\n[2] Linting schema...")
     try:
-        linted = load_lint_snapshot()
-        lint_warnings = lint_schema(linted)
+        schema = load_lint_snapshot()
+        lint_warnings = lint_schema(schema)
         if lint_warnings:
-            print("Warnings:")
-            for warn in lint_warnings:
-                print(f"  - {warn}")
-            raise typer.Exit(code=1)
+            for w in lint_warnings:
+                print(f"  - {w}")
+            if strict:
+                step_summary["2. Linting"] = f"✖ {len(lint_warnings)} Warnings"
+                print_summary(step_summary)
+                raise typer.Exit(code=1)
+            else:
+                step_summary["2. Linting"] = f"⚠ {len(lint_warnings)} Warnings"
+                if not prompt_to_continue("Linting"):
+                    print_summary(step_summary)
+                    raise typer.Exit(code=1)
         else:
-            print("No linting issues found.")
+            step_summary["2. Linting"] = "✔ Clean"
     except Exception as e:
-        print(f"Error during linting: {e}")
-        raise typer.Exit(code=1)
+        step_summary["2. Linting"] = "✖ Error"
+        print(f"Linting failed: {e}")
+        print_summary(step_summary)
+        if not prompt_to_continue("Linting"):
+            raise typer.Exit(code=1)
 
-    # Verify
+    # 3. Verification
     print("\n[3] Verifying schema...")
     try:
         schema = load_ver_snapshot()
         rules = load_rules()
         violations = verify_schema(schema, rules)
         if violations:
-            print("Verification failed:")
             for v in violations:
                 print(f"  - {v}")
-            raise typer.Exit(code=1)
+            step_summary["3. Verify"] = f"✖ {len(violations)} Violations"
+            if not prompt_to_continue("Verification"):
+                print_summary(step_summary)
+                raise typer.Exit(code=1)
         else:
-            print("Schema verification passed.")
+            step_summary["3. Verify"] = "✔ OK"
     except Exception as e:
-        print(f"Verification error: {e}")
-        raise typer.Exit(code=1)
+        step_summary["3. Verify"] = "✖ Error"
+        print(f"Verification failed: {e}")
+        print_summary(step_summary)
+        if not prompt_to_continue("Verification"):
+            raise typer.Exit(code=1)
 
-    # Diff
-    print("\n[4] Computing schema diff...")
+    # 4. Diff
+    print("\n[4] Computing diff...")
     try:
         old, new = load_snapshots()
         diff_schemas(old, new)
+        step_summary["4. Diff"] = "✔ Applied"
     except Exception as e:
-        print(f"Diff skipped: {e}")
-        raise typer.Exit(code=1)
+        step_summary["4. Diff"] = "✖ Skipped"
+        print(f"Diff error: {e}")
+        if not prompt_to_continue("Diff"):
+            print_summary(step_summary)
+            raise typer.Exit(code=1)
 
-    # Export
-    print("\n[5] Exporting snapshot and diff...")
+    # 5. Export
+    print("\n[5] Exporting...")
     try:
         export_snapshot(fmt="json")
         export_diff(fmt="json")
-        print("Exported to default directory: .databases/exports/")
+        step_summary["5. Export"] = "✔ Saved"
     except Exception as e:
-        print(f"Export failed: {e}")
-        return
+        step_summary["5. Export"] = "✖ Failed"
+        print(f"Export error: {e}")
+        print_summary(step_summary)
+        raise typer.Exit(code=1)
 
-    print("\nPipeline completed successfully.")
-    print("=" * 50)
+    # Final UI + Paths
+    print_summary(step_summary)
+    print_artifact_paths()

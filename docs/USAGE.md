@@ -6,7 +6,9 @@ Datatrack is a CLI tool for tracking, linting, verifying, and exporting database
 
 Datatrack comes with built-in help and guidance for every command. Use this to quickly learn syntax and options:
 ```bash
-datatrack help
+datatrack --help
+or
+datatrack -h
 ```
 
 ## 1. Initialize a Datatrack Project
@@ -45,6 +47,16 @@ datatrack connect sqlite:///.databases/<database-name>
 
 ```bash
 datatrack snapshot
+```
+
+Include sample row data in the snapshot:
+```bash
+datatrack snapshot --include-data
+```
+
+Limit the number of rows per table captured (only works with --include-data):
+```bash
+datatrack snapshot --include-data --max-rows 100
 ```
 
 Saves the current schema to `.databases/exports/<db_name>/snapshots/`.
