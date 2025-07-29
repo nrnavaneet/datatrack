@@ -1,7 +1,6 @@
-typer[all]
-PyYAML
-pre-commit
-sqlalchemy
-psycopg2-binary
-pymysql
+typer[all]>=0.9.0
+PyYAML>=6.0
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+pymysql>=1.0.0
 pytest

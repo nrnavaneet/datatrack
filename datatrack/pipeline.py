@@ -1,19 +1,39 @@
 """
-DataTrack CLI Pipeline
-----------------------
+Automated Schema Validation and Analysis Pipeline
 
-Executes the full schema validation workflow:
+This module orchestrates a comprehensive database schema validation workflow,
+automating the entire process from snapshot creation to final analysis and reporting.
+It provides a streamlined, production-ready pipeline for database schema management.
 
-Steps:
-  1. Snapshot: Save latest schema from DB
-  2. Linting: Run design lint rules (naming, ambiguity, types)
-  3. Verify: Enforce schema rules (snake_case, reserved, data structure)
-  4. Diff: Compare current vs previous snapshot
-  5. Export: Save outputs to disk (.json format)
+Pipeline Workflow:
+1. Schema Snapshot: Capture current database state with full metadata
+2. Quality Linting: Analyze design patterns, naming conventions, and best practices
+3. Rule Verification: Enforce organizational schema standards and constraints
+4. Change Analysis: Compare current state with previous snapshots for differences
+5. Export Generation: Create comprehensive reports and data exports
 
-Artifacts are saved in: .databases/exports/
+Key Features:
+- Fully automated end-to-end schema validation
+- Configurable pipeline stages with selective execution
+- Comprehensive error handling and recovery
+- Detailed logging and progress tracking
+- Export artifacts for CI/CD integration
+- Interactive and batch execution modes
 
-Author: N R Navaneet
+Output Artifacts:
+- Schema snapshots (YAML format)
+- Linting reports (JSON format)
+- Verification results (detailed analysis)
+- Diff reports (change analysis)
+- Export files for external tool integration
+
+Integration Points:
+- CI/CD pipeline compatibility
+- Custom rule configuration support
+- External tool API integration
+- Automated reporting and notifications
+
+Author: Navaneet
 """
 
 import typer
@@ -43,6 +63,7 @@ def prompt_to_continue(step_name: str) -> bool:
 
 
 def print_summary(summary: dict):
+    """Display formatted pipeline execution summary."""
     print("\n┏" + "━" * 46 + "┓")
     print("┃{:^46}┃".format("DataTrack: Schema Workflow"))
     print("┣" + "━" * 46 + "┫")
@@ -52,6 +73,7 @@ def print_summary(summary: dict):
 
 
 def print_artifact_paths():
+    """Display locations of generated artifacts and output files."""
     print("\nSaved artifacts:")
     print(f"- Snapshot directory : {EXPORT_PATH}{get_connected_db_name()}/snapshots/")
     print(
@@ -80,7 +102,7 @@ def run_pipeline(
         step_summary["1. Snapshot"] = "✖ Error"
         print(f"Snapshot failed: {e}")
         print_summary(step_summary)
-        raise typer.Exit(code=1)
+        raise typer.Exit(code=1) from e
 
     # 2. Linting
     print("\n[2] Linting schema...")
@@ -106,7 +128,7 @@ def run_pipeline(
         print(f"Linting failed: {e}")
         print_summary(step_summary)
         if not prompt_to_continue("Linting"):
-            raise typer.Exit(code=1)
+            raise typer.Exit(code=1) from e
 
     # 3. Verification
     print("\n[3] Verifying schema...")
@@ -128,7 +150,7 @@ def run_pipeline(
         print(f"Verification failed: {e}")
         print_summary(step_summary)
         if not prompt_to_continue("Verification"):
-            raise typer.Exit(code=1)
+            raise typer.Exit(code=1) from e
 
     # 4. Diff
     print("\n[4] Computing diff...")
@@ -141,7 +163,7 @@ def run_pipeline(
         print(f"Diff error: {e}")
         if not prompt_to_continue("Diff"):
             print_summary(step_summary)
-            raise typer.Exit(code=1)
+            raise typer.Exit(code=1) from e
 
     # 5. Export
     print("\n[5] Exporting...")
@@ -153,7 +175,7 @@ def run_pipeline(
         step_summary["5. Export"] = "✖ Failed"
         print(f"Export error: {e}")
         print_summary(step_summary)
-        raise typer.Exit(code=1)
+        raise typer.Exit(code=1) from e
 
     # Final UI + Paths
     print_summary(step_summary)

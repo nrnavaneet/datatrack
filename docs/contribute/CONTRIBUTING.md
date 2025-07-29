@@ -1,96 +1,178 @@
 # Contributing to Datatrack
 
-Thank you for your interest in contributing!
-**Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone.
+Thank you for your interest in contributing to Datatrack. We welcome contributions from the community to help make database schema management better for everyone.
 
-## How to Contribute
+## Getting Started
 
-### 1. Fork the Repo
-
-Click the **"Fork"** button at the top right of [the repository](https://github.com/nrnavaneet/datatrack) and clone your fork:
+### 1. Fork and Clone
 
 ```bash
-git clone https://github.com/your-username/datatrack.git
+# Fork the repository on GitHub, then clone your fork
+git clone https://github.com/YOUR-USERNAME/datatrack.git
 cd datatrack
+
+# Add upstream remote
+git remote add upstream https://github.com/nrnavaneet/datatrack.git
 ```
 
-### 2. Create and Activate Virtual Environment
+### 2. Development Environment
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
-```
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-### 3. Make Your Changes
+# Install in development mode with all dependencies
+pip install -e ".[dev]"
 
-- Create a new branch:
-  ```bash
-  git checkout -b your-feature-name
-  ```
-
-- Follow code style (PEP8, Black) and ensure changes are meaningful.
-
-### 4. Test Your Changes
-
-Make sure everything still works.
-
-## Initialize it:
-
-```bash
-datatrack init
-```
-## Connect to a Database
-Save your DB connection for future use:
-
-## MySQL
-```bash
-datatrack connect mysql+pymysql://root:mysecurepassword@localhost:3306/mydatabase
-```
-
-## PostgreSQL
-```bash
-datatrack connect postgresql+psycopg2://postgres:mysecurepassword@localhost:5432/mydatabase
-```
-
-## Run the full pipeline (you can use PostgreSQL, MySQL or SQLite):
-
-```bash
-datatrack pipeline run
-```
-
-Add or update unit tests if necessary.
-
-### 5. Run Pre-commit Hooks
-
-Install and run pre-commit checks:
-
-```bash
+# Install pre-commit hooks
 pre-commit install
+```
+
+### 3. Verify Setup
+
+```bash
+# Run tests to ensure everything works
+pytest tests/ -v
+
+# Run performance tests
+pytest tests/test_performance.py -v
+
+# Check code quality
 pre-commit run --all-files
 ```
 
-### 6. Commit and Push
+## How to Contribute
+
+### Bug Reports
+
+Found a bug? Please check existing issues first, then create a new issue with:
+- Clear description of the problem
+- Steps to reproduce
+- Expected vs actual behavior
+- Environment details (OS, Python version, database type)
+
+### Feature Requests
+
+Have an idea for improvement? Please:
+- Check existing discussions and issues
+- Describe the use case and expected behavior
+- Explain why this would benefit other users
+
+### Code Contributions
+
+Ready to contribute code? Great! Please:
+- Check for good first issues or help wanted labels
+- Discuss major changes in issues first
+- Follow our development workflow
+
+## Development Workflow
+
+### 1. Create a Feature Branch
 
 ```bash
-git add .
-git commit -m "Add new feature or fix bug"
-git push origin your-feature-name
+# Update your fork
+git fetch upstream
+git checkout main
+git merge upstream/main
+
+# Create feature branch
+git checkout -b feature/your-feature-name
 ```
 
-### 7. Open a Pull Request
+### 2. Make Changes
 
-Go to your fork and open a **Pull Request (PR)** to `main`.
-Describe your changes clearly, and link any related issues.
+- Write clean, well-documented code
+- Follow existing code style and patterns
+- Consider performance impact for database operations
+- Add tests for new functionality
+
+### 3. Test Your Changes
+
+```bash
+# Run full test suite
+pytest tests/
+
+# Run specific test categories
+pytest tests/test_performance.py -v    # Performance tests
+pytest tests/test_tracker.py -v       # Core functionality
+pytest tests/test_cli.py -v           # CLI interface
+
+# Test with coverage
+pytest tests/ --cov=datatrack --cov-report=term-missing
+```
+
+### 4. Quality Checks
+
+```bash
+# Format code
+black datatrack/ tests/
+
+# Lint code
+ruff check datatrack/ tests/
+
+# Type checking
+mypy datatrack/
+
+# Run all pre-commit hooks
+pre-commit run --all-files
+```
+
+### 5. Commit and Push
+
+```bash
+# Stage your changes
+git add .
+
+# Commit with descriptive message
+git commit -m "feat: add parallel processing for large schemas"
+
+# Push to your fork
+git push origin feature/your-feature-name
+```
+
+### 6. Create Pull Request
+
+- Use clear, descriptive title and description
+- Link related issues and discussions
+- Include screenshots for UI changes
+- Ensure all checks pass
+
+## Code Guidelines
+
+### Python Style
+- Follow PEP 8 style guide
+- Use Black for code formatting
+- Use Ruff for linting
+- Add type hints for new functions
+
+### Commit Messages
+```
+type: brief description
+
+Longer explanation if needed
+
+Closes #123
+```
+
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+### Testing
+- Write tests for new functionality
+- Maintain existing test coverage
+- Use descriptive test names
+- Mock external dependencies
+
+## Getting Help
+
+Need help? We're here for you:
+
+- GitHub Discussions for general questions
+- GitHub Issues for bug reports and feature requests
+- Email maintainer for sensitive issues
 
 ## Code of Conduct
 
-Please be kind and respectful in all interactions.
-We follow the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) code of conduct.
+Please be respectful and inclusive in all interactions. We follow the Contributor Covenant code of conduct.
 
-## Need Help?
-
-Open an [issue](https://github.com/nrnavaneet/datatrack/issues), or reach out via GitHub Discussions if you have questions.
-
-Thanks for helping improve Datatrack!
+Thank you for contributing to Datatrack!

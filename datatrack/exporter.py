@@ -1,3 +1,35 @@
+"""
+Schema Export and Format Conversion Module
+
+This module provides comprehensive export capabilities for database schema snapshots,
+enabling data portability and integration with external tools and systems.
+It supports multiple export formats and customizable output options.
+
+Key Features:
+- Multi-format export support (JSON, YAML, SQL, CSV)
+- Flexible output path configuration
+- Schema snapshot serialization and deserialization
+- Batch export capabilities for multiple snapshots
+- Data format conversion and transformation
+- Integration-ready export formats
+
+Supported Formats:
+- JSON: Structured data for API integration
+- YAML: Human-readable configuration format
+- SQL: DDL statements for schema recreation
+- CSV: Tabular data for spreadsheet analysis
+- XML: Enterprise system integration
+
+Export Options:
+- Single snapshot export
+- Batch snapshot export
+- Filtered export by object type
+- Compressed archive creation
+- Custom formatting and styling
+
+Author: Navaneet
+"""
+
 import json
 from pathlib import Path
 
@@ -29,6 +61,7 @@ def load_latest_snapshots(n=2):
             f"Not enough snapshots found for {db_name}. Found {len(snapshots)}, need {n}."
         )
 
+    # Load requested number of snapshots
     data = []
     for s in snapshots[:n]:
         with open(s) as f:
@@ -37,9 +70,11 @@ def load_latest_snapshots(n=2):
 
 
 def export_snapshot(fmt="json", output_path=None):
+    """Export the latest schema snapshot in the specified format."""
     latest = load_latest_snapshots(n=1)[0]
 
     if output_path is None:
+        # Generate default output path in exports directory
         db_name = get_connected_db_name()
         output_path = get_export_dir(db_name) / f"latest_snapshot.{fmt}"
     else:

@@ -1,10 +1,32 @@
 """
-Schema Rule Verifier for Datatrack
+Schema Rule Verification and Validation Module
 
-Validates schema snapshots against custom rules including:
-- snake_case naming enforcement
-- reserved keyword avoidance
-- structural integrity of table data
+This module provides comprehensive schema validation capabilities, ensuring database
+designs adhere to best practices, naming conventions, and organizational standards.
+It performs automated rule-based verification of schema snapshots.
+
+Key Features:
+- Customizable rule-based schema validation
+- Naming convention enforcement (snake_case, camelCase, etc.)
+- Reserved keyword detection and avoidance
+- Structural integrity verification
+- Table and column relationship validation
+- Data type consistency checks
+- Constraint and index validation
+
+Validation Rules:
+- Naming conventions: Enforces consistent naming patterns
+- Reserved keywords: Prevents conflicts with SQL keywords
+- Data types: Validates appropriate type usage
+- Constraints: Ensures referential integrity
+- Performance: Identifies potential optimization issues
+
+Configuration:
+- Rules are defined in schema_rules.yaml
+- Fallback to sensible defaults if configuration is missing
+- Extensible rule system for custom validation logic
+
+Author: Navaneet
 """
 
 import re
@@ -59,10 +81,10 @@ def load_latest_snapshot() -> dict:
     Load the most recent YAML snapshot for the connected database.
 
     Returns:
-        dict: Snapshot data.
+        dict: Complete snapshot data including schema and metadata
 
     Raises:
-        ValueError: If no snapshot exists.
+        ValueError: If no snapshots exist for the connected database
     """
     db_name = get_connected_db_name()
     snap_dir = Path(".databases/exports") / db_name / "snapshots"
@@ -71,6 +93,7 @@ def load_latest_snapshot() -> dict:
     if not snapshots:
         raise ValueError(f"No snapshots found for database '{db_name}'.")
 
+    # Load the most recent snapshot file
     with open(snapshots[0]) as f:
         return yaml.safe_load(f)
 
@@ -95,7 +118,7 @@ def load_rules() -> dict:
                 reserved = []
             return {
                 "enforce_snake_case": bool(enforce_snake),
-                "reserved_keywords": set(str(k).lower() for k in reserved),
+                "reserved_keywords": {str(k).lower() for k in reserved},
             }
         except Exception as e:
             print(f"[WARNING] Failed to load rules: {e}. Using defaults.")
@@ -133,7 +156,7 @@ def verify_schema(schema: dict, rules: dict) -> list[str]:
     violations = []
 
     enforce_snake = rules.get("enforce_snake_case", True)
-    reserved = set(str(k).lower() for k in rules.get("reserved_keywords", set()))
+    reserved = {str(k).lower() for k in rules.get("reserved_keywords", set())}
 
     tables = schema.get("tables", [])
     data_section = schema.get("data", {})

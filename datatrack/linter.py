@@ -1,3 +1,35 @@
+"""
+Database Schema Linting and Code Quality Module
+
+This module provides automated code quality analysis and linting capabilities
+for database schemas, helping maintain consistent, readable, and maintainable
+database designs across development teams.
+
+Key Features:
+- Schema naming convention analysis and enforcement
+- Code quality metrics and recommendations
+- Best practice validation for database design
+- Automated suggestions for schema improvements
+- Performance optimization recommendations
+- Documentation completeness checks
+
+Linting Categories:
+- Naming: Consistent naming patterns and conventions
+- Structure: Table and column organization best practices
+- Performance: Index usage and query optimization hints
+- Maintainability: Clear, descriptive naming and documentation
+- Standards: Industry best practices and team guidelines
+
+Quality Checks:
+- Maximum name length validation
+- Ambiguous naming detection
+- Generic type usage warnings
+- Reserved keyword conflicts
+- Relationship clarity and documentation
+
+Author: Navaneet
+"""
+
 import re
 from pathlib import Path
 
@@ -91,14 +123,23 @@ def load_latest_snapshot():
 
 def lint_schema(schema: dict) -> list[str]:
     """
-    Lint schema for naming, ambiguity, reserved words, length, casing, and generic types.
+    Perform comprehensive linting analysis on database schema structure.
+
+    Analyzes naming conventions, reserved keyword usage, length limits,
+    and best practices for tables and columns.
+
+    Args:
+        schema (dict): Complete schema dictionary from snapshot
+
+    Returns:
+        list[str]: List of warning messages for schema improvements
     """
     warnings = []
 
     for table in schema.get("tables", []):
         table_name = table["name"]
 
-        # --- Table name checks ---
+        # Table name validation checks
         if len(table_name) > MAX_NAME_LENGTH:
             warnings.append(
                 f"Table name '{table_name}' exceeds max length of {MAX_NAME_LENGTH} characters."
