@@ -31,6 +31,7 @@ Author: Navaneet
 
 import re
 from pathlib import Path
+from typing import Dict, List
 
 import yaml
 
@@ -76,7 +77,7 @@ DEFAULT_RULES = {
 }
 
 
-def load_latest_snapshot() -> dict:
+def load_latest_snapshot() -> Dict:
     """
     Load the most recent YAML snapshot for the connected database.
 
@@ -98,7 +99,7 @@ def load_latest_snapshot() -> dict:
         return yaml.safe_load(f)
 
 
-def load_rules() -> dict:
+def load_rules() -> Dict:
     """
     Load rules from `schema_rules.yaml` or return defaults.
 
@@ -142,7 +143,7 @@ def is_snake_case(name: str) -> bool:
     return bool(re.fullmatch(r"[a-z0-9_]+", name))
 
 
-def verify_schema(schema: dict, rules: dict) -> list[str]:
+def verify_schema(schema: Dict, rules: Dict) -> List[str]:
     """
     Apply rule-based verification on schema and data.
 

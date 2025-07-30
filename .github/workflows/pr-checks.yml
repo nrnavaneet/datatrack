@@ -1,0 +1,147 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  pr-checks:
+    name: PR Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e ".[dev,test]"
+
+    - name: Run pre-commit on changed files
+      run: |
+        pre-commit run --from-ref origin/main --to-ref HEAD
+
+    - name: Run tests on changed modules
+      run: |
+        # Get changed Python files
+        CHANGED_FILES=$(git diff --name-only origin/main..HEAD | grep -E '\.py$' | grep -v __pycache__ | tr '\n' ' ')
+        if [ -n "$CHANGED_FILES" ]; then
+          echo "Changed files: $CHANGED_FILES"
+          # Run tests for changed modules
+          pytest tests/ -v --cov=datatrack --cov-report=term-missing
+        else
+          echo "No Python files changed"
+        fi
+
+    - name: Check documentation
+      run: |
+        # Check if documentation needs updates
+        CHANGED_FILES=$(git diff --name-only origin/main..HEAD)
+        if echo "$CHANGED_FILES" | grep -E "(cli\.py|__init__\.py|README\.md)"; then
+          echo "Core files changed - documentation should be reviewed"
+          echo "::warning::Consider updating documentation for changed core files"
+        fi
+
+    - name: Performance regression check
+      run: |
+        # Basic performance test
+        python -c "
+        import time
+        import datatrack.tracker as tracker
+        import sqlite3
+
+        # Create test database
+        conn = sqlite3.connect('perf_test.db')
+        cursor = conn.cursor()
+        for i in range(10):
+            cursor.execute(f'CREATE TABLE test_table_{i} (id INTEGER, data TEXT)')
+        conn.commit()
+        conn.close()
+
+        # Time snapshot operation
+        start_time = time.time()
+        try:
+            snapshot_path = tracker.snapshot('sqlite:///perf_test.db', parallel=True)
+            elapsed = time.time() - start_time
+            print(f'Snapshot completed in {elapsed:.2f} seconds')
+            if elapsed > 5.0:  # 5 second threshold
+                print('::warning::Snapshot operation took longer than expected')
+        except Exception as e:
+            print(f'Performance test failed: {e}')
+        "
+
+  dependency-check:
+    name: Dependency Security Check
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install safety pip-audit
+        pip install -e .
+
+    - name: Run security audit
+      run: |
+        # Check for known vulnerabilities
+        safety check --json --output safety-pr-report.json || true
+        pip-audit --format=json --output=pip-audit-pr-report.json || true
+
+    - name: Upload security reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: pr-security-reports
+        path: |
+          safety-pr-report.json
+          pip-audit-pr-report.json
+
+  size-check:
+    name: Package Size Check
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Build and check package size
+      run: |
+        python -m pip install --upgrade pip build
+        python -m build
+
+        # Check package sizes
+        WHEEL_SIZE=$(stat -c%s dist/*.whl)
+        SDIST_SIZE=$(stat -c%s dist/*.tar.gz)
+
+        echo "Wheel size: $(($WHEEL_SIZE / 1024)) KB"
+        echo "Source dist size: $(($SDIST_SIZE / 1024)) KB"
+
+        # Warn if package is getting too large (>1MB for wheel)
+        if [ $WHEEL_SIZE -gt 1048576 ]; then
+          echo "::warning::Wheel package size exceeds 1MB"
+        fi
+
+        if [ $SDIST_SIZE -gt 2097152 ]; then
+          echo "::warning::Source distribution size exceeds 2MB"
+        fi

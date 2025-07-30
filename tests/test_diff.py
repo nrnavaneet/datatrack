@@ -1,35 +1,5 @@
 """
-Comprehensive Unit Tests for Schema Difference Analysis Module
-
-This test suite validates the schema comparison and difference analysis capabilities
-of Datatrack, ensuring accurate detection and reporting of database structure changes
-across multiple scenarios and database object types.
-
-Test Coverage:
-- Schema snapshot loading and validation
-- Two-way schema comparison algorithms
-- Table structure change detection
-- Column modification analysis (type changes, additions, removals)
-- Database object comparison (views, procedures, functions, triggers)
-- Data change detection and reporting
-- Edge cases and error handling
-
-Comparison Testing:
-- Added/removed tables and database objects
-- Column-level changes with type evolution
-- View definition modifications
-- Stored procedure and function updates
-- Data modifications and statistical analysis
-- Complex schema migration scenarios
-
-Validation Areas:
-- Snapshot file loading and parsing
-- Change detection accuracy and completeness
-- Human-readable output formatting
-- Error handling for insufficient snapshots
-- Performance with large schema datasets
-
-Author: Navaneet
+Unit tests for datatrack.diff module.
 """
 
 from unittest.mock import MagicMock, mock_open, patch

@@ -32,6 +32,7 @@ Author: Navaneet
 
 import re
 from pathlib import Path
+from typing import Dict, List
 
 import yaml
 
@@ -121,7 +122,7 @@ def load_latest_snapshot():
         return yaml.safe_load(f)
 
 
-def lint_schema(schema: dict) -> list[str]:
+def lint_schema(schema: Dict) -> List[str]:
     """
     Perform comprehensive linting analysis on database schema structure.
 
@@ -129,10 +130,10 @@ def lint_schema(schema: dict) -> list[str]:
     and best practices for tables and columns.
 
     Args:
-        schema (dict): Complete schema dictionary from snapshot
+        schema (Dict): Complete schema dictionary from snapshot
 
     Returns:
-        list[str]: List of warning messages for schema improvements
+        List[str]: List of warning messages for schema improvements
     """
     warnings = []
 

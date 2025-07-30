@@ -19,7 +19,7 @@ import json
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Dict
+from typing import Callable, Dict, List
 
 
 @dataclass
@@ -61,7 +61,7 @@ class PerformanceMonitor:
         # This would be implemented with actual timing logic
         pass
 
-    def get_recommendations(self, metrics: PerformanceMetrics) -> list[str]:
+    def get_recommendations(self, metrics: PerformanceMetrics) -> List[str]:
         """Generate performance optimization recommendations"""
         recommendations = []
 
@@ -70,7 +70,7 @@ class PerformanceMonitor:
                 "Consider enabling parallel processing (--parallel) for large schemas"
             )
 
-        if metrics.tables_per_second < 5 and metrics.parallel_enabled:
+        if metrics.max_workers < 4:
             recommendations.append(
                 f"Consider increasing max workers (currently {metrics.max_workers})"
             )
@@ -181,7 +181,7 @@ def performance_timer(operation_name: str):
     return decorator
 
 
-def get_performance_history() -> list[dict]:
+def get_performance_history() -> List[Dict]:
     """Get performance history from stored metrics"""
     history_file = Path(".databases/performance_history.json")
     if history_file.exists():
