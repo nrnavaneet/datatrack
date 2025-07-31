@@ -58,13 +58,14 @@ datatrack snapshot --parallel --max-workers 8 --batch-size 50
 
 ## Performance Benchmarks
 
-| Schema Size | Processing Method | Performance Improvement |
-|-------------|------------------|-------------------------|
-| 1-49 tables | Standard Sequential | Baseline |
-| 50-199 tables | Parallel (4 workers) | **65-70% faster** |
-| 200+ tables | Parallel + Batched | **70-75% faster** |
+| Schema Size   | Processing Method    | Performance Improvement |
+|------------   |------------------    |-------------------------|
+| 1-49 tables   | Standard Sequential  | Baseline                |
+| 50-199 tables | Parallel (4 workers) | **65-70% faster**       |
+| 200+ tables   | Parallel + Batched   | **70-75% faster**       |
 
 *Benchmarks run on standard hardware with PostgreSQL. Results may vary.*
+
 ## Examples
 
 ### Real-World Scenarios
@@ -104,12 +105,11 @@ datatrack lint --export-report schema-quality-$(date +%Y%m%d).json
 
 ## Database Support
 
-| Database | Connection String Example |
-|----------|---------------------------|
-| PostgreSQL | `postgresql://user:pass@localhost:5432/dbname` |
-| MySQL | `mysql+pymysql://user:pass@localhost:3306/dbname` |
-| SQLite | `sqlite:///path/to/database.db` |
-| SQL Server | `mssql+pyodbc://user:pass@server/database` |
+| Database   | Connection String Example                         |
+|----------  |---------------------------------------------------|
+| PostgreSQL | `postgresql://user:pass@localhost:5432/dbname`.   |
+| MySQL      | `mysql+pymysql://user:pass@localhost:3306/dbname` |
+| SQLite     | `sqlite:///path/to/database.db`                   |
 
 ## Documentation
 
@@ -139,9 +139,9 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 - [GitHub Issues](https://github.com/nrnavaneet/datatrack/issues) - Bug reports and feature requests
 - [GitHub Discussions](https://github.com/nrnavaneet/datatrack/discussions) - Questions and community
-- 💡 **Suggest features** - [Start a discussion](https://github.com/nrnavaneet/datatrack/discussions)
-- 📝 **Improve docs** - Documentation PRs are always welcome
-- 🔧 **Write code** - Check out [good first issues](https://github.com/nrnavaneet/datatrack/labels/good%20first%20issue)
+- **Suggest features** - [Start a discussion](https://github.com/nrnavaneet/datatrack/discussions)
+- **Improve docs** - Documentation PRs are always welcome
+- **Write code** - Check out [good first issues](https://github.com/nrnavaneet/datatrack/labels/good%20first%20issue)
 
 ### Development Setup
 ```bash
