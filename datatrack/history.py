@@ -54,5 +54,3 @@ def print_history():
         print(
             f"{idx:<3} | {timestamp:<20} | {table_count:<6} | {view_count:<6} | {trigger_count:<8} | {snap_file.name}"
         )
-
-    
