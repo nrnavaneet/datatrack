@@ -33,7 +33,7 @@ def print_history():
         print(f"[Info] No snapshots found for `{db_name}`.")
         return
 
-    print(f"\n📜 Snapshot History for `{db_name}`:")
+    print(f"\nSnapshot History for `{db_name}`:")
     print("=" * 85)
     print(
         f"{'ID':<3} | {'Date & Time':<20} | {'Tables':<6} | {'Views':<6} | {'Triggers':<8} | Filename"
@@ -55,6 +55,4 @@ def print_history():
             f"{idx:<3} | {timestamp:<20} | {table_count:<6} | {view_count:<6} | {trigger_count:<8} | {snap_file.name}"
         )
 
-    print(
-        "\n✅ Tip: Use the snapshot `ID` above to implement future rollback/revert commands."
-    )
+    

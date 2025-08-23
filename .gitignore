@@ -15,3 +15,5 @@ dependency_links.txt
 PKG-INFO
 SOURCES.txt
 .venv/
+.DS_Store
+details.md
