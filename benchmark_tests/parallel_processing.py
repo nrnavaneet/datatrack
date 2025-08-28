@@ -23,7 +23,7 @@ def create_db(path, n_tables, n_rows=10):
     for i in range(n_tables):
         table = f"table_{i}"
         cur.execute(
-            f"CREATE TABLE IF NOT EXISTS {table} (id INTEGER PRIMARY KEY, value TEXT)"
+            f"CREATE TABLE IF NOT EXISTS {table} (id INTEGER PRIMARY KEY, value TEXT)",
         )
         cur.executemany(
             f"INSERT INTO {table} (value) VALUES (?)",
@@ -58,19 +58,19 @@ results.append(
     (
         "Small (10 tables)",
         run_benchmark("sqlite:///.databases/small.db", "Small (10 tables)", console),
-    )
+    ),
 )
 results.append(
     (
         "Medium (100 tables)",
         run_benchmark("sqlite:///.databases/medium.db", "Medium (100 tables)", console),
-    )
+    ),
 )
 results.append(
     (
         "Large (250 tables)",
         run_benchmark("sqlite:///.databases/large.db", "Large (250 tables)", console),
-    )
+    ),
 )
 
 

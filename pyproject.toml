@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "datatrack-core"
-version = "1.1.5"
+version = "1.1.6"
 description = "Version Control for Database Schemas"
 readme = "pypiREADME.md"
 requires-python = ">=3.7"

@@ -19,7 +19,7 @@ def get_connected_db_name():
     """
     if not DB_LINK_FILE.exists():
         raise ValueError(
-            "No database connection found. Please run `datatrack connect` first."
+            "No database connection found. Please run `datatrack connect` first.",
         )
 
     with open(DB_LINK_FILE) as f:

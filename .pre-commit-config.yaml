@@ -2,12 +2,26 @@
 # Pre-commit hooks for Datatrack CLI project (Python)
 
 repos:
+
   # 1. Autoformat Python code with Black
   - repo: https://github.com/psf/black
     rev: 24.3.0
     hooks:
       - id: black
         language_version: python3
+        args: [--line-length=88]
+
+  # 1b. Enforce spacing between functions (pyupgrade + trailing comma)
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.0
+    hooks:
+      - id: pyupgrade
+        args: [--keep-percent-format, --py38-plus]
+
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v2.4.0
+    hooks:
+      - id: add-trailing-comma
 
   # 2. Linting with Ruff (faster alternative to flake8, pylint, etc.)
   - repo: https://github.com/charliermarsh/ruff-pre-commit

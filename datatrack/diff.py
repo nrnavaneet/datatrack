@@ -15,10 +15,10 @@ def load_snapshots():
 
     if len(snapshots) < 2:
         raise FileNotFoundError(
-            f"Need at least 2 snapshots to run a diff for '{db_name}'."
+            f"Need at least 2 snapshots to run a diff for '{db_name}'.",
         )
 
-    with open(snapshots[0], "r") as f1, open(snapshots[1], "r") as f2:
+    with open(snapshots[0]) as f1, open(snapshots[1]) as f2:
         newer = yaml.safe_load(f1)
         older = yaml.safe_load(f2)
 

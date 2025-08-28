@@ -95,7 +95,7 @@ def load_rules() -> dict:
                 reserved = []
             return {
                 "enforce_snake_case": bool(enforce_snake),
-                "reserved_keywords": set(str(k).lower() for k in reserved),
+                "reserved_keywords": {str(k).lower() for k in reserved},
             }
         except Exception as e:
             print(f"[WARNING] Failed to load rules: {e}. Using defaults.")
@@ -133,7 +133,7 @@ def verify_schema(schema: dict, rules: dict) -> list[str]:
     violations = []
 
     enforce_snake = rules.get("enforce_snake_case", True)
-    reserved = set(str(k).lower() for k in rules.get("reserved_keywords", set()))
+    reserved = {str(k).lower() for k in rules.get("reserved_keywords", set())}
 
     tables = schema.get("tables", [])
     data_section = schema.get("data", {})
@@ -162,14 +162,14 @@ def verify_schema(schema: dict, rules: dict) -> list[str]:
             rows = data_section[table_name]
             if not isinstance(rows, list):
                 violations.append(
-                    f"Data for table `{table_name}` is not a list of rows."
+                    f"Data for table `{table_name}` is not a list of rows.",
                 )
                 continue
 
             for idx, row in enumerate(rows):
                 if not isinstance(row, dict):
                     violations.append(
-                        f"Row {idx} in `{table_name}` is not a dictionary."
+                        f"Row {idx} in `{table_name}` is not a dictionary.",
                     )
                     continue
 
@@ -179,16 +179,16 @@ def verify_schema(schema: dict, rules: dict) -> list[str]:
 
                 if missing_keys:
                     violations.append(
-                        f"Table `{table_name}` row {idx} missing keys: {sorted(missing_keys)}"
+                        f"Table `{table_name}` row {idx} missing keys: {sorted(missing_keys)}",
                     )
                 if extra_keys:
                     violations.append(
-                        f"Table `{table_name}` row {idx} has unknown keys: {sorted(extra_keys)}"
+                        f"Table `{table_name}` row {idx} has unknown keys: {sorted(extra_keys)}",
                     )
         else:
             if data_section:
                 violations.append(
-                    f"No data found for table `{table_name}` in snapshot."
+                    f"No data found for table `{table_name}` in snapshot.",
                 )
 
     return violations

@@ -1,10 +1,28 @@
-# schema_rules.yaml
-
 rules:
-  # Enforce that all table and column names follow snake_case (e.g., customer_id)
   enforce_snake_case: true
-
-  # List of reserved keywords that are NOT allowed as table or column names
+  max_name_length: 30
+  ambiguous_names:
+    - data
+    - value
+    - info
+    - details
+    - record
+    - item
+    - object
+    - entity
+    - metadata
+    - input
+    - output
+  generic_types:
+    - string
+    - integer
+    - float
+    - boolean
+    - date
+    - datetime
+    - text
+    - json
+    - number
   reserved_keywords:
     - select
     - from

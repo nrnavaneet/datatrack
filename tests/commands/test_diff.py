@@ -29,7 +29,7 @@ def test_load_snapshots_success():
         "tables": [
             {"name": "users", "columns": [{"name": "id", "type": "INTEGER"}]},
             {"name": "orders", "columns": [{"name": "id", "type": "INTEGER"}]},
-        ]
+        ],
     }
     new_schema = {
         "tables": [
@@ -41,7 +41,7 @@ def test_load_snapshots_success():
                 ],
             },
             {"name": "products", "columns": [{"name": "id", "type": "INTEGER"}]},
-        ]
+        ],
     }
 
     write_snapshot(old_schema, "snapshot_20240701_120000.yaml")
@@ -141,8 +141,8 @@ def test_added_and_removed_columns(capsys):
                     {"name": "id", "type": "INT"},
                     {"name": "age", "type": "INT"},
                 ],
-            }
-        ]
+            },
+        ],
     }
     new = {
         "tables": [
@@ -152,8 +152,8 @@ def test_added_and_removed_columns(capsys):
                     {"name": "id", "type": "INT"},
                     {"name": "email", "type": "TEXT"},
                 ],
-            }
-        ]
+            },
+        ],
     }
     write_snapshot(old, "snap_old.yaml")
     write_snapshot(new, "snap_new.yaml")

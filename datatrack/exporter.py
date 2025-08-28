@@ -26,7 +26,7 @@ def load_latest_snapshots(n=2):
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
     if len(snapshots) < n:
         raise ValueError(
-            f"Not enough snapshots found for {db_name}. Found {len(snapshots)}, need {n}."
+            f"Not enough snapshots found for {db_name}. Found {len(snapshots)}, need {n}.",
         )
 
     data = []

@@ -42,7 +42,8 @@ console = Console()
 
 def prompt_to_continue(step_name: str) -> bool:
     return typer.confirm(
-        f"[{step_name}] failed. Do you want to continue?", default=False
+        f"[{step_name}] failed. Do you want to continue?",
+        default=False,
     )
 
 
@@ -60,10 +61,12 @@ def print_artifact_paths():
     table.add_column("Artifact", style="bold", justify="left")
     table.add_column("Path", justify="left")
     table.add_row(
-        "Snapshot directory", f"{EXPORT_PATH}{get_connected_db_name()}/snapshots/"
+        "Snapshot directory",
+        f"{EXPORT_PATH}{get_connected_db_name()}/snapshots/",
     )
     table.add_row(
-        "Diff output", f"{EXPORT_PATH}{get_connected_db_name()}/latest_diff.json"
+        "Diff output",
+        f"{EXPORT_PATH}{get_connected_db_name()}/latest_diff.json",
     )
     table.add_row("Exported files", f"{EXPORT_PATH} (e.g., snapshot.json, diff.json)")
     console.print(table)
@@ -79,7 +82,6 @@ def run_pipeline(
     source = get_saved_connection()
     if not source:
         step_summary["1. Snapshot"] = "✖ No DB connection"
-        print_summary(step_summary)
         raise typer.Exit(code=1)
 
     try:
@@ -88,7 +90,6 @@ def run_pipeline(
     except Exception as e:
         step_summary["1. Snapshot"] = "✖ Error"
         print(f"Snapshot failed: {e}")
-        print_summary(step_summary)
         raise typer.Exit(code=1)
 
     # 2. Linting
@@ -113,7 +114,6 @@ def run_pipeline(
     except Exception as e:
         step_summary["2. Linting"] = "✖ Error"
         print(f"Linting failed: {e}")
-        print_summary(step_summary)
         if not prompt_to_continue("Linting"):
             raise typer.Exit(code=1)
 
@@ -135,7 +135,6 @@ def run_pipeline(
     except Exception as e:
         step_summary["3. Verify"] = "✖ Error"
         print(f"Verification failed: {e}")
-        print_summary(step_summary)
         if not prompt_to_continue("Verification"):
             raise typer.Exit(code=1)
 

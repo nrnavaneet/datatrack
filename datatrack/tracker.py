@@ -57,7 +57,7 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
         source = get_saved_connection()
         if not source:
             raise ValueError(
-                "No DB source provided or saved. Run `datatrack connect` first."
+                "No DB source provided or saved. Run `datatrack connect` first.",
             )
 
     db_name = get_connected_db_name()
@@ -108,7 +108,8 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
     # Tables
     for table_name in table_names:
         columns = get_cached(
-            f"columns_{table_name}", lambda: insp.get_columns(table_name)
+            f"columns_{table_name}",
+            lambda: insp.get_columns(table_name),
         )
         pk = get_cached(f"pk_{table_name}", lambda: insp.get_pk_constraint(table_name))
         fks = get_cached(f"fks_{table_name}", lambda: insp.get_foreign_keys(table_name))
@@ -179,13 +180,13 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
                 schema_data["procedures"] = [
                     dict(row)
                     for row in conn.execute(
-                        text("SHOW PROCEDURE STATUS WHERE Db = DATABASE()")
+                        text("SHOW PROCEDURE STATUS WHERE Db = DATABASE()"),
                     ).fetchall()
                 ]
                 schema_data["functions"] = [
                     dict(row)
                     for row in conn.execute(
-                        text("SHOW FUNCTION STATUS WHERE Db = DATABASE()")
+                        text("SHOW FUNCTION STATUS WHERE Db = DATABASE()"),
                     ).fetchall()
                 ]
 
@@ -198,8 +199,8 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
                             """
                     SELECT event_object_table, trigger_name, action_timing, event_manipulation, action_statement
                     FROM information_schema.triggers
-                """
-                        )
+                """,
+                        ),
                     ).fetchall()
                 ]
                 schema_data["procedures"] = [
@@ -211,14 +212,14 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
                     FROM pg_proc
                     JOIN pg_namespace ON pg_proc.pronamespace = pg_namespace.oid
                     WHERE pg_namespace.nspname NOT IN ('pg_catalog', 'information_schema')
-                """
-                        )
+                """,
+                        ),
                     ).fetchall()
                 ]
                 schema_data["sequences"] = [
                     row["sequence_name"]
                     for row in conn.execute(
-                        text("SELECT sequence_name FROM information_schema.sequences")
+                        text("SELECT sequence_name FROM information_schema.sequences"),
                     ).fetchall()
                 ]
 
@@ -226,14 +227,14 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
             with engine.connect() as conn:
                 res = conn.execute(
                     text(
-                        "SELECT name, type, sql FROM sqlite_master WHERE type IN ('view', 'trigger')"
-                    )
+                        "SELECT name, type, sql FROM sqlite_master WHERE type IN ('view', 'trigger')",
+                    ),
                 )
                 for row in res.fetchall():
                     entry = dict(row)
                     if entry["type"] == "view":
                         schema_data["views"].append(
-                            {"name": entry["name"], "definition": entry["sql"]}
+                            {"name": entry["name"], "definition": entry["sql"]},
                         )
                     elif entry["type"] == "trigger":
                         schema_data["triggers"].append(entry)

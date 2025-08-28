@@ -36,14 +36,14 @@ def print_history():
     print(f"\nSnapshot History for `{db_name}`:")
     print("=" * 85)
     print(
-        f"{'ID':<3} | {'Date & Time':<20} | {'Tables':<6} | {'Views':<6} | {'Triggers':<8} | Filename"
+        f"{'ID':<3} | {'Date & Time':<20} | {'Tables':<6} | {'Views':<6} | {'Triggers':<8} | Filename",
     )
     print("-" * 85)
 
     for idx, snap_file in enumerate(snapshots):
         timestamp = format_timestamp_from_filename(snap_file.name)
         try:
-            with open(snap_file, "r") as f:
+            with open(snap_file) as f:
                 snap_data = yaml.safe_load(f)
                 table_count = len(snap_data.get("tables", []))
                 view_count = len(snap_data.get("views", []))
@@ -52,5 +52,5 @@ def print_history():
             table_count = view_count = trigger_count = "ERR"
 
         print(
-            f"{idx:<3} | {timestamp:<20} | {table_count:<6} | {view_count:<6} | {trigger_count:<8} | {snap_file.name}"
+            f"{idx:<3} | {timestamp:<20} | {table_count:<6} | {view_count:<6} | {trigger_count:<8} | {snap_file.name}",
         )
