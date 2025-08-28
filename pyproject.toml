@@ -8,7 +8,7 @@ version = "1.1.5"
 description = "Version Control for Database Schemas"
 readme = "pypiREADME.md"
 requires-python = ">=3.7"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
   { name = "N R Navaneet", email = "navaneetnr@gmail.com" }
 ]
@@ -23,7 +23,6 @@ dependencies = [
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Environment :: Console",
   "Intended Audience :: Developers",
@@ -38,6 +37,10 @@ classifiers = [
 
 [project.scripts]
 datatrack = "datatrack.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["datatrack*"]
+exclude = ["benchmark_tests*"]
 
 [tool.isort]
 profile = "black"
