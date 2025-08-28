@@ -94,6 +94,7 @@ and less risk of schema-related outages.
 ```
 
 ### Pipeline Execution Flow (Mermaid Diagram)
+```text
 flowchart TD
     A[User/CLI] --> B[Typer CLI App]
     B --> C[Pipeline Command (pipeline run)]
@@ -106,6 +107,7 @@ flowchart TD
     E --> F[SQLAlchemy DB Connection]
     F --> G[Database (PostgreSQL, MySQL, SQLite, etc.)]
     G --> H[Export/History/Reporting]
+```
 
 
 ##  Installation

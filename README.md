@@ -111,6 +111,7 @@ Benchmarks were run in August 2025 on a MacBook Pro M2, Python 3.11, using SQLit
 ```
 
 ### Pipeline Execution Flow (Mermaid Diagram)
+```text
 flowchart TD
     A[User/CLI] --> B[Typer CLI App]
     B --> C[Pipeline Command (pipeline run)]
@@ -123,6 +124,7 @@ flowchart TD
     E --> F[SQLAlchemy DB Connection]
     F --> G[Database (PostgreSQL, MySQL, SQLite, etc.)]
     G --> H[Export/History/Reporting]
+```
 
 ### Real-World Impact
 
