@@ -115,15 +115,14 @@ Benchmarks were run in August 2025 on a MacBook Pro M2, Python 3.11, using SQLit
 flowchart TD
     A[User/CLI] --> B[Typer CLI App]
     B --> C[Pipeline Command (pipeline run)]
-    C --> D1[Snapshot: Save latest schema]
-    D1 --> D2[Linting: Check naming, types, ambiguity]
-    D2 --> D3[Verify: Apply schema rules (snake_case, reserved words)]
-    D3 --> D4[Diff: Compare with previous snapshot]
-    D4 --> D5[Export: Save snapshot & diff as JSON]
-    D5 --> E[Tracker Logic (parallel/cached introspection)]
-    E --> F[SQLAlchemy DB Connection]
-    F --> G[Database (PostgreSQL, MySQL, SQLite, etc.)]
-    G --> H[Export/History/Reporting]
+    C --> D1[SQLAlchemy DB Connection]
+    D1 --> D2[Database (PostgreSQL, MySQL, SQLite, etc.)]
+    D2 --> D3[Snapshot: Save latest schema\n(via Tracker Logic: parallel/cached introspection)]
+    D3 --> D4[Linting: Check naming, types, ambiguity]
+    D4 --> D5[Verify: Apply schema rules (snake_case, reserved words)]
+    D5 --> D6[Diff: Compare with previous snapshot]
+    D6 --> D7[Export: Save snapshot & diff as JSON]
+    D7 --> D8[Export/History/Reporting]
 ```
 
 ### Real-World Impact
