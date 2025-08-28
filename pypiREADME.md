@@ -45,6 +45,69 @@ The bigger win, however, is **developer productivity and reliability**: faster p
 and less risk of schema-related outages.
 
 
+### Datatrack Architecture
+
+```text
++-------------------+
+|      User/CLI     |
++-------------------+
+          |
+          v
++-------------------+
+|   Typer CLI App   |  (datatrack/cli.py)
++-------------------+
+          |
+          v
++-------------------+
+|   Command Router  |  (CLI commands: snapshot, diff, lint, verify, export, pipeline)
++-------------------+
+          |
+          v
++-------------------+
+|   Tracker Logic   |  (datatrack/tracker.py)
+|-------------------|
+| - Introspection   |
+| - Caching         |
+| - Parallel Fetch  |
+| - Batched Fetch   |
++-------------------+
+          |
+          v
++-------------------+
+|   SQLAlchemy ORM  |  (DB connection, inspection)
++-------------------+
+          |
+          v
++-------------------+
+|   Database Layer  |  (PostgreSQL, SQLite, MySQL, etc.)
++-------------------+
+          |
+          v
++-------------------+
+|   Export/History  |  (JSON/YAML, snapshot history)
++-------------------+
+          |
+          v
++-------------------+
+|   CI/CD & Audits  |  (Integration, reporting)
++-------------------+
+```
+
+### Pipeline Execution Flow (Mermaid Diagram)
+flowchart TD
+    A[User/CLI] --> B[Typer CLI App]
+    B --> C[Pipeline Command (pipeline run)]
+    C --> D1[Snapshot: Save latest schema]
+    D1 --> D2[Linting: Check naming, types, ambiguity]
+    D2 --> D3[Verify: Apply schema rules (snake_case, reserved words)]
+    D3 --> D4[Diff: Compare with previous snapshot]
+    D4 --> D5[Export: Save snapshot & diff as JSON]
+    D5 --> E[Tracker Logic (parallel/cached introspection)]
+    E --> F[SQLAlchemy DB Connection]
+    F --> G[Database (PostgreSQL, MySQL, SQLite, etc.)]
+    G --> H[Export/History/Reporting]
+
+
 ##  Installation
 
 Option 1: Install from PyPI (production use)
