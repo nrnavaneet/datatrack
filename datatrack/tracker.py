@@ -78,47 +78,90 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
     if include_data:
         schema_data["data"] = {}
 
-    with engine.connect() as conn:
-        # Tables
-        for table_name in insp.get_table_names():
-            columns = insp.get_columns(table_name)
-            pk = insp.get_pk_constraint(table_name)
-            fks = insp.get_foreign_keys(table_name)
-            idx = insp.get_indexes(table_name)
+    # In-memory cache for inspection
+    cache = {}
 
-            table_info = {
-                "name": table_name,
-                "columns": [
-                    {
-                        "name": col["name"],
-                        "type": str(col["type"]),
-                        "nullable": col["nullable"],
-                    }
-                    for col in columns
-                ],
-                "primary_key": pk.get("constrained_columns", []),
-                "foreign_keys": [
-                    {
-                        "column": fk["constrained_columns"],
-                        "referred_table": fk["referred_table"],
-                        "referred_columns": fk["referred_columns"],
-                    }
-                    for fk in fks
-                ],
-                "indexes": idx,
-            }
-            schema_data["tables"].append(table_info)
+    def get_cached(key, fn):
+        if key not in cache:
+            cache[key] = fn()
+        return cache[key]
 
-            if include_data:
-                try:
-                    if not is_valid_table_name(table_name):
-                        raise ValueError(f"Invalid table name: {table_name}")
-                    query = text(f"SELECT * FROM {table_name} LIMIT :max_rows")  # nosec
-                    result = conn.execute(query, {"max_rows": max_rows})
-                    rows = [dict(row) for row in result.fetchall()]
+    import concurrent.futures
+
+    table_names = get_cached("table_names", lambda: insp.get_table_names())
+
+    def fetch_table_data(table_name):
+        try:
+            if not is_valid_table_name(table_name):
+                raise ValueError(f"Invalid table name: {table_name}")
+            # Create a new engine/connection for each thread (SQLite safe)
+            thread_engine = create_engine(source)
+            with thread_engine.connect() as thread_conn:
+                query = text(f"SELECT * FROM {table_name} LIMIT :max_rows")  # nosec
+                result = thread_conn.execute(query, {"max_rows": max_rows})
+                rows = [dict(row) for row in result.fetchall()]
+            return (table_name, rows)
+        except Exception as e:
+            print(f"Could not fetch data for `{table_name}`: {e}")
+            return (table_name, [])
+
+    # Tables
+    for table_name in table_names:
+        columns = get_cached(
+            f"columns_{table_name}", lambda: insp.get_columns(table_name)
+        )
+        pk = get_cached(f"pk_{table_name}", lambda: insp.get_pk_constraint(table_name))
+        fks = get_cached(f"fks_{table_name}", lambda: insp.get_foreign_keys(table_name))
+        idx = get_cached(f"idx_{table_name}", lambda: insp.get_indexes(table_name))
+
+        table_info = {
+            "name": table_name,
+            "columns": [
+                {
+                    "name": col["name"],
+                    "type": str(col["type"]),
+                    "nullable": col["nullable"],
+                }
+                for col in columns
+            ],
+            "primary_key": pk.get("constrained_columns", []),
+            "foreign_keys": [
+                {
+                    "column": fk["constrained_columns"],
+                    "referred_table": fk["referred_table"],
+                    "referred_columns": fk["referred_columns"],
+                }
+                for fk in fks
+            ],
+            "indexes": idx,
+        }
+        schema_data["tables"].append(table_info)
+
+    # Adaptive parallel/batched data fetch
+    if include_data and table_names:
+        n_tables = len(table_names)
+        if n_tables < 50:
+            # Sequential
+            for table_name in table_names:
+                _, rows = fetch_table_data(table_name)
+                schema_data["data"][table_name] = rows
+        elif n_tables < 200:
+            # Parallel (4 workers)
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+                results = executor.map(fetch_table_data, table_names)
+                for table_name, rows in results:
                     schema_data["data"][table_name] = rows
-                except Exception as e:
-                    print(f"Could not fetch data for `{table_name}`: {e}")
+        else:
+            # Parallel + Batched (8 workers, batch size 50)
+            batch_size = 50
+            batches = [
+                table_names[i : i + batch_size] for i in range(0, n_tables, batch_size)
+            ]
+            with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+                for batch in batches:
+                    results = executor.map(fetch_table_data, batch)
+                    for table_name, rows in results:
+                        schema_data["data"][table_name] = rows
 
         # Views
         for view_name in insp.get_view_names():
@@ -129,67 +172,70 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
         dialect = engine.dialect.name.lower()
 
         if dialect == "mysql":
-            schema_data["triggers"] = [
-                dict(row) for row in conn.execute(text("SHOW TRIGGERS")).fetchall()
-            ]
-            schema_data["procedures"] = [
-                dict(row)
-                for row in conn.execute(
-                    text("SHOW PROCEDURE STATUS WHERE Db = DATABASE()")
-                ).fetchall()
-            ]
-            schema_data["functions"] = [
-                dict(row)
-                for row in conn.execute(
-                    text("SHOW FUNCTION STATUS WHERE Db = DATABASE()")
-                ).fetchall()
-            ]
+            with engine.connect() as conn:
+                schema_data["triggers"] = [
+                    dict(row) for row in conn.execute(text("SHOW TRIGGERS")).fetchall()
+                ]
+                schema_data["procedures"] = [
+                    dict(row)
+                    for row in conn.execute(
+                        text("SHOW PROCEDURE STATUS WHERE Db = DATABASE()")
+                    ).fetchall()
+                ]
+                schema_data["functions"] = [
+                    dict(row)
+                    for row in conn.execute(
+                        text("SHOW FUNCTION STATUS WHERE Db = DATABASE()")
+                    ).fetchall()
+                ]
 
         elif dialect == "postgresql":
-            schema_data["triggers"] = [
-                dict(row)
-                for row in conn.execute(
-                    text(
-                        """
-                SELECT event_object_table, trigger_name, action_timing, event_manipulation, action_statement
-                FROM information_schema.triggers
-            """
-                    )
-                ).fetchall()
-            ]
-            schema_data["procedures"] = [
-                dict(row)
-                for row in conn.execute(
-                    text(
-                        """
-                SELECT proname, proargnames, prosrc
-                FROM pg_proc
-                JOIN pg_namespace ON pg_proc.pronamespace = pg_namespace.oid
-                WHERE pg_namespace.nspname NOT IN ('pg_catalog', 'information_schema')
-            """
-                    )
-                ).fetchall()
-            ]
-            schema_data["sequences"] = [
-                row["sequence_name"]
-                for row in conn.execute(
-                    text("SELECT sequence_name FROM information_schema.sequences")
-                ).fetchall()
-            ]
+            with engine.connect() as conn:
+                schema_data["triggers"] = [
+                    dict(row)
+                    for row in conn.execute(
+                        text(
+                            """
+                    SELECT event_object_table, trigger_name, action_timing, event_manipulation, action_statement
+                    FROM information_schema.triggers
+                """
+                        )
+                    ).fetchall()
+                ]
+                schema_data["procedures"] = [
+                    dict(row)
+                    for row in conn.execute(
+                        text(
+                            """
+                    SELECT proname, proargnames, prosrc
+                    FROM pg_proc
+                    JOIN pg_namespace ON pg_proc.pronamespace = pg_namespace.oid
+                    WHERE pg_namespace.nspname NOT IN ('pg_catalog', 'information_schema')
+                """
+                        )
+                    ).fetchall()
+                ]
+                schema_data["sequences"] = [
+                    row["sequence_name"]
+                    for row in conn.execute(
+                        text("SELECT sequence_name FROM information_schema.sequences")
+                    ).fetchall()
+                ]
 
         elif dialect == "sqlite":
-            res = conn.execute(
-                text(
-                    "SELECT name, type, sql FROM sqlite_master WHERE type IN ('view', 'trigger')"
-                )
-            )
-            for row in res.fetchall():
-                entry = dict(row)
-                if entry["type"] == "view":
-                    schema_data["views"].append(
-                        {"name": entry["name"], "definition": entry["sql"]}
+            with engine.connect() as conn:
+                res = conn.execute(
+                    text(
+                        "SELECT name, type, sql FROM sqlite_master WHERE type IN ('view', 'trigger')"
                     )
-                elif entry["type"] == "trigger":
-                    schema_data["triggers"].append(entry)
+                )
+                for row in res.fetchall():
+                    entry = dict(row)
+                    if entry["type"] == "view":
+                        schema_data["views"].append(
+                            {"name": entry["name"], "definition": entry["sql"]}
+                        )
+                    elif entry["type"] == "trigger":
+                        schema_data["triggers"].append(entry)
 
     return save_schema_snapshot(schema_data, db_name)

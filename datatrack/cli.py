@@ -1,3 +1,25 @@
+"""
+Datatrack CLI
+
+A command-line interface for tracking, validating, and exporting database schemas.
+Built using Typer, this CLI helps teams manage schema evolution
+with version control principles, automated linting, and verification rules.
+
+Main Features:
+--------------
+- init          : Initialize Datatrack in the current directory
+- connect       : Save a database connection string
+- disconnect    : Remove saved connection
+- test-connection: Verify if the saved database connection works
+- snapshot      : Capture schema snapshots (with optional row samples)
+- diff          : Compare latest two schema snapshots
+- lint          : Run schema quality checks (naming, types, etc.)
+- verify        : Validate schema against custom rules
+- history       : Show schema snapshot history timeline
+- export        : Export snapshots or diffs (JSON/YAML)
+- pipeline      : Run snapshot → diff → lint → verify in one step
+"""
+
 import os
 from pathlib import Path
 
@@ -301,15 +323,15 @@ def main(
         typer.echo("  datatrack pipeline run\n")
 
         typer.echo("NOTES:")
-        typer.echo("  • Datatrack supports PostgreSQL and MySQL (via SQLAlchemy URIs).")
+        typer.echo(" • Datatrack supports PostgreSQL and MySQL (via SQLAlchemy URIs).")
         typer.echo(
-            "  • Snapshots are saved under `.databases/exports/<db_name>/snapshots/`."
+            " • Snapshots are saved under `.databases/exports/<db_name>/snapshots/`."
         )
         typer.echo(
-            "  • Use a `schema_rules.yaml` file to define custom rules for verification."
+            " • Use a `schema_rules.yaml` file to define custom rules for verification."
         )
         typer.echo(
-            "  • Ideal for teams integrating schema change tracking in CI/CD pipelines.\n"
+            " • Ideal for teams integrating schema change tracking in CI/CD pipelines.\n"
         )
 
         typer.echo("Documentation: https://github.com/nrnavaneet/datatrack")

@@ -17,6 +17,8 @@ Author: N R Navaneet
 """
 
 import typer
+from rich.console import Console
+from rich.table import Table
 
 from datatrack.connect import get_connected_db_name, get_saved_connection
 from datatrack.diff import diff_schemas, load_snapshots
@@ -35,6 +37,8 @@ step_summary = {}
 # Export directory (hardcoded in current architecture)
 EXPORT_PATH = ".databases/exports/"
 
+console = Console()
+
 
 def prompt_to_continue(step_name: str) -> bool:
     return typer.confirm(
@@ -43,21 +47,26 @@ def prompt_to_continue(step_name: str) -> bool:
 
 
 def print_summary(summary: dict):
-    print("\n┏" + "━" * 46 + "┓")
-    print("┃{:^46}┃".format("DataTrack: Schema Workflow"))
-    print("┣" + "━" * 46 + "┫")
+    table = Table(title="DataTrack: Schema Workflow", show_lines=True)
+    table.add_column("Step", style="bold", justify="left")
+    table.add_column("Result", justify="left")
     for step, result in summary.items():
-        print(f"┃ {step:<20} ── {result:<21}┃")
-    print("┗" + "━" * 46 + "┛")
+        table.add_row(step, result)
+    console.print(table)
 
 
 def print_artifact_paths():
-    print("\nSaved artifacts:")
-    print(f"- Snapshot directory : {EXPORT_PATH}{get_connected_db_name()}/snapshots/")
-    print(
-        f"- Diff output        : {EXPORT_PATH}{get_connected_db_name()}/latest_diff.json"
+    table = Table(title="Saved Artifacts", show_lines=True)
+    table.add_column("Artifact", style="bold", justify="left")
+    table.add_column("Path", justify="left")
+    table.add_row(
+        "Snapshot directory", f"{EXPORT_PATH}{get_connected_db_name()}/snapshots/"
     )
-    print(f"- Exported files     : {EXPORT_PATH} (e.g., snapshot.json, diff.json)")
+    table.add_row(
+        "Diff output", f"{EXPORT_PATH}{get_connected_db_name()}/latest_diff.json"
+    )
+    table.add_row("Exported files", f"{EXPORT_PATH} (e.g., snapshot.json, diff.json)")
+    console.print(table)
 
 
 @app.command("run")
