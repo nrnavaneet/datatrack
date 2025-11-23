@@ -97,6 +97,8 @@ def load_rules() -> dict:
                 "enforce_snake_case": bool(enforce_snake),
                 "reserved_keywords": {str(k).lower() for k in reserved},
             }
+        # TODO: Replace bare Exception with specific exception types
+        # Should handle FileNotFoundError, PermissionError, YAMLError separately
         except Exception as e:
             print(f"[WARNING] Failed to load rules: {e}. Using defaults.")
 
@@ -106,6 +108,10 @@ def load_rules() -> dict:
     }
 
 
+# TODO: This function duplicates is_snake_case() in linter.py with different regex pattern
+# linter.py uses: r"[a-z][a-z0-9_]*" (requires leading letter)
+# This uses: r"[a-z0-9_]+" (allows leading numbers)
+# Should consolidate into a shared utility function with consistent validation rules
 def is_snake_case(name: str) -> bool:
     """
     Validate if name follows snake_case pattern.

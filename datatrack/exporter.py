@@ -30,6 +30,8 @@ def load_latest_snapshots(n=2):
         )
 
     data = []
+    # TODO: Add error handling for file read operations and malformed YAML
+    # Should handle FileNotFoundError, PermissionError, YAMLError
     for s in snapshots[:n]:
         with open(s) as f:
             data.append(yaml.safe_load(f))
@@ -106,6 +108,8 @@ def _write_to_file(data, path, fmt):
     if fmt not in {"json", "yaml"}:
         raise ValueError(f"Unsupported format: {fmt}")
 
+    # TODO: Add error handling for file write operations
+    # Should handle PermissionError, OSError, disk full errors
     with open(path, "w") as f:
         if fmt == "json":
             json.dump(data, f, indent=2)

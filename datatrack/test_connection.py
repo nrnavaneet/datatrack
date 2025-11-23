@@ -14,7 +14,10 @@ def test_connection():
     try:
         engine = create_engine(source)
         with engine.connect() as conn:
+            # TODO: Should use text() wrapper for SQL statement like other places in codebase
             conn.execute("SELECT 1")
         return f"Successfully connected to: {source}"
+    # TODO: Replace bare Exception with specific exception types
+    # Should handle OperationalError, ArgumentError, etc. separately for better error messages
     except Exception as e:
         return f"Connection failed: {e}"

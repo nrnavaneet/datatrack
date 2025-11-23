@@ -18,6 +18,8 @@ def load_snapshots():
             f"Need at least 2 snapshots to run a diff for '{db_name}'.",
         )
 
+    # TODO: Add error handling for file operations and YAML parsing
+    # Should handle FileNotFoundError, PermissionError, YAMLError, corrupted files
     with open(snapshots[0]) as f1, open(snapshots[1]) as f2:
         newer = yaml.safe_load(f1)
         older = yaml.safe_load(f2)
@@ -67,6 +69,8 @@ def diff_schemas(old, new):
 
     # Column diff
     print("\nColumn Changes:")
+    # TODO: Add error handling for missing 'columns' key in table dict
+    # Current code will raise KeyError if table structure is malformed
     for table in common_tables:
         old_cols = {c["name"]: c["type"] for c in old_tables[table]["columns"]}
         new_cols = {c["name"]: c["type"] for c in new_tables[table]["columns"]}

@@ -74,6 +74,7 @@ def print_artifact_paths():
 
 @app.command("run")
 def run_pipeline(
+    # TODO: Implement verbose output functionality - currently unused parameter
     verbose: bool = typer.Option(True, help="Enable detailed output"),
     strict: bool = typer.Option(False, help="Fail pipeline on lint warnings"),
 ):

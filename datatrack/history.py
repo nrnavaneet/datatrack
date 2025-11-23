@@ -42,6 +42,9 @@ def print_history():
 
     for idx, snap_file in enumerate(snapshots):
         timestamp = format_timestamp_from_filename(snap_file.name)
+        # TODO: Replace bare Exception with specific exception types
+        # Should catch FileNotFoundError, PermissionError, YAMLError separately
+        # Current implementation silently hides all errors as "ERR"
         try:
             with open(snap_file) as f:
                 snap_data = yaml.safe_load(f)

@@ -7,6 +7,8 @@ from datatrack.connect import get_connected_db_name
 
 
 def load_lint_rules():
+    # TODO: Add error handling for missing schema_rules.yaml file
+    # Should handle FileNotFoundError and provide default rules
     with open("schema_rules.yaml") as f:
         rules = yaml.safe_load(f)["rules"]
     return {
@@ -18,9 +20,15 @@ def load_lint_rules():
     }
 
 
+# TODO: Module-level code execution - should be wrapped in try/except or lazy-loaded
+# This will fail at import time if schema_rules.yaml is missing
 LINT_RULES = load_lint_rules()
 
 
+# TODO: This function duplicates is_snake_case() in verifier.py with different regex pattern
+# verifier.py uses: r"[a-z0-9_]+" (allows leading numbers)
+# This uses: r"[a-z][a-z0-9_]*" (requires leading letter)
+# Should consolidate into a shared utility function with consistent validation rules
 def is_snake_case(name: str) -> bool:
     return bool(re.fullmatch(r"[a-z][a-z0-9_]*", name))
 

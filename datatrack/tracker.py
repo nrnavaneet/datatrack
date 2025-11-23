@@ -101,6 +101,8 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
                 result = thread_conn.execute(query, {"max_rows": max_rows})
                 rows = [dict(row) for row in result.fetchall()]
             return (table_name, rows)
+        # TODO: Replace bare Exception with specific exception types (OperationalError, ProgrammingError, etc.)
+        # Current implementation silently fails and continues, which may hide critical errors
         except Exception as e:
             print(f"Could not fetch data for `{table_name}`: {e}")
             return (table_name, [])
@@ -164,6 +166,8 @@ def snapshot(source: str = None, include_data: bool = False, max_rows: int = 50)
                     for table_name, rows in results:
                         schema_data["data"][table_name] = rows
 
+        # TODO: Views and functions are only captured if include_data=True
+        # This seems like incomplete logic - views should be captured regardless of data inclusion
         # Views
         for view_name in insp.get_view_names():
             definition = insp.get_view_definition(view_name)
