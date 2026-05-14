@@ -97,9 +97,7 @@ def load_rules() -> dict:
                 "enforce_snake_case": bool(enforce_snake),
                 "reserved_keywords": {str(k).lower() for k in reserved},
             }
-        # TODO: Replace bare Exception with specific exception types
-        # Should handle FileNotFoundError, PermissionError, YAMLError separately
-        except Exception as e:
+        except (yaml.YAMLError, OSError, TypeError, KeyError) as e:
             print(f"[WARNING] Failed to load rules: {e}. Using defaults.")
 
     return {
