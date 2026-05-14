@@ -11,6 +11,8 @@ This document complements the diagram in the root [README](../README.md). It nam
 
 ## Snapshot lifecycle
 
+The smallest hand-authored snapshot used in docs lives in [`examples/sample_snapshot_minimal.yaml`](https://github.com/nrnavaneet/datatrack/blob/main/examples/sample_snapshot_minimal.yaml); compare it to real `datatrack snapshot` output when debugging parsers.
+
 1. User runs `datatrack connect <uri>`.
 2. `snapshot` uses SQLAlchemy introspection (`tracker.py`) and writes YAML under `paths.snapshot_dir(db_name)`.
 3. `lint` / `verify` read the latest YAML file in that directory (same ordering convention: sort by filename, take newest).

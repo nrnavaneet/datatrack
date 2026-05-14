@@ -27,4 +27,4 @@ See `benchmark_tests/README.md` and `benchmark_tests/parallel_processing.py` in 
 
 If your database is remote, network latency may overshadow local CPU parallelism. Prefer running benchmarks close to the server or against a restored copy when tuning.
 
-Terminology for **snapshot**, **lint**, and **verify** is summarised in the [Glossary](GLOSSARY.md).
+Terminology for **snapshot**, **lint**, and **verify** is summarised in the [Glossary](GLOSSARY.md). A hand-maintained YAML example lives under [`examples/`](../examples/README.md) for diff experiments.

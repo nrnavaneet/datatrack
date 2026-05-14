@@ -14,3 +14,5 @@ This is a **reference order** for new projects; adapt flags and engines to your 
 8. **`datatrack pipeline run`** — run the guarded sequence in CI when you want a single entrypoint.
 
 See `sample_snapshot_minimal.yaml` for the smallest snapshot shape used in tests and docs.
+
+That fixture mirrors real tracker YAML closely enough for diff experiments; empty lists stand in for optional introspection sections the CLI would normally populate.
