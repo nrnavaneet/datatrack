@@ -161,7 +161,7 @@ Please refer to the following docs for detailed guidance:
 - [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md)
 - [Releasing (maintainers)](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md)
 
-Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github). The pull request template now records **risk notes** and reminds authors to bump `CHANGELOG.md` / `pyproject.toml` together when shipping user-visible changes. After cloning, `make test` and `make lint` mirror the CI pytest and pre-commit steps. An [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) file keeps basic formatting defaults aligned across editors. **Dependabot** opens weekly dependency update PRs for Actions and pip. GitHub Actions also runs a **weekly schedule** on `main` to catch drift when no PRs are open.
+Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github). The pull request template now records **risk notes** and reminds authors to bump `CHANGELOG.md` / `pyproject.toml` together when shipping user-visible changes. After cloning, `make test` and `make lint` mirror the CI pytest and pre-commit steps. An [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) file keeps basic formatting defaults aligned across editors. **Dependabot** opens weekly dependency update PRs for Actions and pip. GitHub Actions also runs a **weekly schedule** on `main` to catch drift when no PRs are open, and **concurrency** settings cancel outdated workflow runs when you push new commits to the same branch.
 
 ## License
 

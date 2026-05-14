@@ -9,6 +9,10 @@ on:
   schedule:
     - cron: "0 12 * * 1" # Mondays 12:00 UTC — weekly health check on main
 
+concurrency:
+  group: datatrack-ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest

@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.24] — 2026-05
+
+- Configure GitHub Actions **concurrency** so newer pushes cancel superseded workflow runs on the same branch.
+
 ## [1.2.23] — 2026-05
 
 - Expand the **pull request template** with risk notes and explicit changelog/version checklist items.

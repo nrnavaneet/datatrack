@@ -17,7 +17,7 @@ Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) 
 
 For a fuller local workflow (venv layout, pytest, pre-commit summary), see [Developing](../DEVELOPING.md). Editor defaults for line endings and Python indentation live in the root `.editorconfig`.
 
-Dependency bumps for Actions and Python packages may arrive as **Dependabot** pull requests; please run tests locally before approving. Scheduled CI also exercises `main` weekly even when no PRs land.
+Dependency bumps for Actions and Python packages may arrive as **Dependabot** pull requests; please run tests locally before approving. Scheduled CI also exercises `main` weekly even when no PRs land. GitHub Actions **concurrency** rules cancel superseded jobs when you push new commits to the same branch—watch the latest run, not every intermediate one.
 
 Release mechanics for PyPI (version bumps, tags, Twine) live in [Releasing](../RELEASING.md); keep `CHANGELOG.md` aligned with every user-facing version bump.
 
