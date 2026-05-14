@@ -26,7 +26,7 @@ python3 -m pytest tests/ -q
 
 Pytest reads `[tool.pytest.ini_options]` in `pyproject.toml` so only `tests/` is collected by default. See [Testing](TESTING.md) for directory layout and goals.
 
-From the repository root you can also run **`make test`** or **`make lint`** (see the root `Makefile`). Use **`make clean`** to remove local build artefacts (`build/`, `dist/`, `*.egg-info`, `.pytest_cache`) before packaging experiments.
+From the repository root you can also run **`make test`** or **`make lint`** (see the root `Makefile`). Use **`make clean`** to remove local build artefacts (`build/`, `dist/`, `*.egg-info`, `.pytest_cache`) before packaging experiments. Run **`make list-docs`** to print top-level markdown files under `docs/` when updating the documentation index.
 
 The repository ships an [`.editorconfig`](../.editorconfig) so most editors pick consistent indentation and newlines. `.gitignore` excludes local virtualenvs, `.databases/`, coverage output, and build artefacts—do not force-add those paths when opening a PR.
 

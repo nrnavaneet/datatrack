@@ -17,7 +17,7 @@ Start here and jump to the guide you need.
 | [Dependabot config](https://github.com/nrnavaneet/datatrack/blob/main/.github/dependabot.yml) | Weekly PRs for Actions and pip dependencies |
 | [EditorConfig](../.editorconfig) | Shared indentation and newline defaults for editors |
 | [MANIFEST.in](../MANIFEST.in) | Extra files included in Python source distributions |
-| [Makefile](../Makefile) | `make test` / `make lint` / `make clean` shortcuts from the repo root |
+| [Makefile](../Makefile) | `make test` / `make lint` / `make clean` / `make list-docs` shortcuts from the repo root |
 | [Documentation style](DOCUMENTATION_STYLE.md) | Voice, linking, and changelog conventions for this repo |
 | [Credits](CREDITS.md) | Maintainer, community, and upstream library acknowledgement |
 | [Roadmap](ROADMAP.md) | Informal priorities and non-goals for the project |

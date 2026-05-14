@@ -59,7 +59,7 @@ pip install -e .
 
 Make sure everything still works.
 
-From the repository root, run the unit tests (no live database required for most of them). You may use `make test` as a shortcut:
+From the repository root, run the unit tests (no live database required for most of them). You may use `make test` as a shortcut; use `make list-docs` after adding markdown under `docs/` to verify filenames before updating the index.
 
 ```bash
 python3 -m pytest tests/ -q

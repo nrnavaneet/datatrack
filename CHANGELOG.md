@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.46] — 2026-05
+
+- Add **`make list-docs`** to print top-level markdown files under `docs/` for documentation index maintenance.
+
 ## [1.2.45] — 2026-05
 
 - Add tests that **`paths.__all__`** only lists real module attributes so the public API cannot drift silently.
