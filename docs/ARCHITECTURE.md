@@ -14,9 +14,9 @@ This document complements the diagram in the root [README](../README.md). It nam
 The smallest hand-authored snapshot used in docs lives in [`examples/sample_snapshot_minimal.yaml`](https://github.com/nrnavaneet/datatrack/blob/main/examples/sample_snapshot_minimal.yaml); compare it to real `datatrack snapshot` output when debugging parsers.
 
 1. User runs `datatrack connect <uri>`.
-2. `snapshot` uses SQLAlchemy introspection (`tracker.py`) and writes YAML under `paths.snapshot_dir(db_name)`.
+2. `snapshot` uses SQLAlchemy introspection (`tracker.py`, module docstring summarises YAML output layout) and writes YAML under `paths.snapshot_dir(db_name)`.
 3. `lint` / `verify` read the latest YAML file in that directory (same ordering convention: sort by filename, take newest).
-4. `diff` loads the two newest files and prints a textual report.
+4. `diff` loads the two newest files and prints a textual report (implemented in `diff.py` with an explicit module docstring).
 5. `export` serialises snapshot or structured diff to JSON/YAML next to the database export folder.
 
 ## Pipeline

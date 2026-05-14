@@ -1,3 +1,5 @@
+"""Snapshot database schemas to YAML via SQLAlchemy introspection."""
+
 import hashlib
 import re
 from datetime import datetime

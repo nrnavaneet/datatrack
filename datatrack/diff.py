@@ -1,3 +1,5 @@
+"""Compare on-disk YAML snapshots for the connected database."""
+
 import yaml
 
 from datatrack.connect import get_connected_db_name

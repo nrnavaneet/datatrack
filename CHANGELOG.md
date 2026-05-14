@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.53] — 2026-05
+
+- Add module-level docstrings for **diff** and **tracker** to match the documented import surface.
+
 ## [1.2.52] — 2026-05
 
 - Add a **command quick reference** table to the usage guide and document the `connect` module purpose at the package level.

@@ -20,3 +20,5 @@
 ## Code blocks
 
 - Prefer fenced blocks with a language tag (`bash`, `yaml`, `text`) when it helps copy-paste.
+
+Python modules that are part of the supported import surface should start with a short **module docstring** summarising side effects (see `datatrack.connect`, `datatrack.diff`, and `datatrack.tracker`).
