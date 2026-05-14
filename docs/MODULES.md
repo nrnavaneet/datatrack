@@ -15,6 +15,6 @@ Datatrack is primarily a **CLI**, but several packages are safe to import from a
 | `datatrack.history` | List snapshot files for a database. |
 | `datatrack.pipeline` | Orchestrated command sequence (`pipeline run`); see [Pipeline](PIPELINE.md). |
 | `datatrack.doctor` | Offline layout checks (`collect_rows`, `format_report`). |
-| `datatrack.connect` / `datatrack.test_connection` | Connection URI handling and smoke queries. |
+| `datatrack.connect` / `datatrack.test_connection` | Connection URI handling and smoke queries (see `connect.py` module docstring). |
 
 Importing `datatrack.cli` has side effects (Typer setup). Prefer **`paths`**, **`doctor`**, or **`tracker`** entrypoints for libraries that only need filesystem or snapshot logic.

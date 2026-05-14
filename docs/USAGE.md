@@ -4,7 +4,7 @@
 
 Datatrack is a CLI tool for tracking, linting, verifying, and exporting database schema changes.
 
-Terms like **snapshot**, **lint**, and **verify** are defined in the [Glossary](GLOSSARY.md). For programmatic use, see [Python modules](MODULES.md).
+Terms like **snapshot**, **lint**, and **verify** are defined in the [Glossary](GLOSSARY.md). For programmatic use, see [Python modules](MODULES.md). The table below complements `datatrack --help`; full narrative for each step follows in numbered sections.
 
 ## Helpful Commands
 
@@ -17,6 +17,20 @@ python3 -m datatrack --help
 or
 datatrack -h
 ```
+
+## Command quick reference
+
+| Command | One-line purpose |
+|---------|------------------|
+| `doctor` | Offline checks for `.datatrack/`, `db_link.yaml`, export paths, and `schema_rules.yaml`. |
+| `init` | Create the local `.datatrack/` metadata folder. |
+| `connect` / `disconnect` | Save or clear the active database URI. |
+| `snapshot` | Write YAML schema snapshots under `.databases/exports/…`. |
+| `lint` / `verify` | Heuristics and `schema_rules.yaml` checks on the latest snapshot. |
+| `diff` | Compare the two newest snapshots. |
+| `export` | Emit JSON or YAML artefacts. |
+| `history` | List snapshot files for the connected database. |
+| `pipeline run` | Run lint, snapshot, verify, diff, and export in sequence. |
 
 ## 0. Doctor (sanity check layout)
 

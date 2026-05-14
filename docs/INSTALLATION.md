@@ -28,7 +28,7 @@ For reproducible timestamps in automation, consider setting `TZ=UTC` in CI jobs 
 
 For a guided command order, see [`examples/workflow.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/workflow.md) in the repository.
 
-The [`examples/README.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/README.md) index links back to troubleshooting and performance docs if a local experiment misbehaves.
+The [Usage](USAGE.md#command-quick-reference) page also lists one-line summaries for each primary command.
 
 ## Option 2: Install from GitHub (For Development & Contribution)
 

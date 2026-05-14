@@ -1,3 +1,5 @@
+"""Database connection helpers: persist URIs, derive safe directory names, and run smoke queries."""
+
 import re
 from pathlib import Path
 from urllib.parse import urlparse

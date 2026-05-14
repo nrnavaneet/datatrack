@@ -10,6 +10,8 @@
 
 Doc-only PRs should still follow [Documentation style](DOCUMENTATION_STYLE.md) for cross-links and changelog bullets.
 
+End-user command summaries live in [Usage](USAGE.md#command-quick-reference) alongside the long-form walkthrough.
+
 ## Commands
 
 ```bash

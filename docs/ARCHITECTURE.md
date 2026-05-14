@@ -7,7 +7,7 @@ This document complements the diagram in the root [README](../README.md). It nam
 1. **CLI (`datatrack/cli.py`)** — Typer entrypoints; parses options, calls services, exits with codes.
 2. **Services** — `tracker` (snapshots), `diff`, `linter`, `verifier`, `exporter`, `history`, `pipeline`, `doctor`, `test_connection`.
 3. **Paths (`datatrack/paths.py`)** — Single definition of `.datatrack/`, `.databases/exports/`, and per-database snapshot directories. All services import from here. Unit tests in `tests/test_paths.py` lock the string layout to prevent accidental drift; `tests/test_paths_exports.py` guards `__all__`.
-4. **Persistence** — YAML snapshots on disk; `schema_rules.yaml` for lint/verify; `.datatrack/db_link.yaml` for the saved URI.
+4. **Persistence** — YAML snapshots on disk; `schema_rules.yaml` for lint/verify; `.datatrack/db_link.yaml` for the saved URI (`datatrack.connect` owns URI persistence and friendly database folder names).
 
 ## Snapshot lifecycle
 

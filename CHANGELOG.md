@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.52] — 2026-05
+
+- Add a **command quick reference** table to the usage guide and document the `connect` module purpose at the package level.
+
 ## [1.2.51] — 2026-05
 
 - Document optional **`TZ`** interactions with timestamps and link them from compatibility, performance, and troubleshooting guides.

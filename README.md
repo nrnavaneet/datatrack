@@ -157,7 +157,7 @@ Please refer to the following docs for detailed guidance:
 - [Compatibility (Python & databases)](https://github.com/nrnavaneet/datatrack/blob/main/docs/COMPATIBILITY.md)
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md) (editable installs use `requirements.txt` + `pyproject.toml` together)
 - [Pipeline (`pipeline run`)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PIPELINE.md)
-- [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md) (includes a dedicated **disconnect** section for rotating URIs)
+- [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md) (includes **disconnect** guidance and a **command quick reference** table)
 - [FAQ (common design questions)](https://github.com/nrnavaneet/datatrack/blob/main/docs/FAQ.md)
 - [Examples (workflow, minimal snapshot, troubleshooting links)](https://github.com/nrnavaneet/datatrack/tree/main/examples)
 - [Glossary](https://github.com/nrnavaneet/datatrack/blob/main/docs/GLOSSARY.md)
