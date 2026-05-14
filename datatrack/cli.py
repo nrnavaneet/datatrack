@@ -8,6 +8,7 @@ with version control principles, automated linting, and verification rules.
 Main Features:
 --------------
 - init          : Initialize Datatrack in the current directory
+- doctor        : Print local filesystem checks (no SQL)
 - connect       : Save a database connection string
 - disconnect    : Remove saved connection
 - test-connection: Verify if the saved database connection works
@@ -27,6 +28,7 @@ import yaml
 
 from datatrack import connect as connect_module
 from datatrack import diff as diff_module
+from datatrack import doctor as doctor_module
 from datatrack import exporter, history, linter, pipeline
 from datatrack import test_connection as test_module
 from datatrack import tracker, verifier
@@ -62,6 +64,14 @@ def init():
         yaml.dump(default_config, f)
 
     typer.echo("Datatrack initialized in .datatrack/")
+
+
+@app.command()
+def doctor():
+    """
+    Print filesystem checks (config dir, db link, export paths, schema_rules.yaml).
+    """
+    typer.echo(doctor_module.format_report())
 
 
 @app.command()
@@ -264,6 +274,9 @@ def main(
         typer.echo("COMMANDS:")
         typer.echo(
             "  init                 Initialize Datatrack config in the current directory.",
+        )
+        typer.echo(
+            "  doctor               Show whether config, db link, exports, and rules file exist.",
         )
         typer.echo(
             "  connect              Connect to a database and save the connection string.",

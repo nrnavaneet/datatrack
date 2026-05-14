@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.1] — 2026-05
+
+- New **`datatrack doctor`** command and module for offline layout checks.
+- Documentation index at `docs/README.md` with cross-links from each guide.
+
 ## [1.2.0] — 2026-05
 
 - Introduce **`datatrack.paths`**: one module defines `.datatrack/`, `.databases/exports/`, and per-database snapshot directories; tracker, diff, history, linter, verifier, exporter, pipeline, connect, CLI, tests, and benchmarks now use it.

@@ -18,6 +18,8 @@
   ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md">Usage</a>
   ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md">Docs index</a>
+  ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md">Environment</a>
   ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CONTRIBUTING.md">Contributing</a>

@@ -13,6 +13,14 @@ or
 datatrack -h
 ```
 
+## 0. Doctor (sanity check layout)
+
+```bash
+datatrack doctor
+```
+
+Prints whether `.datatrack/`, the saved DB link file, export paths, and `schema_rules.yaml` exist. Does **not** open a database connection.
+
 ## 1. Initialize a Datatrack Project
 
 ```bash

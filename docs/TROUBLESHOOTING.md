@@ -12,6 +12,14 @@ datatrack disconnect
 
 then connect again with the new URI.
 
+## Quick layout check without connecting
+
+```bash
+datatrack doctor
+```
+
+Shows whether expected paths and `schema_rules.yaml` exist; it does not run SQL.
+
 ## `datatrack snapshot` or `lint` says no snapshots
 
 You need at least one successful `datatrack snapshot` after `connect`. Snapshots live under:
