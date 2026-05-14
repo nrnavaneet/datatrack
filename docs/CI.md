@@ -11,7 +11,7 @@ Steps in order:
 3. **Editable install** (`pip install -e .`) plus `pytest`.
 4. **`datatrack init`** as a smoke test (allowed to no-op if already initialised).
 5. **pre-commit** on all files.
-6. **`pytest -q tests/`** for the unit suite (includes a `python -m datatrack --help` smoke test).
+6. **`pytest -q tests/`** for the unit suite (includes a `python -m datatrack --help` smoke test). Discovery defaults live in `pyproject.toml` under `[tool.pytest.ini_options]`.
 
 On GitHub you can also run **Actions → Datatrack CI → Run workflow** (`workflow_dispatch`).
 

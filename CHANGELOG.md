@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.12] — 2026-05
+
+- Declare **pytest** defaults in `pyproject.toml` and add `tests/conftest.py` for future shared fixtures.
+
 ## [1.2.11] — 2026-05
 
 - Enable **Dependabot** for GitHub Actions and pip with a weekly schedule, and document reviewer expectations.

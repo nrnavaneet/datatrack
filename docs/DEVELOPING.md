@@ -22,6 +22,8 @@ Run the full test suite before opening a PR:
 python3 -m pytest tests/ -q
 ```
 
+Pytest reads `[tool.pytest.ini_options]` in `pyproject.toml` so only `tests/` is collected by default.
+
 From the repository root you can also run **`make test`** or **`make lint`** (see the root `Makefile`).
 
 The repository ships an [`.editorconfig`](../.editorconfig) so most editors pick consistent indentation and newlines.
@@ -29,7 +31,7 @@ The repository ships an [`.editorconfig`](../.editorconfig) so most editors pick
 ## Layout
 
 - `datatrack/` — package source (`cli.py`, services, `paths.py`).
-- `tests/` — pytest modules; command behaviour is covered under `tests/commands/`.
+- `tests/` — pytest modules; command behaviour is covered under `tests/commands/`. Shared hooks belong in `tests/conftest.py`.
 - `docs/` — user and contributor documentation; keep cross-links in `docs/README.md` current when you add pages.
 
 ## Pre-commit

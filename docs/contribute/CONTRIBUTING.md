@@ -57,6 +57,8 @@ python3 -m pytest tests/ -q
 # or: make test
 ```
 
+The repository pins pytest discovery in `pyproject.toml` (`testpaths = ["tests"]`) so ad-hoc scripts outside `tests/` are not collected accidentally.
+
 ## Initialize it:
 
 ```bash
