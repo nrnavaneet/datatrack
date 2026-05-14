@@ -27,3 +27,4 @@ python3 -m twine upload dist/datatrack_core-X.Y.Z*
 
 - Verify the [PyPI project page](https://pypi.org/project/datatrack-core/) shows the new version.
 - If the release fixes a security issue, follow **SECURITY.md** disclosure timing before announcing details publicly.
+- Update [Credits](CREDITS.md) if maintainer contact metadata changed in the same release.

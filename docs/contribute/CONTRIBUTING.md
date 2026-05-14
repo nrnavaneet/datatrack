@@ -3,7 +3,7 @@
 [← Documentation home](README.md)
 
 Thank you for your interest in contributing!
-**Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone.
+**Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone. Maintainer and attribution notes live in [Credits](../CREDITS.md).
 
 ## Security
 

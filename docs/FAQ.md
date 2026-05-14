@@ -32,6 +32,8 @@ See [Releasing](RELEASING.md) for versioning, tags, and Twine uploads.
 
 End users reading the short PyPI page should still follow links there to the full contributing and developing guides on GitHub.
 
+Credit and maintainer pointers for citations live in [Credits](CREDITS.md).
+
 ## How do I report a code of conduct concern?
 
 Use the contact listed in [Code of Conduct](contribute/CODE_OF_CONDUCT.md); avoid posting sensitive personal details in public GitHub threads.
