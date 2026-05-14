@@ -63,4 +63,6 @@ Some commands still expect a configured `.datatrack/` tree; unit tests under `te
 
 If failures only show up on **GitHub Actions**, read [CI](CI.md#when-ci-fails) for the step-by-step triage list.
 
+If snapshot filenames differ only by timezone between macOS and Linux runners, align `TZ` (often `UTC`) as in [Environment](ENVIRONMENT.md).
+
 Unfamiliar with Datatrack vocabulary? Skim the [Glossary](GLOSSARY.md).

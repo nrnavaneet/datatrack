@@ -24,6 +24,8 @@ Once installed, you can start using the `datatrack` CLI directly.
 
 Rotating the active database always starts with `datatrack disconnect` before a new `connect` (details in [Usage](USAGE.md#2b-clear-or-rotate-the-saved-uri)).
 
+For reproducible timestamps in automation, consider setting `TZ=UTC` in CI jobs that snapshot schemas (see [Environment](ENVIRONMENT.md)).
+
 For a guided command order, see [`examples/workflow.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/workflow.md) in the repository.
 
 The [`examples/README.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/README.md) index links back to troubleshooting and performance docs if a local experiment misbehaves.

@@ -161,7 +161,7 @@ Please refer to the following docs for detailed guidance:
 - [FAQ (common design questions)](https://github.com/nrnavaneet/datatrack/blob/main/docs/FAQ.md)
 - [Examples (workflow, minimal snapshot, troubleshooting links)](https://github.com/nrnavaneet/datatrack/tree/main/examples)
 - [Glossary](https://github.com/nrnavaneet/datatrack/blob/main/docs/GLOSSARY.md)
-- [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md) (includes locale notes for Rich output)
+- [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md) (includes locale and optional `TZ` notes for reproducible timestamps)
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) (also summarised briefly on PyPI via `pypiREADME.md`, including roadmap and support links)
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 - [Support (bug report checklist)](https://github.com/nrnavaneet/datatrack/blob/main/docs/SUPPORT.md)

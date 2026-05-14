@@ -30,3 +30,5 @@ Hand-maintained YAML under [`examples/`](../examples/README.md) is useful for di
 If your database is remote, network latency may overshadow local CPU parallelism. Prefer running benchmarks close to the server or against a restored copy when tuning.
 
 Terminology for **snapshot**, **lint**, and **verify** is summarised in the [Glossary](GLOSSARY.md). A hand-maintained YAML example lives under [`examples/`](../examples/README.md) for diff experiments.
+
+Automated jobs that compare snapshot timestamps should pin **`TZ`** (often `UTC`) so wall-clock comparisons stay stable across runners; see [Environment](ENVIRONMENT.md).

@@ -24,6 +24,10 @@ Locale and identity-related variables (`USER`, `HOME`, `LANG`, `LC_ALL`) are sum
 
 If GitHub Actions fails while your machine passes, see [CI](CI.md#when-ci-fails) for the ordered checklist.
 
+## What does `TZ` affect for Datatrack?
+
+Datatrack itself does not read `TZ` directly; your OS and database libraries may use it when formatting timestamps. See [Environment](ENVIRONMENT.md).
+
 ## Can I run Datatrack without installing the `datatrack` script on `PATH`?
 
 Yes, after an editable install you can use `python3 -m datatrack --help` (see [Usage](USAGE.md)).

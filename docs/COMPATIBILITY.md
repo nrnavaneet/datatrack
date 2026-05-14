@@ -17,3 +17,5 @@ URI formats follow SQLAlchemy URL rules; see [Usage](USAGE.md) for examples.
 ## Terminals and locales
 
 Rich tables and Typer help assume a Unicode-capable terminal. If borders render incorrectly over SSH, set UTF-8 locales as described in [Environment](ENVIRONMENT.md).
+
+For reproducible snapshot timestamps in automation, pin `TZ=UTC` in CI where your database or OS would otherwise use ambiguous local wall clocks.
