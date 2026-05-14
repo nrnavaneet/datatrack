@@ -23,7 +23,12 @@ def compute_hash(data: dict) -> str:
 
 
 def save_schema_snapshot(schema: dict, db_name: str) -> Path:
-    """Save schema to a YAML snapshot file with metadata."""
+    """
+    Persist ``schema`` under ``.databases/exports/<db_name>/snapshots/`` with a timestamped filename.
+
+    Injects ``__meta__`` (snapshot id, timestamp, database label, content hash) before writing YAML.
+    Returns the path written so callers can log or pipe it to export steps.
+    """
     snapshot_dir = EXPORT_BASE_DIR / db_name / "snapshots"
     snapshot_dir.mkdir(parents=True, exist_ok=True)
 
