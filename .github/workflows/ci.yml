@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 1" # Mondays 12:00 UTC — weekly health check on main
 
 jobs:
   test:

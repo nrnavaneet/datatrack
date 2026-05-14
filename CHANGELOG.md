@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.15] — 2026-05
+
+- Run **CI on a weekly cron** against `main` in addition to pushes and manual dispatch.
+
 ## [1.2.14] — 2026-05
 
 - Add a **Glossary** defining snapshot, lint, verify, pipeline, and related terms used across the docs.

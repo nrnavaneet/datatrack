@@ -17,7 +17,7 @@ Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) 
 
 For a fuller local workflow (venv layout, pytest, pre-commit summary), see [Developing](../DEVELOPING.md). Editor defaults for line endings and Python indentation live in the root `.editorconfig`.
 
-Dependency bumps for Actions and Python packages may arrive as **Dependabot** pull requests; please run tests locally before approving.
+Dependency bumps for Actions and Python packages may arrive as **Dependabot** pull requests; please run tests locally before approving. Scheduled CI also exercises `main` weekly even when no PRs land.
 
 ### 1. Fork the Repo
 

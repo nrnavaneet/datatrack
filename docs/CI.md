@@ -13,7 +13,7 @@ Steps in order:
 5. **pre-commit** on all files.
 6. **`pytest -q tests/`** for the unit suite (includes a `python -m datatrack --help` smoke test). Discovery defaults live in `pyproject.toml` under `[tool.pytest.ini_options]`.
 
-On GitHub you can also run **Actions → Datatrack CI → Run workflow** (`workflow_dispatch`).
+On GitHub you can also run **Actions → Datatrack CI → Run workflow** (`workflow_dispatch`). A **weekly schedule** (Mondays 12:00 UTC) re-runs the same job on `main` even without new commits.
 
 To reproduce locally:
 
