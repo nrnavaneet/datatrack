@@ -27,6 +27,7 @@ make test
 | `tests/commands/` | CLI-adjacent behaviour (e.g. diff with patched paths). |
 | `tests/test_paths.py` | Directory layout contracts. |
 | `tests/test_doctor.py` | Offline doctor formatting. |
+| `tests/test_service_module_docstrings.py` | Ensures selected service modules keep non-empty module docstrings. |
 | `tests/test_paths_exports.py` | `paths.__all__` matches real attributes. |
 | `tests/test_packaging_meta.py` | `pyproject.toml` / `CHANGELOG.md` consistency checks. |
 | `tests/test_module_invocation.py` | `python -m datatrack` smoke. |

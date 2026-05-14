@@ -1,3 +1,5 @@
+"""Heuristic lint rules over the latest snapshot YAML (reads ``schema_rules.yaml``)."""
+
 import re
 
 import yaml

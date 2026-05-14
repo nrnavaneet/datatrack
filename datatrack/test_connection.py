@@ -1,3 +1,5 @@
+"""Run a trivial SQL query against the saved connection URI (CLI smoke test)."""
+
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import ArgumentError, OperationalError, SQLAlchemyError
 

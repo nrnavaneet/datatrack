@@ -1,3 +1,5 @@
+"""Helpers for listing snapshot files and parsing timestamps from filenames."""
+
 from datetime import datetime
 
 import yaml

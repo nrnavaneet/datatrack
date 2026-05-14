@@ -1,3 +1,5 @@
+"""Export snapshots and structured diffs to JSON or YAML on disk."""
+
 import json
 from pathlib import Path
 
