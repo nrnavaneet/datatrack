@@ -21,6 +21,13 @@ def get_snapshot_dir(db_name):
 
 
 def load_latest_snapshots(n=2):
+    """
+    Load the ``n`` newest YAML snapshots for the connected database (newest first).
+
+    Raises:
+        ValueError: If fewer than ``n`` snapshot files exist.
+        yaml.YAMLError: If a file contains invalid YAML.
+    """
     db_name = get_connected_db_name()
     snap_dir = get_snapshot_dir(db_name)
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
@@ -30,8 +37,6 @@ def load_latest_snapshots(n=2):
         )
 
     data = []
-    # TODO: Add error handling for file read operations and malformed YAML
-    # Should handle FileNotFoundError, PermissionError, YAMLError
     for s in snapshots[:n]:
         with open(s) as f:
             data.append(yaml.safe_load(f))
