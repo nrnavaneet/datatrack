@@ -21,6 +21,8 @@ This document complements the diagram in the root [README](../README.md). It nam
 
 `pipeline run` orchestrates the above in sequence and records pass/fail in a Rich table (`pipeline.py`). It does not introduce a separate storage format.
 
+`doctor` is intentionally side-effect free: it only inspects paths and config files so operators can sanity-check a workspace before running SQL.
+
 ## Adding behaviour
 
 - **New CLI command**: register in `cli.py`, implement in a new module or extend an existing one, document in `docs/USAGE.md`, add tests under `tests/`.

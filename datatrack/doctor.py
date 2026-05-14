@@ -1,4 +1,7 @@
-"""Non-destructive checks for local Datatrack layout (no database writes)."""
+"""Non-destructive checks for local Datatrack layout (no database writes).
+
+`collect_rows` returns one row per filesystem check; `format_report` renders them for the CLI.
+"""
 from __future__ import annotations
 
 from pathlib import Path

@@ -13,3 +13,9 @@ def test_format_report_is_multiline():
     text = format_report()
     assert "Datatrack doctor" in text
     assert "test-connection" in text
+
+
+def test_format_report_lists_each_check():
+    text = format_report()
+    assert text.count("]") >= 4
+    assert "ok" in text or "missing" in text

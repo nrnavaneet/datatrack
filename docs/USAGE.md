@@ -26,6 +26,8 @@ datatrack doctor
 
 Prints whether `.datatrack/`, the saved DB link file, export paths, and `schema_rules.yaml` exist. Does **not** open a database connection.
 
+Each line is labelled `ok` or `missing` so you can paste the output into bug reports without sharing secrets.
+
 ## 1. Initialize a Datatrack Project
 
 ```bash

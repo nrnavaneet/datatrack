@@ -30,7 +30,7 @@ The repository ships an [`.editorconfig`](../.editorconfig) so most editors pick
 
 ## Layout
 
-- `datatrack/` — package source (`cli.py`, services, `paths.py`).
+- `datatrack/` — package source (`cli.py`, services, `paths.py`, `doctor.py` for offline layout checks).
 - `tests/` — pytest modules; command behaviour is covered under `tests/commands/`. Shared hooks belong in `tests/conftest.py`.
 - `docs/` — user and contributor documentation; keep cross-links in `docs/README.md` current when you add pages.
 

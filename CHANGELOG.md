@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.21] — 2026-05
+
+- Strengthen **doctor** coverage and clarify how `ok` / `missing` lines should be read in support material.
+
 ## [1.2.20] — 2026-05
 
 - Document optional **`LANG` / `LC_ALL`** interactions with Rich output and link environment notes from installation and glossary pages.

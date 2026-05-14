@@ -22,6 +22,8 @@ datatrack doctor
 
 Shows whether expected paths and `schema_rules.yaml` exist; it does not run SQL.
 
+The report labels each check as `ok` or `missing`; if everything is `missing`, you may be running the command outside a project directory that was initialised with `datatrack init`.
+
 ## `datatrack snapshot` or `lint` says no snapshots
 
 You need at least one successful `datatrack snapshot` after `connect`. Snapshots live under:
