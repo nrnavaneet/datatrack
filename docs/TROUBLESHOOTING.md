@@ -2,6 +2,8 @@
 
 [← Documentation home](README.md)
 
+Before opening a new GitHub issue, read [Support](SUPPORT.md) for what maintainers need in a report.
+
 If formatting hooks fail only on your machine, confirm your editor respects the repository [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) and that `pre-commit run --all-files` is clean. Setting a UTF-8 locale (`LANG=en_US.UTF-8` or similar) avoids odd Rich borders in some SSH sessions.
 
 If `git status` shows thousands of files under `.databases/` or `.venv/`, ensure you are not staging ignored paths; the root [`.gitignore`](https://github.com/nrnavaneet/datatrack/blob/main/.gitignore) lists the canonical exclusions.

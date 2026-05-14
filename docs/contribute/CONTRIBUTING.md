@@ -11,7 +11,7 @@ Please read the root [**SECURITY.md**](../../SECURITY.md) in this repository bef
 
 ## Opening issues and PRs
 
-Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) and [feature request](https://github.com/nrnavaneet/datatrack/issues/new/choose) templates when possible. Pull requests should follow `.github/PULL_REQUEST_TEMPLATE.md` (including the release checklist when you bump versions). General product questions may already be answered in the [FAQ](../FAQ.md).
+Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) and [feature request](https://github.com/nrnavaneet/datatrack/issues/new/choose) templates when possible. Pull requests should follow `.github/PULL_REQUEST_TEMPLATE.md` (including the release checklist when you bump versions). General product questions may already be answered in the [FAQ](../FAQ.md). For escalation norms, read [Support](../SUPPORT.md).
 
 ## How to Contribute
 

@@ -39,3 +39,5 @@ Use the contact listed in [Code of Conduct](contribute/CODE_OF_CONDUCT.md); avoi
 ## How should I share connection URIs when asking for help?
 
 Prefer redacted hostnames and usernames. Never paste production passwords into issues; rotate anything that accidentally lands in shell history or CI logs (see **SECURITY.md**).
+
+See [Support](SUPPORT.md) for a short checklist before filing GitHub issues.

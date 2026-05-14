@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.38] — 2026-05
+
+- Add a **Support** page with issue etiquette, redaction expectations, and links to FAQ and troubleshooting.
+
 ## [1.2.37] — 2026-05
 
 - Add **CODEOWNERS** for default GitHub review routing and document it in contributor and security notes.
