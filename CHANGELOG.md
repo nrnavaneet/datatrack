@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.31] — 2026-05
+
+- Document why **`requirements.txt`** mirrors `pyproject.toml` for contributor installs and CI caching.
+
 ## [1.2.30] — 2026-05
 
 - Clarify **`schema_rules.yaml`** header comments and cross-link verify behaviour from the FAQ, glossary, and troubleshooting guides.

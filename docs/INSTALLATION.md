@@ -37,6 +37,8 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+`requirements.txt` stays aligned with `pyproject.toml` so GitHub Actions can cache wheels predictably.
+
 See [Developing](DEVELOPING.md) for venv tips, pytest, and pre-commit.
 
 The [`tests/test_paths.py`](https://github.com/nrnavaneet/datatrack/blob/main/tests/test_paths.py) module encodes the expected `.databases/exports/` layout if you are wiring integrations.

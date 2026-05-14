@@ -7,7 +7,7 @@ GitHub Actions runs on every push and pull request to `main` (see `.github/workf
 Steps in order:
 
 1. **Checkout** the repository.
-2. **Python 3.11** with pip cache keyed off `requirements.txt`.
+2. **Python 3.11** with pip cache keyed off `requirements.txt` (kept in sync with `pyproject.toml` for reproducible CI).
 3. **Editable install** (`pip install -e .`) plus `pytest`.
 4. **`datatrack init`** as a smoke test (allowed to no-op if already initialised).
 5. **pre-commit** on all files.

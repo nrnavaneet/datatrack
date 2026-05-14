@@ -11,7 +11,7 @@ The shorter **`pypiREADME.md`** file ships on PyPI; it now includes a compact **
 1. Ensure `main` is green (push CI and weekly schedule).
 2. Update **`pyproject.toml`** `version = "x.y.z"`.
 3. Add a matching **`CHANGELOG.md`** section with the release date and bullet points.
-4. Run **`make test`** and **`pre-commit run --all-files`** locally.
+4. Confirm `requirements.txt` matches any dependency changes in **`pyproject.toml`** so CI caches stay valid, then run **`make test`** and **`pre-commit run --all-files`** locally.
 5. Tag the release commit: `git tag -s vX.Y.Z -m "Release X.Y.Z"` (maintainer GPG optional but preferred).
 6. Build and upload with **Twine** after reviewing the sdist/wheel contents:
 

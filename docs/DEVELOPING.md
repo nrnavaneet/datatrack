@@ -14,6 +14,8 @@ pip install -e .
 pre-commit install
 ```
 
+Keep `requirements.txt` aligned with `pyproject.toml` whenever you add dependencies so contributors and CI install the same pins.
+
 The `datatrack` console script is the usual entrypoint; in a checkout you can also run `python3 -m datatrack --help` after an editable install.
 
 Run the full test suite before opening a PR:

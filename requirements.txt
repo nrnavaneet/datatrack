@@ -1,3 +1,4 @@
+# Mirrors runtime dependencies declared in pyproject.toml; CI caches installs from this file.
 typer[all]
 PyYAML
 pre-commit
