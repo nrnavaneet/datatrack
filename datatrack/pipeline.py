@@ -1,5 +1,5 @@
 """
-DataTrack CLI Pipeline
+Datatrack CLI Pipeline
 ----------------------
 
 Executes the full schema validation workflow:
@@ -48,7 +48,7 @@ def prompt_to_continue(step_name: str) -> bool:
 
 
 def print_summary(summary: dict):
-    table = Table(title="DataTrack: Schema Workflow", show_lines=True)
+    table = Table(title="Datatrack: Schema Workflow", show_lines=True)
     table.add_column("Step", style="bold", justify="left")
     table.add_column("Result", justify="left")
     for step, result in summary.items():
