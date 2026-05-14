@@ -2,7 +2,7 @@
 
 [← Documentation home](README.md)
 
-If formatting hooks fail only on your machine, confirm your editor respects the repository [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) and that `pre-commit run --all-files` is clean.
+If formatting hooks fail only on your machine, confirm your editor respects the repository [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) and that `pre-commit run --all-files` is clean. Setting a UTF-8 locale (`LANG=en_US.UTF-8` or similar) avoids odd Rich borders in some SSH sessions.
 
 ## `datatrack connect` says a database is already connected
 

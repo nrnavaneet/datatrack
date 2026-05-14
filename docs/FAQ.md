@@ -18,6 +18,10 @@ No. CI and the default `tests/` suite patch filesystem and database discovery so
 
 **Lint** applies lightweight naming and structural heuristics to the latest snapshot YAML. **Verify** enforces declarative rules from `schema_rules.yaml` (reserved words, casing, and similar policies). Run both in CI; `pipeline run` executes them in a sensible order alongside snapshotting and diffing.
 
+## Which environment variables matter for the CLI?
+
+Locale and identity-related variables (`USER`, `HOME`, `LANG`, `LC_ALL`) are summarised in [Environment](ENVIRONMENT.md).
+
 ## Can I run Datatrack without installing the `datatrack` script on `PATH`?
 
 Yes, after an editable install you can use `python3 -m datatrack --help` (see [Usage](USAGE.md)).

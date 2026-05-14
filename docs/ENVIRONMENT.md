@@ -8,6 +8,7 @@ Datatrack reads a few standard environment variables when you run the CLI.
 |----------|---------|--------|
 | `USER` | `datatrack init` | Fills `created_by` in `.datatrack/config.yaml` when set; otherwise the literal `unknown` is stored. |
 | `HOME` | shell / OS | Only relevant if you put SQLite databases or config under your home directory in connection URIs. |
+| `LANG` / `LC_ALL` | Typer / Rich output | Optional; only affects localised help text and table rendering in some terminals. |
 
 There are **no** secret `DATATRACK_*` variables today: the database URI is stored in `.datatrack/db_link.yaml` after you run `datatrack connect`.
 

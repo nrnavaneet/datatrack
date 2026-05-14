@@ -12,4 +12,4 @@
 | **Doctor** | `datatrack doctor` checks local folders and config files exist without opening a SQL connection. |
 | **Export base** | The `.databases/exports/` directory tree where per-database artefacts are stored; see `datatrack.paths`. |
 
-For narrative context, see [Architecture](ARCHITECTURE.md) and the [FAQ](FAQ.md).
+For narrative context, see [Architecture](ARCHITECTURE.md) and the [FAQ](FAQ.md). Operational environment variables are listed in [Environment](ENVIRONMENT.md).

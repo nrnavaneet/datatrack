@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.20] — 2026-05
+
+- Document optional **`LANG` / `LC_ALL`** interactions with Rich output and link environment notes from installation and glossary pages.
+
 ## [1.2.19] — 2026-05
 
 - Clarify **Code of Conduct** reporting expectations and link them from contributing docs and the FAQ.
