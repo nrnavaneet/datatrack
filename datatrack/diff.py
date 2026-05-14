@@ -7,7 +7,12 @@ from datatrack.connect import get_connected_db_name
 
 def load_snapshots():
     """
-    Load the two most recent snapshots from the connected database's folder.
+    Load the two most recent YAML snapshots from the connected database export folder.
+
+    Snapshots are read from ``.databases/exports/<db_name>/snapshots/``, sorted by
+    filename so the newest pair is compared. At least two ``*.yaml`` files must exist
+    or a :class:`FileNotFoundError` is raised. Malformed YAML propagates as
+    :class:`yaml.YAMLError` from PyYAML.
     """
     db_name = get_connected_db_name()
     snap_dir = Path(".databases/exports") / db_name / "snapshots"
@@ -18,8 +23,6 @@ def load_snapshots():
             f"Need at least 2 snapshots to run a diff for '{db_name}'.",
         )
 
-    # TODO: Add error handling for file operations and YAML parsing
-    # Should handle FileNotFoundError, PermissionError, YAMLError, corrupted files
     with open(snapshots[0]) as f1, open(snapshots[1]) as f2:
         newer = yaml.safe_load(f1)
         older = yaml.safe_load(f2)
