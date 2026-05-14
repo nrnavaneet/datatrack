@@ -1,5 +1,7 @@
 # Troubleshooting
 
+[← Documentation home](README.md)
+
 ## `datatrack connect` says a database is already connected
 
 Only one saved URI is stored under `.datatrack/db_link.yaml`. Run:

@@ -1,5 +1,7 @@
 # Continuous integration
 
+[← Documentation home](../README.md)
+
 GitHub Actions runs on every push and pull request to `main` (see `.github/workflows/ci.yml`).
 
 Steps in order:

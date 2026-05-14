@@ -1,5 +1,7 @@
 # Contributing to Datatrack
 
+[← Documentation home](README.md)
+
 Thank you for your interest in contributing!
 **Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone.
 

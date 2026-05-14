@@ -143,6 +143,7 @@ and less risk of schema-related outages.
 
 Please refer to the following docs for detailed guidance:
 
+- [Documentation home (all guides)](https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md)
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
 - [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)
 - [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md)

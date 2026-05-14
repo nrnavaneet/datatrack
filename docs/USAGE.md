@@ -1,4 +1,7 @@
 # Usage Guide for Datatrack
+
+[← Documentation home](README.md)
+
 Datatrack is a CLI tool for tracking, linting, verifying, and exporting database schema changes.
 
 ## Helpful Commands

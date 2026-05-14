@@ -1,5 +1,7 @@
 # Installation Guide for Datatrack
 
+Index of all guides: [Documentation home](README.md).
+
 Datatrack is a lightweight CLI tool for tracking schema changes in databases. You can install it in two ways depending on your use case. **Python 3.7 or newer** is required (see `requires-python` in `pyproject.toml`).
 
 
