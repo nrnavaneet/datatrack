@@ -21,7 +21,7 @@ Dependency bumps for Actions and Python packages may arrive as **Dependabot** pu
 
 Release mechanics for PyPI (version bumps, tags, Twine) live in [Releasing](../RELEASING.md); keep `CHANGELOG.md` aligned with every user-facing version bump.
 
-Community expectations are documented in the [Code of Conduct](CODE_OF_CONDUCT.md); please read it before participating in reviews or discussions.
+Community expectations are documented in the [Code of Conduct](CODE_OF_CONDUCT.md); please read it before participating in reviews or discussions. Keep local databases and virtualenvs out of commits—the root `.gitignore` already excludes `.databases/` and `.venv/`.
 
 ### 1. Fork the Repo
 

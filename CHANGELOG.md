@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.28] — 2026-05
+
+- Broaden **`.gitignore`** coverage for build trees, pytest caches, and coverage reports so accidental commits stay rare.
+
 ## [1.2.27] — 2026-05
 
 - Add a **Contributing** section to the PyPI readme with links back to the full GitHub documentation set.

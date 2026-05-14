@@ -7,9 +7,15 @@ snapshots
 .databases
 example.db
 dist
+build/
+.eggs/
 MANIFEST.in
 pyREADME.md
 .ruff_cache
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
 pyproject.toml
 dependency_links.txt
 PKG-INFO

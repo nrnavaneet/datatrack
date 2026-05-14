@@ -26,7 +26,7 @@ Pytest reads `[tool.pytest.ini_options]` in `pyproject.toml` so only `tests/` is
 
 From the repository root you can also run **`make test`** or **`make lint`** (see the root `Makefile`). Use **`make clean`** to remove local build artefacts (`build/`, `dist/`, `*.egg-info`, `.pytest_cache`) before packaging experiments.
 
-The repository ships an [`.editorconfig`](../.editorconfig) so most editors pick consistent indentation and newlines.
+The repository ships an [`.editorconfig`](../.editorconfig) so most editors pick consistent indentation and newlines. `.gitignore` excludes local virtualenvs, `.databases/`, coverage output, and build artefacts—do not force-add those paths when opening a PR.
 
 ## Layout
 
