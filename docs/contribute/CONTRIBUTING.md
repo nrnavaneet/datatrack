@@ -23,6 +23,8 @@ Release mechanics for PyPI (version bumps, tags, Twine) live in [Releasing](../R
 
 Community expectations are documented in the [Code of Conduct](CODE_OF_CONDUCT.md); please read it before participating in reviews or discussions. Keep local databases and virtualenvs out of commits—the root `.gitignore` already excludes `.databases/` and `.venv/`.
 
+Pull requests may request review from [code owners](https://github.com/nrnavaneet/datatrack/blob/main/.github/CODEOWNERS) automatically when GitHub is configured for the repository.
+
 ### 1. Fork the Repo
 
 Click the **"Fork"** button at the top right of [the repository](https://github.com/nrnavaneet/datatrack) and clone your fork:

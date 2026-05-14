@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.37] — 2026-05
+
+- Add **CODEOWNERS** for default GitHub review routing and document it in contributor and security notes.
+
 ## [1.2.36] — 2026-05
 
 - Add a **Testing** guide describing pytest layout, offline defaults, and manual integration expectations.

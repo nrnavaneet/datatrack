@@ -14,6 +14,8 @@ Shell history, terminal scrollback, and CI logs can capture `datatrack connect` 
 
 Dependency updates for GitHub Actions and `pip` manifests are automated via **Dependabot** (see `.github/dependabot.yml`); review those PRs like any other change.
 
+Sensitive PRs should still use private disclosure per the top of this file even if [CODEOWNERS](.github/CODEOWNERS) routes reviews automatically.
+
 Scheduled CI on `main` helps catch upstream breakage when dependencies move between PRs; treat failing scheduled runs with the same urgency as `push` failures.
 
 Coordinated disclosure for security releases should follow both this document and [Releasing](RELEASING.md) so PyPI metadata and changelog entries stay aligned.
