@@ -4,23 +4,29 @@ from pathlib import Path
 import yaml
 
 from datatrack.connect import get_connected_db_name
-
-DB_LINK_FILE = Path(".datatrack/db_link.yaml")
+from datatrack.paths import export_dir, snapshot_dir
 
 
 def get_export_dir(db_name):
-    path = Path(f".databases/exports/{db_name}")
+    path = export_dir(db_name)
     path.mkdir(parents=True, exist_ok=True)
     return path
 
 
 def get_snapshot_dir(db_name):
-    path = Path(f".databases/exports/{db_name}/snapshots")
+    path = snapshot_dir(db_name)
     path.mkdir(parents=True, exist_ok=True)
     return path
 
 
 def load_latest_snapshots(n=2):
+    """
+    Load the ``n`` newest YAML snapshots for the connected database (newest first).
+
+    Raises:
+        ValueError: If fewer than ``n`` snapshot files exist.
+        yaml.YAMLError: If a file contains invalid YAML.
+    """
     db_name = get_connected_db_name()
     snap_dir = get_snapshot_dir(db_name)
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
@@ -30,8 +36,6 @@ def load_latest_snapshots(n=2):
         )
 
     data = []
-    # TODO: Add error handling for file read operations and malformed YAML
-    # Should handle FileNotFoundError, PermissionError, YAMLError
     for s in snapshots[:n]:
         with open(s) as f:
             data.append(yaml.safe_load(f))

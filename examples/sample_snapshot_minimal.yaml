@@ -1,0 +1,13 @@
+# Minimal schema snapshot example for docs and local experiments.
+# Real snapshots from `datatrack snapshot` include more keys (views, triggers, __meta__, etc.).
+tables:
+  - name: users
+    columns:
+      - name: id
+        type: INTEGER
+      - name: email
+        type: TEXT
+views: []
+triggers: []
+functions: []
+data: {}

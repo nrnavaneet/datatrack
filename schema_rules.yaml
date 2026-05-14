@@ -1,3 +1,5 @@
+# Shared rules for `datatrack lint` and `datatrack verify`.
+# Edit lists freely; invalid YAML will cause the linter import to fail at startup.
 rules:
   enforce_snake_case: true
   max_name_length: 30

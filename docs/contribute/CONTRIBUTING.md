@@ -1,9 +1,23 @@
 # Contributing to Datatrack
 
+[← Documentation home](README.md)
+
 Thank you for your interest in contributing!
 **Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone.
 
+## Security
+
+Please read the root [**SECURITY.md**](../../SECURITY.md) in this repository before filing a public issue that may contain sensitive connection details.
+
+## Opening issues and PRs
+
+Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) and [feature request](https://github.com/nrnavaneet/datatrack/issues/new/choose) templates when possible. Pull requests should follow `.github/PULL_REQUEST_TEMPLATE.md`.
+
 ## How to Contribute
+
+For a fuller local workflow (venv layout, pytest, pre-commit summary), see [Developing](../DEVELOPING.md). Editor defaults for line endings and Python indentation live in the root `.editorconfig`.
+
+Dependency bumps for Actions and Python packages may arrive as **Dependabot** pull requests; please run tests locally before approving.
 
 ### 1. Fork the Repo
 
@@ -36,6 +50,15 @@ pip install -e .
 
 Make sure everything still works.
 
+From the repository root, run the unit tests (no live database required for most of them). You may use `make test` as a shortcut:
+
+```bash
+python3 -m pytest tests/ -q
+# or: make test
+```
+
+The repository pins pytest discovery in `pyproject.toml` (`testpaths = ["tests"]`) so ad-hoc scripts outside `tests/` are not collected accidentally.
+
 ## Initialize it:
 
 ```bash
@@ -63,6 +86,8 @@ datatrack pipeline run
 Add or update unit tests if necessary.
 
 ### 5. Run Pre-commit Hooks
+
+See also [Architecture](../ARCHITECTURE.md) for where hooks fit in the module graph.
 
 Install and run pre-commit checks:
 

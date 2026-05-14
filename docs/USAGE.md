@@ -1,14 +1,28 @@
 # Usage Guide for Datatrack
+
+[← Documentation home](README.md)
+
 Datatrack is a CLI tool for tracking, linting, verifying, and exporting database schema changes.
 
 ## Helpful Commands
 
 Datatrack comes with built-in help and guidance for every command. Use this to quickly learn syntax and options:
+
 ```bash
 datatrack --help
+# or, equivalent when running from a checkout with an editable install:
+python3 -m datatrack --help
 or
 datatrack -h
 ```
+
+## 0. Doctor (sanity check layout)
+
+```bash
+datatrack doctor
+```
+
+Prints whether `.datatrack/`, the saved DB link file, export paths, and `schema_rules.yaml` exist. Does **not** open a database connection.
 
 ## 1. Initialize a Datatrack Project
 
@@ -41,6 +55,12 @@ datatrack connect postgresql+psycopg2://postgres:<password>@localhost:5432/<data
 datatrack connect sqlite:///.databases/<database-name>
 ```
 
+To point Datatrack at a different database, remove the saved link first, then connect again:
+
+```bash
+datatrack disconnect
+datatrack connect <new-uri>
+```
 
 ## 3. Take a Schema Snapshot
 
@@ -118,7 +138,12 @@ datatrack pipeline run
 
 Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
 
+## 10. When something goes wrong
+
+See [Troubleshooting](TROUBLESHOOTING.md) for disconnect issues, missing snapshots, and driver errors.
 
 For advanced use cases and integration into CI/CD, visit:
 
 **https://github.com/nrnavaneet/datatrack**
+
+Deeper module layout: [Architecture](ARCHITECTURE.md).

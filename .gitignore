@@ -16,4 +16,5 @@ PKG-INFO
 SOURCES.txt
 .venv/
 .DS_Store
+.idea/
 details.md

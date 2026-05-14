@@ -13,6 +13,7 @@ from pathlib import Path
 import yaml
 
 from datatrack.connect import get_connected_db_name
+from datatrack.paths import snapshot_dir
 
 # Default rule configuration if schema_rules.yaml is not found or invalid
 DEFAULT_RULES = {
@@ -65,7 +66,7 @@ def load_latest_snapshot() -> dict:
         ValueError: If no snapshot exists.
     """
     db_name = get_connected_db_name()
-    snap_dir = Path(".databases/exports") / db_name / "snapshots"
+    snap_dir = snapshot_dir(db_name)
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
 
     if not snapshots:
@@ -97,9 +98,7 @@ def load_rules() -> dict:
                 "enforce_snake_case": bool(enforce_snake),
                 "reserved_keywords": {str(k).lower() for k in reserved},
             }
-        # TODO: Replace bare Exception with specific exception types
-        # Should handle FileNotFoundError, PermissionError, YAMLError separately
-        except Exception as e:
+        except (yaml.YAMLError, OSError, TypeError, KeyError) as e:
             print(f"[WARNING] Failed to load rules: {e}. Using defaults.")
 
     return {

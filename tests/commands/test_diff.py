@@ -5,10 +5,11 @@ import pytest
 import yaml
 
 from datatrack.diff import diff_schemas, load_snapshots
+from datatrack.paths import EXPORT_BASE
 
-EXPORT_BASE = Path(".databases/exports")
+EXPORT_BASE_ROOT = EXPORT_BASE
 DB_NAME = "test_db"
-SNAPSHOT_DIR = EXPORT_BASE / DB_NAME / "snapshots"
+SNAPSHOT_DIR = EXPORT_BASE_ROOT / DB_NAME / "snapshots"
 
 
 @pytest.fixture(autouse=True)
@@ -16,7 +17,7 @@ def setup_snapshots(monkeypatch):
     monkeypatch.setattr("datatrack.diff.get_connected_db_name", lambda: DB_NAME)
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     yield
-    shutil.rmtree(EXPORT_BASE)
+    shutil.rmtree(EXPORT_BASE_ROOT)
 
 
 def write_snapshot(data: dict, filename: str):

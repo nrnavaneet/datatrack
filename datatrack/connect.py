@@ -6,9 +6,7 @@ import yaml
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import ArgumentError, OperationalError, SQLAlchemyError
 
-# Config paths
-CONFIG_DIR = Path(".datatrack")
-DB_LINK_FILE = CONFIG_DIR / "db_link.yaml"
+from datatrack.paths import CONFIG_DIR, DB_LINK_FILE
 
 
 def get_connected_db_name():
@@ -86,6 +84,7 @@ def save_connection(link: str):
     with open(DB_LINK_FILE, "w") as f:
         yaml.dump({"link": link}, f)
     print(f"Successfully connected and saved link:\n   {link}")
+    print("\nTip: run `datatrack test-connection` to double-check the saved URI.")
 
 
 def get_saved_connection():

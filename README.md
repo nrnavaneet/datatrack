@@ -18,6 +18,10 @@
   ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md">Usage</a>
   ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md">Docs index</a>
+  ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md">Environment</a>
+  ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CONTRIBUTING.md">Contributing</a>
   ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md">Code of Conduct</a>
@@ -91,6 +95,11 @@ Benchmarks were run in August 2025 on a MacBook Pro M2, Python 3.11, using SQLit
           |
           v
 +-------------------+
+|   Path layout     |  (datatrack/paths.py — config, exports, snapshot dirs)
++-------------------+
+          |
+          v
++-------------------+
 |   SQLAlchemy ORM  |  (DB connection, inspection)
 +-------------------+
           |
@@ -136,10 +145,18 @@ and less risk of schema-related outages.
 
 Please refer to the following docs for detailed guidance:
 
+- [Documentation home (all guides)](https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md)
+- [Architecture (modules & data flow)](https://github.com/nrnavaneet/datatrack/tree/main/docs/ARCHITECTURE.md)
+- [Performance (benchmarks & parallelism)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PERFORMANCE.md)
+- [Developing locally](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md) (`datatrack` or `python -m datatrack`)
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
 - [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)
+- [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md)
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md)
-- [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contributeCODE_OF_CONDUCT.md)
+- [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
+- [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md)
+
+Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github). After cloning, `make test` and `make lint` mirror the CI pytest and pre-commit steps. An [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) file keeps basic formatting defaults aligned across editors. **Dependabot** opens weekly dependency update PRs for Actions and pip.
 
 ## License
 
