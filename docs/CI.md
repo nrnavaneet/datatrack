@@ -13,6 +13,8 @@ Steps in order:
 5. **pre-commit** on all files.
 6. **`pytest -q tests/`** for the unit suite.
 
+On GitHub you can also run **Actions → Datatrack CI → Run workflow** (`workflow_dispatch`).
+
 To reproduce locally:
 
 ```bash

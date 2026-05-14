@@ -1,5 +1,7 @@
 # Benchmarks
 
+[← Documentation home](../docs/README.md)
+
 `parallel_processing.py` builds three synthetic SQLite databases (small / medium / large table counts), then times `datatrack.tracker.snapshot` against each.
 
 Run from the **repository root** after an editable install:

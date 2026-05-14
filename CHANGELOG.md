@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.3] — 2026-05
+
+- Unit tests for `datatrack.paths` helpers; CI can be triggered manually via `workflow_dispatch`.
+
 ## [1.2.2] — 2026-05
 
 - New **Architecture** guide describing modules, snapshot lifecycle, and extension points.
