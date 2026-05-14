@@ -1,21 +1,20 @@
-from pathlib import Path
-
 import yaml
 
 from datatrack.connect import get_connected_db_name
+from datatrack.paths import snapshot_dir
 
 
 def load_snapshots():
     """
     Load the two most recent YAML snapshots from the connected database export folder.
 
-    Snapshots are read from ``.databases/exports/<db_name>/snapshots/``, sorted by
-    filename so the newest pair is compared. At least two ``*.yaml`` files must exist
+    Snapshots are read from the per-database snapshot folder (see ``datatrack.paths.snapshot_dir``),
+    sorted by filename so the newest pair is compared. At least two ``*.yaml`` files must exist
     or a :class:`FileNotFoundError` is raised. Malformed YAML propagates as
     :class:`yaml.YAMLError` from PyYAML.
     """
     db_name = get_connected_db_name()
-    snap_dir = Path(".databases/exports") / db_name / "snapshots"
+    snap_dir = snapshot_dir(db_name)
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
 
     if len(snapshots) < 2:

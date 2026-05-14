@@ -7,8 +7,7 @@ import yaml
 from sqlalchemy import create_engine, inspect, text
 
 from datatrack.connect import get_connected_db_name, get_saved_connection
-
-EXPORT_BASE_DIR = Path(".databases/exports")
+from datatrack.paths import snapshot_dir
 
 
 def sanitize_url(url_obj):
@@ -29,12 +28,12 @@ def save_schema_snapshot(schema: dict, db_name: str) -> Path:
     Injects ``__meta__`` (snapshot id, timestamp, database label, content hash) before writing YAML.
     Returns the path written so callers can log or pipe it to export steps.
     """
-    snapshot_dir = EXPORT_BASE_DIR / db_name / "snapshots"
-    snapshot_dir.mkdir(parents=True, exist_ok=True)
+    sdir = snapshot_dir(db_name)
+    sdir.mkdir(parents=True, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     snapshot_id = f"snapshot_{timestamp}"
-    snapshot_file = snapshot_dir / f"{snapshot_id}.yaml"
+    snapshot_file = sdir / f"{snapshot_id}.yaml"
 
     # Add metadata
     schema["__meta__"] = {

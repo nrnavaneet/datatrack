@@ -1,9 +1,9 @@
 from datetime import datetime
-from pathlib import Path
 
 import yaml
 
 from datatrack.connect import get_connected_db_name
+from datatrack.paths import snapshot_dir
 
 
 def format_timestamp_from_filename(filename: str) -> str:
@@ -23,12 +23,12 @@ def print_history():
         print(f"[Error] Could not determine connected database: {e}")
         return
 
-    snapshot_dir = Path(f".databases/exports/{db_name}/snapshots")
-    if not snapshot_dir.exists():
+    snap_root = snapshot_dir(db_name)
+    if not snap_root.exists():
         print(f"[Error] Snapshot directory does not exist for `{db_name}`.")
         return
 
-    snapshots = sorted(snapshot_dir.glob("snapshot_*.yaml"), reverse=True)
+    snapshots = sorted(snap_root.glob("snapshot_*.yaml"), reverse=True)
     if not snapshots:
         print(f"[Info] No snapshots found for `{db_name}`.")
         return

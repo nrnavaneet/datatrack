@@ -25,6 +25,7 @@ from datatrack.diff import diff_schemas, load_snapshots
 from datatrack.exporter import export_diff, export_snapshot
 from datatrack.linter import lint_schema
 from datatrack.linter import load_latest_snapshot as load_lint_snapshot
+from datatrack.paths import EXPORT_BASE
 from datatrack.tracker import snapshot
 from datatrack.verifier import load_latest_snapshot as load_ver_snapshot
 from datatrack.verifier import load_rules, verify_schema
@@ -34,8 +35,8 @@ app = typer.Typer()
 # Step result summary
 step_summary = {}
 
-# Export directory (hardcoded in current architecture)
-EXPORT_PATH = ".databases/exports/"
+# Export directory (single source of truth in datatrack.paths)
+EXPORT_PATH = EXPORT_BASE.as_posix() + "/"
 
 console = Console()
 

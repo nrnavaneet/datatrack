@@ -21,7 +21,6 @@ Main Features:
 """
 
 import os
-from pathlib import Path
 
 import typer
 import yaml
@@ -31,6 +30,7 @@ from datatrack import diff as diff_module
 from datatrack import exporter, history, linter, pipeline
 from datatrack import test_connection as test_module
 from datatrack import tracker, verifier
+from datatrack.paths import CONFIG_DIR, CONFIG_FILE
 
 app = typer.Typer(
     help="Datatrack: Schema tracking CLI",
@@ -38,22 +38,17 @@ app = typer.Typer(
     invoke_without_command=True,
 )
 
-CONFIG_DIR = ".datatrack"
-CONFIG_FILE = "config.yaml"
-
 
 @app.command()
 def init():
     """
     Initialize Datatrack in the current directory.
     """
-    config_path = Path(CONFIG_DIR)
-    if config_path.exists():
+    if CONFIG_DIR.exists():
         typer.echo("Datatrack is already initialized.")
         raise typer.Exit()
 
-    # Create .datatrack directory
-    config_path.mkdir(parents=True, exist_ok=True)
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
 
     # Default config contents
     default_config = {
@@ -63,7 +58,7 @@ def init():
         "sources": [],
     }
 
-    with open(config_path / CONFIG_FILE, "w") as f:
+    with open(CONFIG_FILE, "w") as f:
         yaml.dump(default_config, f)
 
     typer.echo("Datatrack initialized in .datatrack/")

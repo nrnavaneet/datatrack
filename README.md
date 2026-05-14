@@ -93,6 +93,11 @@ Benchmarks were run in August 2025 on a MacBook Pro M2, Python 3.11, using SQLit
           |
           v
 +-------------------+
+|   Path layout     |  (datatrack/paths.py — config, exports, snapshot dirs)
++-------------------+
+          |
+          v
++-------------------+
 |   SQLAlchemy ORM  |  (DB connection, inspection)
 +-------------------+
           |

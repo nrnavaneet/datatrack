@@ -4,18 +4,17 @@ from pathlib import Path
 import yaml
 
 from datatrack.connect import get_connected_db_name
-
-DB_LINK_FILE = Path(".datatrack/db_link.yaml")
+from datatrack.paths import export_dir, snapshot_dir
 
 
 def get_export_dir(db_name):
-    path = Path(f".databases/exports/{db_name}")
+    path = export_dir(db_name)
     path.mkdir(parents=True, exist_ok=True)
     return path
 
 
 def get_snapshot_dir(db_name):
-    path = Path(f".databases/exports/{db_name}/snapshots")
+    path = snapshot_dir(db_name)
     path.mkdir(parents=True, exist_ok=True)
     return path
 

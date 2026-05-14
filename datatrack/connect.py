@@ -6,9 +6,7 @@ import yaml
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import ArgumentError, OperationalError, SQLAlchemyError
 
-# Config paths
-CONFIG_DIR = Path(".datatrack")
-DB_LINK_FILE = CONFIG_DIR / "db_link.yaml"
+from datatrack.paths import CONFIG_DIR, DB_LINK_FILE
 
 
 def get_connected_db_name():
