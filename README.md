@@ -139,7 +139,7 @@ Please refer to the following docs for detailed guidance:
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
 - [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md)
-- [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contributeCODE_OF_CONDUCT.md)
+- [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 
 ## License
 
