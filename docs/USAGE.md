@@ -142,6 +142,8 @@ Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
 
 See [Troubleshooting](TROUBLESHOOTING.md) for disconnect issues, missing snapshots, and driver errors.
 
+Answers to common design questions (single URI file, where snapshots live, lint vs verify) live in the [FAQ](FAQ.md).
+
 For advanced use cases and integration into CI/CD, visit:
 
 **https://github.com/nrnavaneet/datatrack**

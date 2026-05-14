@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.13] — 2026-05
+
+- Add an **FAQ** for recurring questions about on-disk layout, lint vs verify, and offline tests.
+
 ## [1.2.12] — 2026-05
 
 - Declare **pytest** defaults in `pyproject.toml` and add `tests/conftest.py` for future shared fixtures.

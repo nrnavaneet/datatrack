@@ -47,4 +47,4 @@ or
 datatrack -h
 ```
 
-For any issues, refer to [Troubleshooting](TROUBLESHOOTING.md), [Architecture](ARCHITECTURE.md), and the [CI](CI.md) overview, or open a ticket on [GitHub issues](https://github.com/nrnavaneet/datatrack/issues).
+For any issues, refer to [Troubleshooting](TROUBLESHOOTING.md), [Architecture](ARCHITECTURE.md), the [FAQ](FAQ.md), and the [CI](CI.md) overview, or open a ticket on [GitHub issues](https://github.com/nrnavaneet/datatrack/issues).

@@ -151,6 +151,7 @@ Please refer to the following docs for detailed guidance:
 - [Developing locally](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md) (`datatrack` or `python -m datatrack`)
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
 - [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)
+- [FAQ (common design questions)](https://github.com/nrnavaneet/datatrack/blob/main/docs/FAQ.md)
 - [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md)
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md)
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)

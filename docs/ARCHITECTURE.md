@@ -33,3 +33,4 @@ Unit tests patch `get_connected_db_name` or filesystem paths (`tests/commands/te
 ## See also
 
 - [Developing](DEVELOPING.md) — local environment and common commands.
+- [FAQ](FAQ.md) — single-URI storage, snapshot paths, lint vs verify.
