@@ -4,6 +4,8 @@
 
 Datatrack is a CLI tool for tracking, linting, verifying, and exporting database schema changes.
 
+Terms like **snapshot**, **lint**, and **verify** are defined in the [Glossary](GLOSSARY.md).
+
 ## Helpful Commands
 
 Datatrack comes with built-in help and guidance for every command. Use this to quickly learn syntax and options:

@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.14] — 2026-05
+
+- Add a **Glossary** defining snapshot, lint, verify, pipeline, and related terms used across the docs.
+
 ## [1.2.13] — 2026-05
 
 - Add an **FAQ** for recurring questions about on-disk layout, lint vs verify, and offline tests.

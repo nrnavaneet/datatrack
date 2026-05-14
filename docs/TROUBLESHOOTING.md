@@ -48,3 +48,5 @@ python3 -m pytest tests/ -q
 ```
 
 Some commands still expect a configured `.datatrack/` tree; unit tests under `tests/` patch paths so they do not need a live database.
+
+Unfamiliar with Datatrack vocabulary? Skim the [Glossary](GLOSSARY.md).
