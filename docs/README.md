@@ -6,6 +6,7 @@ Start here and jump to the guide you need.
 |----------|--------------------|
 | [Issue & PR templates](https://github.com/nrnavaneet/datatrack/tree/main/.github) | Bug reports, feature requests, pull request checklist |
 | [Security](../SECURITY.md) | How to report vulnerabilities responsibly |
+| [Developing](DEVELOPING.md) | Local venv, editable install, pytest, pre-commit |
 | [Architecture](ARCHITECTURE.md) | Modules, snapshot lifecycle, pipeline, extension points |
 | [Doctor](USAGE.md#0-doctor-sanity-check-layout) | `datatrack doctor` — quick layout checks without SQL |
 | [Installation](INSTALLATION.md) | PyPI vs editable install, Python version, first commands |

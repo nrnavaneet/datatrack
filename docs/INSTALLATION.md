@@ -33,6 +33,10 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+See [Developing](DEVELOPING.md) for venv tips, pytest, and pre-commit.
+
+This sets up a local editable environment where you can test changes to the source code.
+
 ## Helpful Commands
 
 Datatrack comes with built-in help and guidance for every command. Use this to quickly learn syntax and options:
@@ -41,7 +45,5 @@ datatrack --help
 or
 datatrack -h
 ```
-
-This sets up a local editable environment where you can test changes to the source code.
 
 For any issues, refer to [Troubleshooting](TROUBLESHOOTING.md), [Architecture](ARCHITECTURE.md), and the [CI](CI.md) overview, or open a ticket on [GitHub issues](https://github.com/nrnavaneet/datatrack/issues).

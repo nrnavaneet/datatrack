@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.6] — 2026-05
+
+- New **Developing** guide for contributors (venv, editable install, tests, pre-commit).
+
 ## [1.2.5] — 2026-05
 
 - GitHub **issue** and **pull request** templates for clearer reports and reviews.

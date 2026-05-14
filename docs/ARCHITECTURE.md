@@ -29,3 +29,7 @@ This document complements the diagram in the root [README](../README.md). It nam
 ## Testing strategy
 
 Unit tests patch `get_connected_db_name` or filesystem paths (`tests/commands/test_diff.py`) so CI does not require PostgreSQL or MySQL. Integration tests against real engines are left to contributors’ machines.
+
+## See also
+
+- [Developing](DEVELOPING.md) — local environment and common commands.

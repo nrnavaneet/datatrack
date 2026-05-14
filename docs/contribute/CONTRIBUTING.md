@@ -15,6 +15,8 @@ Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) 
 
 ## How to Contribute
 
+For a fuller local workflow (venv layout, pytest, pre-commit summary), see [Developing](../DEVELOPING.md).
+
 ### 1. Fork the Repo
 
 Click the **"Fork"** button at the top right of [the repository](https://github.com/nrnavaneet/datatrack) and clone your fork:
