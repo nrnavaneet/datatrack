@@ -18,10 +18,11 @@ PyPI readers should follow links from that readme to **Roadmap**, **Compatibilit
 ```bash
 python3 -m pip install build twine
 python3 -m build
+python3 -m twine check dist/*
 python3 -m twine upload dist/datatrack_core-X.Y.Z*
 ```
 
-`MANIFEST.in` ensures long-form docs and policy files ship in the **sdist** alongside the Python package; skim the generated `dist/*.tar.gz` before upload.
+`MANIFEST.in` ensures long-form docs and policy files ship in the **sdist** alongside the Python package; skim the generated `dist/*.tar.gz` before upload. Confirm the root `LICENSE` still carries the SPDX identifier line expected by compliance scanners.
 
 ## After release
 

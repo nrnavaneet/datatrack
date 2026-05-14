@@ -17,6 +17,8 @@
 - Each user-facing release line should start with a verb (**Add**, **Fix**, **Document**, …).
 - Keep `pyproject.toml` `version` and the `## [x.y.z]` header in `CHANGELOG.md` in lockstep (CI tests enforce this).
 
+The repository `LICENSE` file includes an **SPDX-License-Identifier** line; do not drop it when editing copyright years.
+
 ## Code blocks
 
 - Prefer fenced blocks with a language tag (`bash`, `yaml`, `text`) when it helps copy-paste.

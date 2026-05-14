@@ -13,3 +13,5 @@ Everyone who files thoughtful issues, reviews pull requests, or improves documen
 ## Third-party libraries
 
 Datatrack builds on **Typer**, **Rich**, **SQLAlchemy**, **PyYAML**, and database drivers named in `pyproject.toml` / `requirements.txt`. See each project’s license for their terms.
+
+The Datatrack distribution itself is under the **MIT License**; the root `LICENSE` file includes an SPDX identifier line for automated compliance tooling.

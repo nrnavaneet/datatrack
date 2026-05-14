@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.57] — 2026-05
+
+- Add an **SPDX-License-Identifier** line to the MIT license file and note it from readme and credits docs.
+
 ## [1.2.56] — 2026-05
 
 - Add module docstrings for **exporter**, **history**, **linter**, and **test_connection**, with tests to keep them present.
