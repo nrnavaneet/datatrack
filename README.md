@@ -148,6 +148,7 @@ Please refer to the following docs for detailed guidance:
 - [Documentation home (all guides)](https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md)
 - [Architecture (modules & data flow)](https://github.com/nrnavaneet/datatrack/tree/main/docs/ARCHITECTURE.md)
 - [Performance (benchmarks & parallelism)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PERFORMANCE.md)
+- [Benchmark harness (local timings)](https://github.com/nrnavaneet/datatrack/tree/main/benchmark_tests)
 - [Developing locally](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md) (`datatrack` or `python -m datatrack`)
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
 - [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)

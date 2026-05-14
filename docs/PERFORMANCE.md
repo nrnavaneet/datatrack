@@ -21,7 +21,7 @@ Benchmarks were run on a MacBook Pro M2, Python 3.11, using SQLite and PostgreSQ
 
 ## Reproducing
 
-See `benchmark_tests/README.md` and `benchmark_tests/parallel_processing.py` in the repository for the harness used to generate comparable figures.
+See `benchmark_tests/README.md` and `benchmark_tests/parallel_processing.py` in the repository for the harness used to generate comparable figures. Those scripts intentionally stay **out of CI**; run them locally when validating performance work.
 
 ## When I/O dominates
 

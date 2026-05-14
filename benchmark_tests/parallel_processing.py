@@ -2,6 +2,8 @@
 Benchmark the datatrack snapshot logic on three SQLite databases of different sizes.
 Creates sample databases, runs timed snapshots, and prints a summary table with percentage improvements over baseline.
 
+SQLite files are written next to `datatrack.paths.DATABASES_DIR`; delete `.databases/*.db` if you need a clean rerun.
+
 Author: nrnavaneet
 """
 

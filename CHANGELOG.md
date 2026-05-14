@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.17] — 2026-05
+
+- Expand **benchmark** documentation: what artefacts are created, when to run locally, and why CI skips timing scripts.
+
 ## [1.2.16] — 2026-05
 
 - Add an **examples workflow** document that orders `init` through `pipeline run` for onboarding.
