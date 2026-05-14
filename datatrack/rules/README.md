@@ -1,15 +1,7 @@
-# Rules Directory
+# Rules directory
 
-## TODO: Implement Custom Rules Engine
+Today, **lint** and **verify** read the shared **`schema_rules.yaml`** file at the **repository root** (next to `pyproject.toml`). The Python entry points are `datatrack.linter.load_lint_rules()` and `datatrack.verifier.load_rules()`.
 
-This directory is intended to house custom rule implementations for schema validation.
+This package subdirectory is **reserved** for future work such as pluggable rule modules or packaged presets. Nothing here is imported yet; changing only files under `datatrack/rules/` will not affect the CLI until those hooks are wired up.
 
-### Planned Features:
-- Custom rule plugins
-- Rule configuration files
-- Rule validation engine
-- Rule priority system
-
-### Status: Incomplete
-Currently, rules are loaded from `schema_rules.yaml` in the project root. This directory is reserved for future rule engine functionality.
-
+When adding a new rule class later, keep YAML keys in sync with the tables documented in the main **Usage** guide so existing projects do not break.
