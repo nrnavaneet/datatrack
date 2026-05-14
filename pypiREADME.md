@@ -27,7 +27,10 @@ See the repository **SECURITY.md** for how to report issues responsibly. Datatra
 ## Performance & Cost Savings
 
 Datatrack’s parallel and batched snapshot engine delivers **significant performance improvements** for real-world databases.
-Benchmarks were run in August 2025 on a MacBook Pro M2, Python 3.11, using SQLite and PostgreSQL.
+
+For methodology, tables, and how to reproduce numbers locally, see the repository **[docs/PERFORMANCE.md](https://github.com/nrnavaneet/datatrack/blob/main/docs/PERFORMANCE.md)** (PyPI cannot bundle that file in the wheel; the link points to GitHub).
+
+### Summary table (same as extended doc)
 
 | Database Size | Tables | Serial Time | Parallel Time | Speedup | Time Saved (per 1k runs) | Time Saved (per 50k runs) |
 |--------------:|-------:|------------:|--------------:|--------:|-------------------------:|--------------------------:|

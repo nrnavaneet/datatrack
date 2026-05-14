@@ -28,6 +28,8 @@ You need at least one successful `datatrack snapshot` after `connect`. Snapshots
 
 That path is built in code as `datatrack.paths.snapshot_dir(db_name)`; integrations should import it rather than duplicating string paths.
 
+If snapshots feel slow on large schemas, read [Performance](PERFORMANCE.md) for parallelism expectations before changing infrastructure.
+
 If the directory name looks wrong, check that your connection URI points at the intended database name (especially for PostgreSQL path segments).
 
 ## Import or driver errors when connecting

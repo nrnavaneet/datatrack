@@ -14,3 +14,5 @@ There are **no** secret `DATATRACK_*` variables today: the database URI is store
 Relative paths for exports and snapshots are defined in **`datatrack.paths`** (`.databases/exports/`, etc.); override nothing unless you fork the package.
 
 For CI, prefer a disposable SQLite file and a URI such as `sqlite:////tmp/datatrack_ci.db` so jobs do not depend on network databases.
+
+Snapshot duration is dominated by database latency and schema size; see [Performance](PERFORMANCE.md) for benchmark-oriented guidance (not additional environment variables).

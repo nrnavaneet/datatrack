@@ -6,6 +6,7 @@ Start here and jump to the guide you need.
 |----------|--------------------|
 | [Issue & PR templates](https://github.com/nrnavaneet/datatrack/tree/main/.github) | Bug reports, feature requests, pull request checklist |
 | [Security](../SECURITY.md) | How to report vulnerabilities responsibly |
+| [Performance](PERFORMANCE.md) | Benchmarks, parallelism, when to expect wins |
 | [Developing](DEVELOPING.md) | Local venv, editable install, pytest, pre-commit |
 | [Makefile](../Makefile) | `make test` / `make lint` shortcuts from the repo root |
 | [Architecture](ARCHITECTURE.md) | Modules, snapshot lifecycle, pipeline, extension points |
