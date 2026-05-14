@@ -19,7 +19,7 @@ Run the full test suite before opening a PR:
 python3 -m pytest tests/ -q
 ```
 
-Or use `make test` from the repository root if you prefer a short alias.
+From the repository root you can also run **`make test`** or **`make lint`** (see the root `Makefile`).
 
 ## Layout
 

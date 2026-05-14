@@ -22,3 +22,5 @@ pip install -e .
 pre-commit run --all-files
 python3 -m pytest tests/ -q
 ```
+
+Or, after an editable install, `make test` and `make lint` run the same pytest and pre-commit entrypoints as the Makefile shortcuts.

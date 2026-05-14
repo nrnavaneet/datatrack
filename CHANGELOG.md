@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.7] — 2026-05
+
+- Root **Makefile** with `install-editable`, `test`, and `lint` targets; documented in CI and contributor docs.
+
 ## [1.2.6] — 2026-05
 
 - New **Developing** guide for contributors (venv, editable install, tests, pre-commit).
