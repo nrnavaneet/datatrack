@@ -124,6 +124,9 @@ datatrack pipeline run
 
 Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
 
+## 10. When something goes wrong
+
+See [Troubleshooting](TROUBLESHOOTING.md) for disconnect issues, missing snapshots, and driver errors.
 
 For advanced use cases and integration into CI/CD, visit:
 
