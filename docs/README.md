@@ -27,4 +27,4 @@ Start here and jump to the guide you need.
 | [Code of Conduct](contribute/CODE_OF_CONDUCT.md) | Community expectations and enforcement contact |
 | [Contributing](contribute/CONTRIBUTING.md) | Branch workflow, tests, pre-commit |
 
-The main [README](../README.md) stays the marketing and architecture overview; these files are the **operational** reference.
+The main [README](../README.md) stays the marketing and architecture overview; these files are the **operational** reference. The PyPI readme mirrors a subset of this index for package-page readers.

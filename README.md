@@ -156,7 +156,7 @@ Please refer to the following docs for detailed guidance:
 - [Examples (workflow + minimal snapshot)](https://github.com/nrnavaneet/datatrack/tree/main/examples)
 - [Glossary](https://github.com/nrnavaneet/datatrack/blob/main/docs/GLOSSARY.md)
 - [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md) (includes locale notes for Rich output)
-- [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md)
+- [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) (also summarised briefly on PyPI via `pypiREADME.md`)
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 - [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md)
 - [Releasing (maintainers)](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md)

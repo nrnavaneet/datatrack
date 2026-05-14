@@ -4,6 +4,8 @@
 
 This document is for **maintainers** cutting a PyPI release of `datatrack-core`. End users install with `pip install datatrack-core` and do not need these steps.
 
+The shorter **`pypiREADME.md`** file ships on PyPI; it now includes a compact **Contributing** section that points back to these longer guides on GitHub.
+
 ## Checklist
 
 1. Ensure `main` is green (push CI and weekly schedule).

@@ -242,6 +242,10 @@ datatrack pipeline run
 
 Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
 
+## Contributing
+
+Bug reports and feature ideas belong on [GitHub Issues](https://github.com/nrnavaneet/datatrack/issues); code contributions should follow [`docs/contribute/CONTRIBUTING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) and [`docs/DEVELOPING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md). Maintainer-facing release steps live in [`docs/RELEASING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md).
+
 For advanced use cases and integration into CI/CD, visit:
 
 **https://github.com/nrnavaneet/datatrack**

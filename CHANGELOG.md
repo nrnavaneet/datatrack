@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.27] — 2026-05
+
+- Add a **Contributing** section to the PyPI readme with links back to the full GitHub documentation set.
+
 ## [1.2.26] — 2026-05
 
 - Add a **`make clean`** target for local build and pytest cache directories, documented for contributors.
