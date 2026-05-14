@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.48] — 2026-05
+
+- Restrict the **CI workflow** token to `contents: read` and document the permission model in CI and security notes.
+
 ## [1.2.47] — 2026-05
 
 - Document **what to do when CI fails** in the CI guide and cross-link it from troubleshooting, testing, and contributor docs.

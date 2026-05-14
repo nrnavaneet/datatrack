@@ -16,6 +16,8 @@ Dependency updates for GitHub Actions and `pip` manifests are automated via **De
 
 Sensitive PRs should still use private disclosure per the top of this file even if [CODEOWNERS](.github/CODEOWNERS) routes reviews automatically.
 
+The **CI workflow** requests read-only `contents` permission for the default token, reducing blast radius if a third-party Action were compromised.
+
 Scheduled CI on `main` helps catch upstream breakage when dependencies move between PRs; treat failing scheduled runs with the same urgency as `push` failures.
 
 Coordinated disclosure for security releases should follow both this document and [Releasing](RELEASING.md) so PyPI metadata and changelog entries stay aligned.

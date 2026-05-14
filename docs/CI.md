@@ -2,7 +2,7 @@
 
 [← Documentation home](../README.md)
 
-GitHub Actions runs on every push and pull request to `main` (see `.github/workflows/ci.yml`). **Concurrency** is configured so newer commits on the same branch cancel older in-flight workflow runs, keeping the queue short for fast feedback.
+GitHub Actions runs on every push and pull request to `main` (see `.github/workflows/ci.yml`). **Concurrency** is configured so newer commits on the same branch cancel older in-flight workflow runs, keeping the queue short for fast feedback. The workflow declares **`permissions: contents: read`** so the default `GITHUB_TOKEN` stays read-only for repository contents.
 
 Steps in order:
 

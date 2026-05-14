@@ -4,6 +4,7 @@ Start here and jump to the guide you need.
 
 | Document | What you will find |
 |----------|--------------------|
+| [CI workflow](https://github.com/nrnavaneet/datatrack/blob/main/.github/workflows/ci.yml) | Ubuntu job with least-privilege `GITHUB_TOKEN` (`contents: read`) |
 | [CODEOWNERS](https://github.com/nrnavaneet/datatrack/blob/main/.github/CODEOWNERS) | Default review routing on GitHub |
 | [Pull request template](https://github.com/nrnavaneet/datatrack/blob/main/.github/PULL_REQUEST_TEMPLATE.md) | Reviewer checklist for risk notes, tests, and changelog alignment |
 | [Issue & PR templates](https://github.com/nrnavaneet/datatrack/tree/main/.github) | Bug reports, feature requests, pull request checklist |
