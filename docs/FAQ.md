@@ -21,3 +21,7 @@ No. CI and the default `tests/` suite patch filesystem and database discovery so
 ## Can I run Datatrack without installing the `datatrack` script on `PATH`?
 
 Yes, after an editable install you can use `python3 -m datatrack --help` (see [Usage](USAGE.md)).
+
+## Where do maintainers document PyPI releases?
+
+See [Releasing](RELEASING.md) for versioning, tags, and Twine uploads.

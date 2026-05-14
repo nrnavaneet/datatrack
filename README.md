@@ -159,6 +159,7 @@ Please refer to the following docs for detailed guidance:
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md)
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 - [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md)
+- [Releasing (maintainers)](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md)
 
 Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github). After cloning, `make test` and `make lint` mirror the CI pytest and pre-commit steps. An [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) file keeps basic formatting defaults aligned across editors. **Dependabot** opens weekly dependency update PRs for Actions and pip. GitHub Actions also runs a **weekly schedule** on `main` to catch drift when no PRs are open.
 

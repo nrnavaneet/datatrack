@@ -51,3 +51,4 @@ Release versions live in `pyproject.toml`. User-facing changes should have a sho
 - [Architecture](ARCHITECTURE.md) — how modules fit together.
 - [Contributing](contribute/CONTRIBUTING.md) — branch naming and review expectations.
 - [Benchmark harness](../benchmark_tests/README.md) — optional local timings that complement [Performance](PERFORMANCE.md).
+- [Releasing](RELEASING.md) — maintainer-facing PyPI checklist (contributors can skim for versioning norms).

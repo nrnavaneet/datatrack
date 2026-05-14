@@ -21,6 +21,7 @@ Start here and jump to the guide you need.
 | [Usage](USAGE.md) | Every CLI command with examples |
 | [Environment](ENVIRONMENT.md) | Env vars and path layout notes |
 | [Troubleshooting](TROUBLESHOOTING.md) | Common failures and fixes |
+| [Releasing](RELEASING.md) | Maintainer checklist for PyPI versions, tags, and Twine uploads |
 | [CI](CI.md) | What GitHub Actions runs, including weekly scheduled builds |
 | [Contributing](contribute/CONTRIBUTING.md) | Branch workflow, tests, pre-commit |
 | [Code of Conduct](contribute/CODE_OF_CONDUCT.md) | Community expectations |
