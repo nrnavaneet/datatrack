@@ -36,6 +36,12 @@ pip install -e .
 
 Make sure everything still works.
 
+From the repository root, run the unit tests (no live database required for most of them):
+
+```bash
+python3 -m pytest tests/ -q
+```
+
 ## Initialize it:
 
 ```bash
