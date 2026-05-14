@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.45] — 2026-05
+
+- Add tests that **`paths.__all__`** only lists real module attributes so the public API cannot drift silently.
+
 ## [1.2.44] — 2026-05
 
 - Add **Documentation style** guidance for voice, links, and changelog bullets across the doc set.

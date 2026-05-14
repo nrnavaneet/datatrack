@@ -148,7 +148,7 @@ Please refer to the following docs for detailed guidance:
 - [Documentation home (all guides)](https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md)
 - [Documentation style (voice and changelog)](https://github.com/nrnavaneet/datatrack/blob/main/docs/DOCUMENTATION_STYLE.md)
 - [Python modules (import surface)](https://github.com/nrnavaneet/datatrack/blob/main/docs/MODULES.md)
-- [Testing (pytest layout)](https://github.com/nrnavaneet/datatrack/blob/main/docs/TESTING.md) (includes packaging metadata consistency tests)
+- [Testing (pytest layout)](https://github.com/nrnavaneet/datatrack/blob/main/docs/TESTING.md) (includes packaging metadata and `paths.__all__` export checks)
 - [CI overview](https://github.com/nrnavaneet/datatrack/blob/main/docs/CI.md)
 - [Architecture (modules & data flow)](https://github.com/nrnavaneet/datatrack/tree/main/docs/ARCHITECTURE.md) (path layout tests live in `tests/test_paths.py`)
 - [Performance (benchmarks & parallelism)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PERFORMANCE.md)

@@ -11,7 +11,7 @@ Steps in order:
 3. **Editable install** (`pip install -e .`) plus `pytest`.
 4. **`datatrack init`** as a smoke test (allowed to no-op if already initialised).
 5. **pre-commit** on all files.
-6. **`pytest -q tests/`** for the unit suite (includes packaging metadata checks, `python -m datatrack --help`, and path layout tests). Discovery defaults live in `pyproject.toml` under `[tool.pytest.ini_options]`.
+6. **`pytest -q tests/`** for the unit suite (includes packaging metadata checks, `paths.__all__` export tests, `python -m datatrack --help`, and path layout tests). Discovery defaults live in `pyproject.toml` under `[tool.pytest.ini_options]`.
 
 On GitHub you can also run **Actions → Datatrack CI → Run workflow** (`workflow_dispatch`). A **weekly schedule** (Mondays 12:00 UTC) re-runs the same job on `main` even without new commits.
 
