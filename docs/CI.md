@@ -24,3 +24,5 @@ python3 -m pytest tests/ -q
 ```
 
 Or, after an editable install, `make test` and `make lint` run the same pytest and pre-commit entrypoints as the Makefile shortcuts.
+
+Contributors should mirror the [pull request template](https://github.com/nrnavaneet/datatrack/blob/main/.github/PULL_REQUEST_TEMPLATE.md) locally—especially the changelog/version boxes—before requesting review on release-related branches.

@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.23] — 2026-05
+
+- Expand the **pull request template** with risk notes and explicit changelog/version checklist items.
+
 ## [1.2.22] — 2026-05
 
 - Align the **minimal snapshot example** with tracker-shaped YAML (`indexes` per table) and cross-link it from architecture notes.

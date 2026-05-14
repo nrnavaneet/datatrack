@@ -4,6 +4,7 @@ Start here and jump to the guide you need.
 
 | Document | What you will find |
 |----------|--------------------|
+| [Pull request template](https://github.com/nrnavaneet/datatrack/blob/main/.github/PULL_REQUEST_TEMPLATE.md) | Reviewer checklist for risk notes, tests, and changelog alignment |
 | [Issue & PR templates](https://github.com/nrnavaneet/datatrack/tree/main/.github) | Bug reports, feature requests, pull request checklist |
 | [Security](../SECURITY.md) | How to report vulnerabilities responsibly |
 | [Benchmark harness](../benchmark_tests/README.md) | Manual SQLite timing script (not executed in CI) |
