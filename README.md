@@ -18,6 +18,8 @@
   ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md">Usage</a>
   ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md">Environment</a>
+  ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CONTRIBUTING.md">Contributing</a>
   ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md">Code of Conduct</a>
@@ -138,6 +140,7 @@ Please refer to the following docs for detailed guidance:
 
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
 - [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)
+- [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md)
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md)
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 
