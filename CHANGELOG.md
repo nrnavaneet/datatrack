@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.32] — 2026-05
+
+- Clarify **`python -m datatrack`** usage for PATH-less environments and tighten the help smoke test.
+
 ## [1.2.31] — 2026-05
 
 - Document why **`requirements.txt`** mirrors `pyproject.toml` for contributor installs and CI caching.

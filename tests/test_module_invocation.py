@@ -14,3 +14,5 @@ def test_python_m_datatrack_help():
     assert proc.returncode == 0
     out = (proc.stdout or "") + (proc.stderr or "")
     assert len(out.strip()) > 0
+    lowered = out.lower()
+    assert "usage" in lowered or "help" in lowered or "commands" in lowered
