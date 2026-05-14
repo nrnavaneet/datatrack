@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.36] — 2026-05
+
+- Add a **Testing** guide describing pytest layout, offline defaults, and manual integration expectations.
+
 ## [1.2.35] — 2026-05
 
 - Add **Python modules** reference for safe imports (`paths`, `doctor`, `tracker`, etc.) vs CLI-heavy entrypoints.

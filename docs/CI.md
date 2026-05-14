@@ -25,4 +25,4 @@ python3 -m pytest tests/ -q
 
 Or, after an editable install, `make test` and `make lint` run the same pytest and pre-commit entrypoints as the Makefile shortcuts. `make clean` drops local `build/`, `dist/`, and egg-info artefacts from packaging experiments.
 
-Contributors should mirror the [pull request template](https://github.com/nrnavaneet/datatrack/blob/main/.github/PULL_REQUEST_TEMPLATE.md) locally—especially the changelog/version boxes—before requesting review on release-related branches. Keep generated artefacts (`.databases/`, `htmlcov/`, `dist/`) out of commits; they are listed in `.gitignore`.
+Contributors should mirror the [pull request template](https://github.com/nrnavaneet/datatrack/blob/main/.github/PULL_REQUEST_TEMPLATE.md) locally—especially the changelog/version boxes—before requesting review on release-related branches. Keep generated artefacts (`.databases/`, `htmlcov/`, `dist/`) out of commits; they are listed in `.gitignore`. See [Testing](TESTING.md) for what CI’s pytest job is meant to cover.

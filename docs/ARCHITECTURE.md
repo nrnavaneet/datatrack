@@ -32,7 +32,7 @@ The smallest hand-authored snapshot used in docs lives in [`examples/sample_snap
 
 ## Testing strategy
 
-Unit tests patch `get_connected_db_name` or filesystem paths (`tests/commands/test_diff.py`) so CI does not require PostgreSQL or MySQL. Integration tests against real engines are left to contributors’ machines.
+Unit tests patch `get_connected_db_name` or filesystem paths (`tests/commands/test_diff.py`) so CI does not require PostgreSQL or MySQL. Integration tests against real engines are left to contributors’ machines. See [Testing](TESTING.md) for the full map.
 
 ## See also
 

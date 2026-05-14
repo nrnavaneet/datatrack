@@ -64,6 +64,8 @@ python3 -m pytest tests/ -q
 
 The repository pins pytest discovery in `pyproject.toml` (`testpaths = ["tests"]`) so ad-hoc scripts outside `tests/` are not collected accidentally.
 
+See [Testing](../TESTING.md) for an overview of test layout and goals.
+
 Run `make clean` if you experimented with `python -m build` and need to delete `build/`, `dist/`, or stray `.egg-info` folders before committing.
 
 ## Initialize it:

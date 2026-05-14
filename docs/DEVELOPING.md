@@ -24,7 +24,7 @@ Run the full test suite before opening a PR:
 python3 -m pytest tests/ -q
 ```
 
-Pytest reads `[tool.pytest.ini_options]` in `pyproject.toml` so only `tests/` is collected by default.
+Pytest reads `[tool.pytest.ini_options]` in `pyproject.toml` so only `tests/` is collected by default. See [Testing](TESTING.md) for directory layout and goals.
 
 From the repository root you can also run **`make test`** or **`make lint`** (see the root `Makefile`). Use **`make clean`** to remove local build artefacts (`build/`, `dist/`, `*.egg-info`, `.pytest_cache`) before packaging experiments.
 
