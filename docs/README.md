@@ -23,7 +23,7 @@ Start here and jump to the guide you need.
 | [Troubleshooting](TROUBLESHOOTING.md) | Common failures and fixes |
 | [Releasing](RELEASING.md) | Maintainer checklist for PyPI versions, tags, and Twine uploads |
 | [CI](CI.md) | What GitHub Actions runs, including weekly scheduled builds |
+| [Code of Conduct](contribute/CODE_OF_CONDUCT.md) | Community expectations and enforcement contact |
 | [Contributing](contribute/CONTRIBUTING.md) | Branch workflow, tests, pre-commit |
-| [Code of Conduct](contribute/CODE_OF_CONDUCT.md) | Community expectations |
 
 The main [README](../README.md) stays the marketing and architecture overview; these files are the **operational** reference.

@@ -167,6 +167,8 @@ Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/dat
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/nrnavaneet/datatrack/blob/main/LICENSE) file for details.
 
+Community participation follows the [Code of Conduct](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CODE_OF_CONDUCT.md); reports are handled privately via the contact listed there.
+
 ## Maintainer
 
 Developed and maintained by [N R Navaneet](https://github.com/nrnavaneet).

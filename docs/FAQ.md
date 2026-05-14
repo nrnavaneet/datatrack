@@ -25,3 +25,7 @@ Yes, after an editable install you can use `python3 -m datatrack --help` (see [U
 ## Where do maintainers document PyPI releases?
 
 See [Releasing](RELEASING.md) for versioning, tags, and Twine uploads.
+
+## How do I report a code of conduct concern?
+
+Use the contact listed in [Code of Conduct](contribute/CODE_OF_CONDUCT.md); avoid posting sensitive personal details in public GitHub threads.

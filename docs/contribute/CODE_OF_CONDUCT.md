@@ -19,5 +19,7 @@ This Code of Conduct applies within all project spaces and public representation
 ## Enforcement
 Instances of abusive behavior may be reported to navaneetnr@gmail.com.
 
+Reports are reviewed as soon as practical; acknowledge receipt within a few business days when possible. Retaliation for good-faith reports is not tolerated.
+
 ## Attribution
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1.

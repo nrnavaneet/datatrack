@@ -21,6 +21,8 @@ Dependency bumps for Actions and Python packages may arrive as **Dependabot** pu
 
 Release mechanics for PyPI (version bumps, tags, Twine) live in [Releasing](../RELEASING.md); keep `CHANGELOG.md` aligned with every user-facing version bump.
 
+Community expectations are documented in the [Code of Conduct](CODE_OF_CONDUCT.md); please read it before participating in reviews or discussions.
+
 ### 1. Fork the Repo
 
 Click the **"Fork"** button at the top right of [the repository](https://github.com/nrnavaneet/datatrack) and clone your fork:

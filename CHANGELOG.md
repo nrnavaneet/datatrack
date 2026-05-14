@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.19] — 2026-05
+
+- Clarify **Code of Conduct** reporting expectations and link them from contributing docs and the FAQ.
+
 ## [1.2.18] — 2026-05
 
 - Add a **Releasing** guide for maintainers covering version bumps, tags, and PyPI uploads.
