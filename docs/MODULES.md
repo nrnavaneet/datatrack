@@ -13,7 +13,7 @@ Datatrack is primarily a **CLI**, but several packages are safe to import from a
 | `datatrack.linter` / `datatrack.verifier` | Lint and verify latest snapshot against rules. |
 | `datatrack.exporter` | JSON/YAML export of snapshots or diffs. |
 | `datatrack.history` | List snapshot files for a database. |
-| `datatrack.pipeline` | Orchestrated command sequence. |
+| `datatrack.pipeline` | Orchestrated command sequence (`pipeline run`); see [Pipeline](PIPELINE.md). |
 | `datatrack.doctor` | Offline layout checks (`collect_rows`, `format_report`). |
 | `datatrack.connect` / `datatrack.test_connection` | Connection URI handling and smoke queries. |
 

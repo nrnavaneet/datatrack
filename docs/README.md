@@ -13,6 +13,7 @@ Start here and jump to the guide you need.
 | [Examples index](../examples/README.md) | Minimal snapshot fixture, workflow, and links to troubleshooting or performance follow-ups |
 | [Glossary](GLOSSARY.md) | Short definitions of snapshot, lint, verify, pipeline, doctor |
 | [FAQ](FAQ.md) | Common questions about storage layout, lint vs verify, and testing |
+| [Pipeline](PIPELINE.md) | What `pipeline run` does and when to prefer `doctor` instead |
 | [Performance](PERFORMANCE.md) | Benchmarks, parallelism, when to expect wins |
 | [Developing](DEVELOPING.md) | Local venv, editable install, pytest, pre-commit |
 | [Dependabot config](https://github.com/nrnavaneet/datatrack/blob/main/.github/dependabot.yml) | Weekly PRs for Actions and pip dependencies |

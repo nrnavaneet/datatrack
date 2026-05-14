@@ -14,7 +14,7 @@ This is a **reference order** for new projects; adapt flags and engines to your 
 8. **`datatrack export`** — emit JSON or YAML for auditing or downstream tools.
 9. **`datatrack pipeline run`** — run the guarded sequence in CI when you want a single entrypoint.
 
-If a step fails unexpectedly, jump to [Troubleshooting](../docs/TROUBLESHOOTING.md) with the exact command output (redacted).
+If a step fails unexpectedly, jump to [Troubleshooting](../docs/TROUBLESHOOTING.md) with the exact command output (redacted). For a narrative breakdown of each stage, read [Pipeline](../docs/PIPELINE.md).
 
 See `sample_snapshot_minimal.yaml` for the smallest snapshot shape used in tests and docs.
 

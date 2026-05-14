@@ -8,7 +8,7 @@
 | **Diff** | A textual comparison between the two newest snapshot files for a database, produced by `datatrack diff`. |
 | **Lint** | Fast heuristics over the latest snapshot YAML for naming and structural smells (`datatrack lint`). |
 | **Verify** | Rule-driven checks declared in `schema_rules.yaml` (`datatrack verify`). |
-| **Pipeline** | `datatrack pipeline run` orchestrates snapshot, lint, verify, diff, and export in one invocation. |
+| **Pipeline** | `datatrack pipeline run` orchestrates snapshot, lint, verify, diff, and export in one invocation. See [Pipeline](PIPELINE.md). |
 | **Doctor** | `datatrack doctor` checks local folders and config files exist without opening a SQL connection. |
 | **Export base** | The `.databases/exports/` directory tree where per-database artefacts are stored; see `datatrack.paths`. |
 

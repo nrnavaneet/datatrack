@@ -25,6 +25,8 @@ The smallest hand-authored snapshot used in docs lives in [`examples/sample_snap
 
 `doctor` is intentionally side-effect free: it only inspects paths and config files so operators can sanity-check a workspace before running SQL.
 
+See [Pipeline](PIPELINE.md) for the user-facing summary of each orchestrated step.
+
 ## Adding behaviour
 
 - **New CLI command**: register in `cli.py`, implement in a new module or extend an existing one, document in `docs/USAGE.md`, add tests under `tests/`.

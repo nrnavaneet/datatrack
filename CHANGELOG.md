@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.50] — 2026-05
+
+- Add a **Pipeline** guide describing `pipeline run` stages and when to use `doctor` instead.
+
 ## [1.2.49] — 2026-05
 
 - Expand the **PyPI readme** contributing blurb with roadmap and deeper doc pointers for package-page readers.
