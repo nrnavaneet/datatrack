@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.33] — 2026-05
+
+- Expand **security** guidance around shell history, CI logs, and redacted support questions across SECURITY, FAQ, and troubleshooting docs.
+
 ## [1.2.32] — 2026-05
 
 - Clarify **`python -m datatrack`** usage for PATH-less environments and tighten the help smoke test.

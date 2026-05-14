@@ -16,6 +16,8 @@ datatrack disconnect
 
 then connect again with the new URI.
 
+When pasting CLI output for support, scrub passwords and tokens—shell history and CI logs are not secret stores.
+
 ## Quick layout check without connecting
 
 ```bash

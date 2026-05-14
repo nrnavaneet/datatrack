@@ -7,7 +7,7 @@ Thank you for your interest in contributing!
 
 ## Security
 
-Please read the root [**SECURITY.md**](../../SECURITY.md) in this repository before filing a public issue that may contain sensitive connection details.
+Please read the root [**SECURITY.md**](../../SECURITY.md) in this repository before filing a public issue that may contain sensitive connection details. Treat shell history and CI logs as untrusted if they ever captured a `connect` URI.
 
 ## Opening issues and PRs
 

@@ -10,6 +10,8 @@ Instead, contact the maintainer privately (see the email on the [PyPI package pa
 
 This project is a **developer CLI** for schema inspection; it is not a networked service. Most risk comes from **running untrusted connection strings** or **parsing untrusted YAML** on the same machine as production credentials—treat both like any other local tooling.
 
+Shell history, terminal scrollback, and CI logs can capture `datatrack connect` arguments; prefer environment-provided secrets or masked URIs in automation.
+
 Dependency updates for GitHub Actions and `pip` manifests are automated via **Dependabot** (see `.github/dependabot.yml`); review those PRs like any other change.
 
 Scheduled CI on `main` helps catch upstream breakage when dependencies move between PRs; treat failing scheduled runs with the same urgency as `push` failures.

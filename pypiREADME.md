@@ -21,7 +21,7 @@ Because in modern data systems, your schema is your contract—and when it break
 
 ## Security
 
-See the repository **SECURITY.md** for how to report issues responsibly. Datatrack runs locally; protect your connection URIs and snapshot files like any other secret-bearing config.
+See the repository **SECURITY.md** for how to report issues responsibly. Datatrack runs locally; protect your connection URIs and snapshot files like any other secret-bearing config. Remember that shells and CI logs may retain `connect` arguments—rotate credentials if they leak.
 
 
 ## Performance & Cost Savings
