@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.59] — 2026-05
+
+- Document **disk expectations** for the large benchmark profile and cross-link the harness from performance, modules, examples, and FAQ.
+
 ## [1.2.58] — 2026-05
 
 - Add a **30 minute timeout** to the GitHub Actions test job and document timeout behaviour for contributors.

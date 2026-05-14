@@ -27,4 +27,6 @@ python benchmark_tests/parallel_processing.py
 
 The script writes under `.databases/` in the current working directory; it is meant for local investigation, not for CI (CI runs `pytest` only).
 
+The **large** profile creates a multi-hundred-megabyte SQLite file; ensure you have **several gigabytes** of free disk before running the full suite, or delete prior `.databases/*.db` files between runs.
+
 If numbers diverge from the published tables, capture your hardware, Python version, and whether the database files were on SSD vs network storage in your notes.

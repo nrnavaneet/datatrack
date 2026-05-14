@@ -20,3 +20,7 @@ Datatrack is primarily a **CLI**, but several packages are safe to import from a
 | `datatrack.test_connection` | Smoke-test the saved URI with a trivial SQL query. |
 
 Importing `datatrack.cli` has side effects (Typer setup). Prefer **`paths`**, **`doctor`**, or **`tracker`** entrypoints for libraries that only need filesystem or snapshot logic.
+
+## Benchmark harness (not a package)
+
+The `benchmark_tests/` directory holds **manual** timing scripts (`parallel_processing.py`) documented in [`benchmark_tests/README.md`](../benchmark_tests/README.md). They are not importable library modules; run them from the repo root when validating performance claims in [Performance](PERFORMANCE.md).

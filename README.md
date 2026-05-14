@@ -152,7 +152,7 @@ Please refer to the following docs for detailed guidance:
 - [CI overview](https://github.com/nrnavaneet/datatrack/blob/main/docs/CI.md) (includes a **when CI fails** triage section)
 - [Architecture (modules & data flow)](https://github.com/nrnavaneet/datatrack/tree/main/docs/ARCHITECTURE.md) (path layout tests live in `tests/test_paths.py`)
 - [Performance (benchmarks & parallelism)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PERFORMANCE.md)
-- [Benchmark harness (local timings)](https://github.com/nrnavaneet/datatrack/tree/main/benchmark_tests)
+- [Benchmark harness (local timings; read disk notes before the large profile)](https://github.com/nrnavaneet/datatrack/tree/main/benchmark_tests)
 - [Developing locally](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md) (`datatrack`, `python -m datatrack`, or module mode in containers)
 - [Compatibility (Python & databases)](https://github.com/nrnavaneet/datatrack/blob/main/docs/COMPATIBILITY.md)
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md) (editable installs use `requirements.txt` + `pyproject.toml` together)

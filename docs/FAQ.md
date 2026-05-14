@@ -10,6 +10,10 @@ The CLI targets a single **active** project context: `.datatrack/db_link.yaml` h
 
 Under `.databases/exports/<database_name>/snapshots/`, with filenames timestamped when the snapshot was taken. The exact helper is `datatrack.paths.snapshot_dir(db_name)` if you integrate programmatically.
 
+## Where are the performance numbers from?
+
+They come from the manual harness under [`benchmark_tests/`](../benchmark_tests/README.md); see [Performance](PERFORMANCE.md). The **large** profile needs substantial free disk—do not run it on nearly full volumes.
+
 ## Do I need PostgreSQL or MySQL running for the unit tests in this repository?
 
 No. CI and the default `tests/` suite patch filesystem and database discovery so they stay offline. Use your own database when exercising `connect` and `snapshot` manually.

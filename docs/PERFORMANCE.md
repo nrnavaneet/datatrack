@@ -21,7 +21,7 @@ Benchmarks were run on a MacBook Pro M2, Python 3.11, using SQLite and PostgreSQ
 
 ## Reproducing
 
-See `benchmark_tests/README.md` and `benchmark_tests/parallel_processing.py` in the repository for the harness used to generate comparable figures. Those scripts intentionally stay **out of CI**; run them locally when validating performance work.
+See `benchmark_tests/README.md` and `benchmark_tests/parallel_processing.py` in the repository for the harness used to generate comparable figures. Those scripts intentionally stay **out of CI**; run them locally when validating performance work. The benchmark readme warns about **disk usage** for the large synthetic database—free space before you run it.
 
 Hand-maintained YAML under [`examples/`](../examples/README.md) is useful for diffing tiny schemas without a live database.
 
