@@ -15,7 +15,7 @@ Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) 
 
 ## How to Contribute
 
-For a fuller local workflow (venv layout, pytest, pre-commit summary), see [Developing](../DEVELOPING.md).
+For a fuller local workflow (venv layout, pytest, pre-commit summary), see [Developing](../DEVELOPING.md). Editor defaults for line endings and Python indentation live in the root `.editorconfig`.
 
 ### 1. Fork the Repo
 

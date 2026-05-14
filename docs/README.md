@@ -8,6 +8,7 @@ Start here and jump to the guide you need.
 | [Security](../SECURITY.md) | How to report vulnerabilities responsibly |
 | [Performance](PERFORMANCE.md) | Benchmarks, parallelism, when to expect wins |
 | [Developing](DEVELOPING.md) | Local venv, editable install, pytest, pre-commit |
+| [EditorConfig](../.editorconfig) | Shared indentation and newline defaults for editors |
 | [Makefile](../Makefile) | `make test` / `make lint` shortcuts from the repo root |
 | [Architecture](ARCHITECTURE.md) | Modules, snapshot lifecycle, pipeline, extension points |
 | [Doctor](USAGE.md#0-doctor-sanity-check-layout) | `datatrack doctor` — quick layout checks without SQL |

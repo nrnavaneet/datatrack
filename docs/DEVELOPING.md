@@ -24,6 +24,8 @@ python3 -m pytest tests/ -q
 
 From the repository root you can also run **`make test`** or **`make lint`** (see the root `Makefile`).
 
+The repository ships an [`.editorconfig`](../.editorconfig) so most editors pick consistent indentation and newlines.
+
 ## Layout
 
 - `datatrack/` — package source (`cli.py`, services, `paths.py`).

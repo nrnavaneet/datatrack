@@ -2,6 +2,8 @@
 
 [← Documentation home](README.md)
 
+If formatting hooks fail only on your machine, confirm your editor respects the repository [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) and that `pre-commit run --all-files` is clean.
+
 ## `datatrack connect` says a database is already connected
 
 Only one saved URI is stored under `.datatrack/db_link.yaml`. Run:

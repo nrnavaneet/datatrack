@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.10] — 2026-05
+
+- Add **EditorConfig** defaults for Python, YAML, and the Makefile.
+
 ## [1.2.9] — 2026-05
 
 - New **Performance** doc with benchmark tables and reproduction pointers; PyPI readme links to it for full methodology.
