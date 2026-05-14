@@ -167,6 +167,7 @@ Please refer to the following docs for detailed guidance:
 - [Support (bug report checklist)](https://github.com/nrnavaneet/datatrack/blob/main/docs/SUPPORT.md)
 - [Roadmap (informal priorities)](https://github.com/nrnavaneet/datatrack/blob/main/docs/ROADMAP.md)
 - [Credits](https://github.com/nrnavaneet/datatrack/blob/main/docs/CREDITS.md)
+- [Adopters (public references, opt-in)](https://github.com/nrnavaneet/datatrack/blob/main/docs/ADOPTERS.md)
 - [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md) (includes guidance on shell history and leaked connection strings)
 - [Releasing (maintainers)](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md) (`MANIFEST.in` shapes the sdist)
 

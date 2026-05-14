@@ -28,3 +28,4 @@ python3 -m twine upload dist/datatrack_core-X.Y.Z*
 - Verify the [PyPI project page](https://pypi.org/project/datatrack-core/) shows the new version.
 - If the release fixes a security issue, follow **SECURITY.md** disclosure timing before announcing details publicly.
 - Update [Credits](CREDITS.md) if maintainer contact metadata changed in the same release.
+- If you are announcing a notable public adoption, consider adding an entry to [Adopters](ADOPTERS.md) in a follow-up PR after the release dust settles.

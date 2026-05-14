@@ -13,6 +13,7 @@
 - **Bugs and feature requests** — [GitHub Issues](https://github.com/nrnavaneet/datatrack/issues) using the templates.
 - **Security-sensitive reports** — follow [SECURITY.md](../SECURITY.md); do not file public issues with live credentials.
 - **Attribution and maintainer** — see [Credits](../CREDITS.md) for the canonical maintainer link used in releases.
+- **Public adoption listings** — optional; see [Adopters](../ADOPTERS.md) if you want your org named after a successful rollout.
 
 ## What to include
 
