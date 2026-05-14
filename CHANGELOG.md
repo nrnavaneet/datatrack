@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.47] — 2026-05
+
+- Document **what to do when CI fails** in the CI guide and cross-link it from troubleshooting, testing, and contributor docs.
+
 ## [1.2.46] — 2026-05
 
 - Add **`make list-docs`** to print top-level markdown files under `docs/` for documentation index maintenance.

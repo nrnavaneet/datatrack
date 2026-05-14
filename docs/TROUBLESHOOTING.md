@@ -61,4 +61,6 @@ If packaging experiments leave `build/` or `dist/` folders behind, run `make cle
 
 Some commands still expect a configured `.datatrack/` tree; unit tests under `tests/` patch paths so they do not need a live database.
 
+If failures only show up on **GitHub Actions**, read [CI](CI.md#when-ci-fails) for the step-by-step triage list.
+
 Unfamiliar with Datatrack vocabulary? Skim the [Glossary](GLOSSARY.md).

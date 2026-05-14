@@ -33,3 +33,5 @@ make test
 ## Integration and benchmarks
 
 Real-engine tests and timing harnesses are **manual** — see [Benchmark harness](../benchmark_tests/README.md) and run databases on your machine when needed.
+
+When diagnosing **CI-only** failures, start with [CI](CI.md#when-ci-fails) before assuming a database regression.

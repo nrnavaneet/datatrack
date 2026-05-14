@@ -70,6 +70,8 @@ The repository pins pytest discovery in `pyproject.toml` (`testpaths = ["tests"]
 
 See [Testing](../TESTING.md) for an overview of test layout and goals.
 
+When CI is red but local pytest is green, follow [CI → When CI fails](../CI.md#when-ci-fails).
+
 CI also runs `tests/test_packaging_meta.py` so `CHANGELOG.md` headers stay in sync with `pyproject.toml` releases.
 
 Run `make clean` if you experimented with `python -m build` and need to delete `build/`, `dist/`, or stray `.egg-info` folders before committing.

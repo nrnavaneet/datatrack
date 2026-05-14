@@ -26,3 +26,11 @@ python3 -m pytest tests/ -q
 Or, after an editable install, `make test` and `make lint` run the same pytest and pre-commit entrypoints as the Makefile shortcuts. `make clean` drops local `build/`, `dist/`, and egg-info artefacts from packaging experiments. `make list-docs` lists `docs/*.md` filenames to sanity-check the index.
 
 Contributors should mirror the [pull request template](https://github.com/nrnavaneet/datatrack/blob/main/.github/PULL_REQUEST_TEMPLATE.md) locally—especially the changelog/version boxes—before requesting review on release-related branches. Keep generated artefacts (`.databases/`, `htmlcov/`, `dist/`) out of commits; they are listed in `.gitignore`. See [Testing](TESTING.md) for what CI’s pytest job is meant to cover.
+
+## When CI fails
+
+1. **Pre-commit** — run `pre-commit run --all-files` locally; failures are usually formatting or YAML issues.
+2. **pytest** — run `PYTHONPATH=. python3 -m pytest tests/ -q`; packaging meta tests require `CHANGELOG.md` to include a section for the current `pyproject.toml` version.
+3. **Smoke `datatrack init`** — safe to ignore if your branch only touches docs; investigate if CLI imports regressed.
+
+If failures only appear on Ubuntu CI but not macOS, check path case sensitivity and line endings (see `.editorconfig`).
