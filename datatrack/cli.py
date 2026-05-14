@@ -8,6 +8,7 @@ with version control principles, automated linting, and verification rules.
 Main Features:
 --------------
 - init          : Initialize Datatrack in the current directory
+- doctor        : Print local filesystem checks (no SQL)
 - connect       : Save a database connection string
 - disconnect    : Remove saved connection
 - test-connection: Verify if the saved database connection works
@@ -21,16 +22,17 @@ Main Features:
 """
 
 import os
-from pathlib import Path
 
 import typer
 import yaml
 
 from datatrack import connect as connect_module
 from datatrack import diff as diff_module
+from datatrack import doctor as doctor_module
 from datatrack import exporter, history, linter, pipeline
 from datatrack import test_connection as test_module
 from datatrack import tracker, verifier
+from datatrack.paths import CONFIG_DIR, CONFIG_FILE
 
 app = typer.Typer(
     help="Datatrack: Schema tracking CLI",
@@ -38,22 +40,17 @@ app = typer.Typer(
     invoke_without_command=True,
 )
 
-CONFIG_DIR = ".datatrack"
-CONFIG_FILE = "config.yaml"
-
 
 @app.command()
 def init():
     """
     Initialize Datatrack in the current directory.
     """
-    config_path = Path(CONFIG_DIR)
-    if config_path.exists():
+    if CONFIG_DIR.exists():
         typer.echo("Datatrack is already initialized.")
         raise typer.Exit()
 
-    # Create .datatrack directory
-    config_path.mkdir(parents=True, exist_ok=True)
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
 
     # Default config contents
     default_config = {
@@ -63,10 +60,18 @@ def init():
         "sources": [],
     }
 
-    with open(config_path / CONFIG_FILE, "w") as f:
+    with open(CONFIG_FILE, "w") as f:
         yaml.dump(default_config, f)
 
     typer.echo("Datatrack initialized in .datatrack/")
+
+
+@app.command()
+def doctor():
+    """
+    Print filesystem checks (config dir, db link, export paths, schema_rules.yaml).
+    """
+    typer.echo(doctor_module.format_report())
 
 
 @app.command()
@@ -188,7 +193,7 @@ def export(
 @app.command()
 def lint():
     """
-    Run non-blocking schema quality checks (naming,types, etc).
+    Run non-blocking schema quality checks (naming, types, etc.).
     """
     typer.echo("\n Running schema linter...\n")
 
@@ -269,6 +274,9 @@ def main(
         typer.echo("COMMANDS:")
         typer.echo(
             "  init                 Initialize Datatrack config in the current directory.",
+        )
+        typer.echo(
+            "  doctor               Show whether config, db link, exports, and rules file exist.",
         )
         typer.echo(
             "  connect              Connect to a database and save the connection string.",

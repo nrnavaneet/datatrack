@@ -1,9 +1,11 @@
+"""Heuristic lint rules over the latest snapshot YAML (reads ``schema_rules.yaml``)."""
+
 import re
-from pathlib import Path
 
 import yaml
 
 from datatrack.connect import get_connected_db_name
+from datatrack.paths import snapshot_dir
 
 
 def load_lint_rules():
@@ -38,7 +40,7 @@ def load_latest_snapshot():
     Load the most recent YAML schema snapshot from exports.
     """
     db_name = get_connected_db_name()
-    snap_dir = Path(".databases/exports") / db_name / "snapshots"
+    snap_dir = snapshot_dir(db_name)
     snapshots = sorted(snap_dir.glob("*.yaml"), reverse=True)
 
     if not snapshots:

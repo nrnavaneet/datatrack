@@ -17,12 +17,20 @@ Because in modern data systems, your schema is your contract—and when it break
 - Compare schema snapshots (diff)
 - Export to JSON/YAML for auditing or CI
 - Full pipeline in one command
+- `datatrack doctor` for offline layout checks
+
+## Security
+
+See the repository **SECURITY.md** for how to report issues responsibly. Datatrack runs locally; protect your connection URIs and snapshot files like any other secret-bearing config. Remember that shells and CI logs may retain `connect` arguments—rotate credentials if they leak. For what stays on your machine versus what PyPI or GitHub may see, read **[docs/PRIVACY.md](https://github.com/nrnavaneet/datatrack/blob/main/docs/PRIVACY.md)** on GitHub.
 
 
 ## Performance & Cost Savings
 
 Datatrack’s parallel and batched snapshot engine delivers **significant performance improvements** for real-world databases.
-Benchmarks were run in August 2025 on a MacBook Pro M2, Python 3.11, using SQLite and PostgreSQL.
+
+For methodology, tables, and how to reproduce numbers locally, see the repository **[docs/PERFORMANCE.md](https://github.com/nrnavaneet/datatrack/blob/main/docs/PERFORMANCE.md)** (PyPI cannot bundle that file in the wheel; the link points to GitHub).
+
+### Summary table (same as extended doc)
 
 | Database Size | Tables | Serial Time | Parallel Time | Speedup | Time Saved (per 1k runs) | Time Saved (per 50k runs) |
 |--------------:|-------:|------------:|--------------:|--------:|-------------------------:|--------------------------:|
@@ -233,6 +241,10 @@ datatrack pipeline run
 ```
 
 Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
+
+## Contributing
+
+Bug reports and feature ideas belong on [GitHub Issues](https://github.com/nrnavaneet/datatrack/issues); code contributions should follow [`docs/contribute/CONTRIBUTING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) and [`docs/DEVELOPING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md). Maintainer-facing release steps live in [`docs/RELEASING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md). Informal priorities and non-goals are summarised in [`docs/ROADMAP.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/ROADMAP.md); compatibility and support links live under `docs/` on GitHub.
 
 For advanced use cases and integration into CI/CD, visit:
 

@@ -1,5 +1,5 @@
 """
-DataTrack CLI Pipeline
+Datatrack CLI Pipeline
 ----------------------
 
 Executes the full schema validation workflow:
@@ -25,6 +25,7 @@ from datatrack.diff import diff_schemas, load_snapshots
 from datatrack.exporter import export_diff, export_snapshot
 from datatrack.linter import lint_schema
 from datatrack.linter import load_latest_snapshot as load_lint_snapshot
+from datatrack.paths import EXPORT_BASE
 from datatrack.tracker import snapshot
 from datatrack.verifier import load_latest_snapshot as load_ver_snapshot
 from datatrack.verifier import load_rules, verify_schema
@@ -34,8 +35,8 @@ app = typer.Typer()
 # Step result summary
 step_summary = {}
 
-# Export directory (hardcoded in current architecture)
-EXPORT_PATH = ".databases/exports/"
+# Export directory (single source of truth in datatrack.paths)
+EXPORT_PATH = EXPORT_BASE.as_posix() + "/"
 
 console = Console()
 
@@ -48,7 +49,7 @@ def prompt_to_continue(step_name: str) -> bool:
 
 
 def print_summary(summary: dict):
-    table = Table(title="DataTrack: Schema Workflow", show_lines=True)
+    table = Table(title="Datatrack: Schema Workflow", show_lines=True)
     table.add_column("Step", style="bold", justify="left")
     table.add_column("Result", justify="left")
     for step, result in summary.items():

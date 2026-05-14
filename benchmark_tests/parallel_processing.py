@@ -2,6 +2,8 @@
 Benchmark the datatrack snapshot logic on three SQLite databases of different sizes.
 Creates sample databases, runs timed snapshots, and prints a summary table with percentage improvements over baseline.
 
+SQLite files are written next to `datatrack.paths.DATABASES_DIR`; delete `.databases/*.db` if you need a clean rerun.
+
 Author: nrnavaneet
 """
 
@@ -12,9 +14,10 @@ import time
 from rich.console import Console
 from rich.table import Table
 
+from datatrack.paths import DATABASES_DIR
 from datatrack.tracker import snapshot
 
-os.makedirs(".databases", exist_ok=True)
+os.makedirs(DATABASES_DIR, exist_ok=True)
 
 
 def create_db(path, n_tables, n_rows=10):
@@ -33,9 +36,9 @@ def create_db(path, n_tables, n_rows=10):
     conn.close()
 
 
-create_db(".databases/small.db", 10)
-create_db(".databases/medium.db", 100)
-create_db(".databases/large.db", 250)
+create_db(DATABASES_DIR / "small.db", 10)
+create_db(DATABASES_DIR / "medium.db", 100)
+create_db(DATABASES_DIR / "large.db", 250)
 
 
 def run_benchmark(db_uri, label, console):
@@ -57,19 +60,19 @@ results = []
 results.append(
     (
         "Small (10 tables)",
-        run_benchmark("sqlite:///.databases/small.db", "Small (10 tables)", console),
+        run_benchmark(f"sqlite:///{DATABASES_DIR / 'small.db'}", "Small (10 tables)", console),
     ),
 )
 results.append(
     (
         "Medium (100 tables)",
-        run_benchmark("sqlite:///.databases/medium.db", "Medium (100 tables)", console),
+        run_benchmark(f"sqlite:///{DATABASES_DIR / 'medium.db'}", "Medium (100 tables)", console),
     ),
 )
 results.append(
     (
         "Large (250 tables)",
-        run_benchmark("sqlite:///.databases/large.db", "Large (250 tables)", console),
+        run_benchmark(f"sqlite:///{DATABASES_DIR / 'large.db'}", "Large (250 tables)", console),
     ),
 )
 

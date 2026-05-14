@@ -18,6 +18,10 @@
   ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md">Usage</a>
   ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md">Docs index</a>
+  ·
+  <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md">Environment</a>
+  ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CONTRIBUTING.md">Contributing</a>
   ·
   <a href="https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md">Code of Conduct</a>
@@ -91,6 +95,11 @@ Benchmarks were run in August 2025 on a MacBook Pro M2, Python 3.11, using SQLit
           |
           v
 +-------------------+
+|   Path layout     |  (datatrack/paths.py — config, exports, snapshot dirs)
++-------------------+
+          |
+          v
++-------------------+
 |   SQLAlchemy ORM  |  (DB connection, inspection)
 +-------------------+
           |
@@ -136,14 +145,40 @@ and less risk of schema-related outages.
 
 Please refer to the following docs for detailed guidance:
 
-- [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
-- [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)
-- [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md)
-- [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contributeCODE_OF_CONDUCT.md)
+- [Documentation home (all guides)](https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md)
+- [Documentation style (voice and changelog)](https://github.com/nrnavaneet/datatrack/blob/main/docs/DOCUMENTATION_STYLE.md)
+- [Python modules (import surface)](https://github.com/nrnavaneet/datatrack/blob/main/docs/MODULES.md) (service modules include module docstrings enforced by tests)
+- [Testing (pytest layout)](https://github.com/nrnavaneet/datatrack/blob/main/docs/TESTING.md) (includes packaging metadata and `paths.__all__` export checks)
+- [CI overview](https://github.com/nrnavaneet/datatrack/blob/main/docs/CI.md) (includes a **when CI fails** triage section)
+- [Architecture (modules & data flow)](https://github.com/nrnavaneet/datatrack/tree/main/docs/ARCHITECTURE.md) (path layout tests live in `tests/test_paths.py`)
+- [Performance (benchmarks & parallelism)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PERFORMANCE.md)
+- [Benchmark harness (local timings; read disk notes before the large profile)](https://github.com/nrnavaneet/datatrack/tree/main/benchmark_tests)
+- [Developing locally](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md) (`datatrack`, `python -m datatrack`, or module mode in containers)
+- [Compatibility (Python & databases)](https://github.com/nrnavaneet/datatrack/blob/main/docs/COMPATIBILITY.md)
+- [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md) (editable installs use `requirements.txt` + `pyproject.toml` together)
+- [Pipeline (`pipeline run`)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PIPELINE.md)
+- [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md) (includes **disconnect** guidance and a **command quick reference** table)
+- [FAQ (common design questions)](https://github.com/nrnavaneet/datatrack/blob/main/docs/FAQ.md)
+- [Examples (workflow, minimal snapshot, troubleshooting links)](https://github.com/nrnavaneet/datatrack/tree/main/examples)
+- [Glossary](https://github.com/nrnavaneet/datatrack/blob/main/docs/GLOSSARY.md)
+- [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md) (includes locale and optional `TZ` notes for reproducible timestamps)
+- [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) (also summarised briefly on PyPI via `pypiREADME.md`, including roadmap and support links)
+- [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
+- [Support (bug report checklist)](https://github.com/nrnavaneet/datatrack/blob/main/docs/SUPPORT.md)
+- [Roadmap (informal priorities)](https://github.com/nrnavaneet/datatrack/blob/main/docs/ROADMAP.md)
+- [Credits](https://github.com/nrnavaneet/datatrack/blob/main/docs/CREDITS.md)
+- [Adopters (public references, opt-in)](https://github.com/nrnavaneet/datatrack/blob/main/docs/ADOPTERS.md)
+- [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md) (includes guidance on shell history and leaked connection strings)
+- [Privacy (local-first handling, PyPI/GitHub)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PRIVACY.md)
+- [Releasing (maintainers)](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md) (`MANIFEST.in` shapes the sdist)
+
+Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github), including [`CODEOWNERS`](https://github.com/nrnavaneet/datatrack/blob/main/.github/CODEOWNERS) for default review routing when enabled in repository settings. The Datatrack **CI workflow** uses read-only `contents` scope for the default GitHub token. The `test` job stops after **30 minutes** if a step hangs. The pull request template records **risk notes** and reminds authors to bump `CHANGELOG.md` / `pyproject.toml` together when shipping user-visible changes. After cloning, `make test` and `make lint` mirror the CI pytest and pre-commit steps; `make list-docs` lists markdown files under `docs/` for index updates. An [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) file keeps basic formatting defaults aligned across editors. The root [`.gitignore`](https://github.com/nrnavaneet/datatrack/blob/main/.gitignore) excludes `.databases/`, `.venv/`, and common build artefacts so they never enter commits by mistake. **Dependabot** opens weekly dependency update PRs for Actions and pip. GitHub Actions also runs a **weekly schedule** on `main` to catch drift when no PRs are open, and **concurrency** settings cancel outdated workflow runs when you push new commits to the same branch.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/nrnavaneet/datatrack/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/nrnavaneet/datatrack/blob/main/LICENSE) file for details (includes an SPDX-License-Identifier line for tooling).
+
+Community participation follows the [Code of Conduct](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CODE_OF_CONDUCT.md); reports are handled privately via the contact listed there.
 
 ## Maintainer
 

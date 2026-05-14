@@ -1,9 +1,33 @@
 # Contributing to Datatrack
 
+[← Documentation home](README.md)
+
 Thank you for your interest in contributing!
-**Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone.
+**Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone. Maintainer and attribution notes live in [Credits](../CREDITS.md).
+
+If your organisation is comfortable being listed publicly, propose an entry in [Adopters](../ADOPTERS.md) in the same PR that adds supporting links or logos.
+
+Documentation changes should follow [Documentation style](../DOCUMENTATION_STYLE.md) so tone, links, and changelog bullets stay consistent.
+
+## Security
+
+Please read the root [**SECURITY.md**](../../SECURITY.md) in this repository before filing a public issue that may contain sensitive connection details. Treat shell history and CI logs as untrusted if they ever captured a `connect` URI.
+
+## Opening issues and PRs
+
+Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) and [feature request](https://github.com/nrnavaneet/datatrack/issues/new/choose) templates when possible. Pull requests should follow `.github/PULL_REQUEST_TEMPLATE.md` (including the release checklist when you bump versions). General product questions may already be answered in the [FAQ](../FAQ.md). For escalation norms, read [Support](../SUPPORT.md). Large proposals should align with [Roadmap](../ROADMAP.md).
 
 ## How to Contribute
+
+For a fuller local workflow (venv layout, pytest, pre-commit summary), see [Developing](../DEVELOPING.md). Editor defaults for line endings and Python indentation live in the root `.editorconfig`.
+
+Dependency bumps for Actions and Python packages may arrive as **Dependabot** pull requests; please run tests locally before approving. Scheduled CI also exercises `main` weekly even when no PRs land. GitHub Actions **concurrency** rules cancel superseded jobs when you push new commits to the same branch—watch the latest run, not every intermediate one. The repository CI workflow pins **`permissions: contents: read`** for the default `GITHUB_TOKEN`.
+
+Release mechanics for PyPI (version bumps, tags, Twine) live in [Releasing](../RELEASING.md); keep `CHANGELOG.md` aligned with every user-facing version bump. Update the root `MANIFEST.in` when new top-level policy or documentation trees must ship inside the sdist.
+
+Community expectations are documented in the [Code of Conduct](CODE_OF_CONDUCT.md); please read it before participating in reviews or discussions. Keep local databases and virtualenvs out of commits—the root `.gitignore` already excludes `.databases/` and `.venv/`.
+
+Pull requests may request review from [code owners](https://github.com/nrnavaneet/datatrack/blob/main/.github/CODEOWNERS) automatically when GitHub is configured for the repository.
 
 ### 1. Fork the Repo
 
@@ -31,10 +55,29 @@ pip install -e .
   ```
 
 - Follow code style (PEP8, Black) and ensure changes are meaningful.
+- When you change `schema_rules.yaml`, update `linter.py` / `verifier.py` together and extend tests or docs so CI stays green.
+- Never commit unresolved merge markers; `pre-commit` runs `check-merge-conflict` to catch `<<<<<<<` accidentally left in files.
 
 ### 4. Test Your Changes
 
 Make sure everything still works.
+
+From the repository root, run the unit tests (no live database required for most of them). You may use `make test` as a shortcut; use `make list-docs` after adding markdown under `docs/` to verify filenames before updating the index.
+
+```bash
+python3 -m pytest tests/ -q
+# or: make test
+```
+
+The repository pins pytest discovery in `pyproject.toml` (`testpaths = ["tests"]`) so ad-hoc scripts outside `tests/` are not collected accidentally.
+
+See [Testing](../TESTING.md) for an overview of test layout and goals.
+
+When CI is red but local pytest is green, follow [CI → When CI fails](../CI.md#when-ci-fails).
+
+CI also runs `tests/test_packaging_meta.py` so `CHANGELOG.md` headers stay in sync with `pyproject.toml` releases.
+
+Run `make clean` if you experimented with `python -m build` and need to delete `build/`, `dist/`, or stray `.egg-info` folders before committing.
 
 ## Initialize it:
 
@@ -63,6 +106,8 @@ datatrack pipeline run
 Add or update unit tests if necessary.
 
 ### 5. Run Pre-commit Hooks
+
+See also [Architecture](../ARCHITECTURE.md) for where hooks fit in the module graph.
 
 Install and run pre-commit checks:
 

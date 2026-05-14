@@ -1,4 +1,7 @@
-from sqlalchemy import create_engine
+"""Run a trivial SQL query against the saved connection URI (CLI smoke test)."""
+
+from sqlalchemy import create_engine, text
+from sqlalchemy.exc import ArgumentError, OperationalError, SQLAlchemyError
 
 from datatrack import connect
 
@@ -14,10 +17,11 @@ def test_connection():
     try:
         engine = create_engine(source)
         with engine.connect() as conn:
-            # TODO: Should use text() wrapper for SQL statement like other places in codebase
-            conn.execute("SELECT 1")
+            conn.execute(text("SELECT 1"))
         return f"Successfully connected to: {source}"
-    # TODO: Replace bare Exception with specific exception types
-    # Should handle OperationalError, ArgumentError, etc. separately for better error messages
-    except Exception as e:
+    except OperationalError as e:
+        return f"Connection failed (database unreachable or auth error): {e}"
+    except ArgumentError as e:
+        return f"Connection failed (invalid URL or driver): {e}"
+    except SQLAlchemyError as e:
         return f"Connection failed: {e}"
