@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.29] — 2026-05
+
+- Document how **`tests/test_paths.py`** guards export and snapshot directory layout alongside architecture notes.
+
 ## [1.2.28] — 2026-05
 
 - Broaden **`.gitignore`** coverage for build trees, pytest caches, and coverage reports so accidental commits stay rare.

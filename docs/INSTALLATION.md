@@ -39,6 +39,8 @@ pip install -e .
 
 See [Developing](DEVELOPING.md) for venv tips, pytest, and pre-commit.
 
+The [`tests/test_paths.py`](https://github.com/nrnavaneet/datatrack/blob/main/tests/test_paths.py) module encodes the expected `.databases/exports/` layout if you are wiring integrations.
+
 This sets up a local editable environment where you can test changes to the source code.
 
 ## Helpful Commands

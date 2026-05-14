@@ -1,3 +1,5 @@
+"""Tests for `datatrack.paths` layout helpers (export base, per-db folders)."""
+
 from datatrack.paths import DATABASES_DIR, EXPORT_BASE, export_dir, snapshot_dir
 
 

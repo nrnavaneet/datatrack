@@ -12,7 +12,7 @@ Datatrack reads a few standard environment variables when you run the CLI.
 
 There are **no** secret `DATATRACK_*` variables today: the database URI is stored in `.datatrack/db_link.yaml` after you run `datatrack connect`.
 
-Relative paths for exports and snapshots are defined in **`datatrack.paths`** (`.databases/exports/`, etc.); override nothing unless you fork the package.
+Relative paths for exports and snapshots are defined in **`datatrack.paths`** (`.databases/exports/`, etc.); override nothing unless you fork the package. The [`tests/test_paths.py`](https://github.com/nrnavaneet/datatrack/blob/main/tests/test_paths.py) module encodes the expected directory nesting for regressions.
 
 For CI, prefer a disposable SQLite file and a URI such as `sqlite:////tmp/datatrack_ci.db` so jobs do not depend on network databases.
 
