@@ -1,6 +1,6 @@
 # Architecture
 
-This document complements the diagram in the root [README](../README.md). It names **modules**, **data flow**, and **extension points**.
+This document complements the diagram in the root [README](../README.md). It names **modules**, **data flow**, and **extension points**. A compact import-oriented table lives in [Python modules](MODULES.md).
 
 ## Layers
 

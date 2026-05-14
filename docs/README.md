@@ -16,6 +16,7 @@ Start here and jump to the guide you need.
 | [Dependabot config](https://github.com/nrnavaneet/datatrack/blob/main/.github/dependabot.yml) | Weekly PRs for Actions and pip dependencies |
 | [EditorConfig](../.editorconfig) | Shared indentation and newline defaults for editors |
 | [Makefile](../Makefile) | `make test` / `make lint` / `make clean` shortcuts from the repo root |
+| [Python modules](MODULES.md) | Which packages are intended for import vs CLI-only |
 | [Architecture](ARCHITECTURE.md) | Modules, snapshot lifecycle, pipeline, extension points |
 | [Doctor](USAGE.md#0-doctor-sanity-check-layout) | `datatrack doctor` — quick layout checks without SQL |
 | [Installation](INSTALLATION.md) | PyPI vs editable install, Python version, first commands |

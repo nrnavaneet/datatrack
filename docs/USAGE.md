@@ -4,7 +4,7 @@
 
 Datatrack is a CLI tool for tracking, linting, verifying, and exporting database schema changes.
 
-Terms like **snapshot**, **lint**, and **verify** are defined in the [Glossary](GLOSSARY.md).
+Terms like **snapshot**, **lint**, and **verify** are defined in the [Glossary](GLOSSARY.md). For programmatic use, see [Python modules](MODULES.md).
 
 ## Helpful Commands
 

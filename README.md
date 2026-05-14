@@ -146,6 +146,7 @@ and less risk of schema-related outages.
 Please refer to the following docs for detailed guidance:
 
 - [Documentation home (all guides)](https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md)
+- [Python modules (import surface)](https://github.com/nrnavaneet/datatrack/blob/main/docs/MODULES.md)
 - [Architecture (modules & data flow)](https://github.com/nrnavaneet/datatrack/tree/main/docs/ARCHITECTURE.md) (path layout tests live in `tests/test_paths.py`)
 - [Performance (benchmarks & parallelism)](https://github.com/nrnavaneet/datatrack/blob/main/docs/PERFORMANCE.md)
 - [Benchmark harness (local timings)](https://github.com/nrnavaneet/datatrack/tree/main/benchmark_tests)

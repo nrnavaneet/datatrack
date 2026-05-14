@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.35] — 2026-05
+
+- Add **Python modules** reference for safe imports (`paths`, `doctor`, `tracker`, etc.) vs CLI-heavy entrypoints.
+
 ## [1.2.34] — 2026-05
 
 - Cross-link **examples** with troubleshooting and performance docs so local experiments have an obvious escalation path.
