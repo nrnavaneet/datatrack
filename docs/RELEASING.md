@@ -21,6 +21,8 @@ python3 -m build
 python3 -m twine upload dist/datatrack_core-X.Y.Z*
 ```
 
+`MANIFEST.in` ensures long-form docs and policy files ship in the **sdist** alongside the Python package; skim the generated `dist/*.tar.gz` before upload.
+
 ## After release
 
 - Verify the [PyPI project page](https://pypi.org/project/datatrack-core/) shows the new version.

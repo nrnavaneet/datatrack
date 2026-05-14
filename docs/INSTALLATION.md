@@ -30,7 +30,7 @@ The [`examples/README.md`](https://github.com/nrnavaneet/datatrack/blob/main/exa
 
 ## Option 2: Install from GitHub (For Development & Contribution)
 
-Use this method if you intend to modify or contribute to the project.
+Use this method if you intend to modify or contribute to the project. Building an sdist (`python -m build`) picks up extra files via `MANIFEST.in` (LICENSE, SECURITY, `docs/`, `examples/`).
 
 ```bash
 git clone https://github.com/nrnavaneet/datatrack.git

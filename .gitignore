@@ -9,7 +9,6 @@ example.db
 dist
 build/
 .eggs/
-MANIFEST.in
 pyREADME.md
 .ruff_cache
 .pytest_cache/

@@ -163,7 +163,7 @@ Please refer to the following docs for detailed guidance:
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 - [Support (bug report checklist)](https://github.com/nrnavaneet/datatrack/blob/main/docs/SUPPORT.md)
 - [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md) (includes guidance on shell history and leaked connection strings)
-- [Releasing (maintainers)](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md)
+- [Releasing (maintainers)](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md) (`MANIFEST.in` shapes the sdist)
 
 Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github), including [`CODEOWNERS`](https://github.com/nrnavaneet/datatrack/blob/main/.github/CODEOWNERS) for default review routing when enabled in repository settings. The pull request template records **risk notes** and reminds authors to bump `CHANGELOG.md` / `pyproject.toml` together when shipping user-visible changes. After cloning, `make test` and `make lint` mirror the CI pytest and pre-commit steps. An [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) file keeps basic formatting defaults aligned across editors. The root [`.gitignore`](https://github.com/nrnavaneet/datatrack/blob/main/.gitignore) excludes `.databases/`, `.venv/`, and common build artefacts so they never enter commits by mistake. **Dependabot** opens weekly dependency update PRs for Actions and pip. GitHub Actions also runs a **weekly schedule** on `main` to catch drift when no PRs are open, and **concurrency** settings cancel outdated workflow runs when you push new commits to the same branch.
 

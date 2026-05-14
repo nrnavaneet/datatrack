@@ -48,6 +48,8 @@ pre-commit run --all-files
 
 Release versions live in `pyproject.toml`. User-facing changes should have a short entry under the matching version in `CHANGELOG.md` in the same PR when behaviour or docs change materially.
 
+When cutting releases locally, `python -m build` respects `MANIFEST.in` for sdist contents—verify `dist/` after `make clean`.
+
 ## See also
 
 - [Architecture](ARCHITECTURE.md) — how modules fit together.

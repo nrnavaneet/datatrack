@@ -16,6 +16,7 @@ Start here and jump to the guide you need.
 | [Developing](DEVELOPING.md) | Local venv, editable install, pytest, pre-commit |
 | [Dependabot config](https://github.com/nrnavaneet/datatrack/blob/main/.github/dependabot.yml) | Weekly PRs for Actions and pip dependencies |
 | [EditorConfig](../.editorconfig) | Shared indentation and newline defaults for editors |
+| [MANIFEST.in](../MANIFEST.in) | Extra files included in Python source distributions |
 | [Makefile](../Makefile) | `make test` / `make lint` / `make clean` shortcuts from the repo root |
 | [Support](SUPPORT.md) | Where to ask questions and what to include in bug reports |
 | [Testing](TESTING.md) | Where tests live, goals, and how to run pytest |
