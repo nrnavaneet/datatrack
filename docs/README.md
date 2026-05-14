@@ -23,6 +23,7 @@ Start here and jump to the guide you need.
 | [Python modules](MODULES.md) | Which packages are intended for import vs CLI-only |
 | [Architecture](ARCHITECTURE.md) | Modules, snapshot lifecycle, pipeline, extension points |
 | [Doctor](USAGE.md#0-doctor-sanity-check-layout) | `datatrack doctor` — quick layout checks without SQL |
+| [Compatibility](COMPATIBILITY.md) | Python range, engines, drivers, and terminal expectations |
 | [Installation](INSTALLATION.md) | PyPI vs editable install, Python version, first commands |
 | [Usage](USAGE.md) | Every CLI command with examples |
 | [Environment](ENVIRONMENT.md) | Env vars and path layout notes |

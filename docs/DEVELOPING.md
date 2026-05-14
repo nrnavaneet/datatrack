@@ -2,7 +2,7 @@
 
 [← Documentation home](README.md)
 
-Use this guide when you clone the repository to add features or fix bugs. End users who only install from PyPI can skip it.
+Use this guide when you clone the repository to add features or fix bugs. End users who only install from PyPI can skip it. For supported Python versions and database drivers, see [Compatibility](COMPATIBILITY.md).
 
 ## Environment
 

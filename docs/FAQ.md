@@ -20,7 +20,7 @@ No. CI and the default `tests/` suite patch filesystem and database discovery so
 
 ## Which environment variables matter for the CLI?
 
-Locale and identity-related variables (`USER`, `HOME`, `LANG`, `LC_ALL`) are summarised in [Environment](ENVIRONMENT.md).
+Locale and identity-related variables (`USER`, `HOME`, `LANG`, `LC_ALL`) are summarised in [Environment](ENVIRONMENT.md). For Python and driver support, see [Compatibility](COMPATIBILITY.md).
 
 ## Can I run Datatrack without installing the `datatrack` script on `PATH`?
 
