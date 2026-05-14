@@ -188,7 +188,7 @@ def export(
 @app.command()
 def lint():
     """
-    Run non-blocking schema quality checks (naming,types, etc).
+    Run non-blocking schema quality checks (naming, types, etc.).
     """
     typer.echo("\n Running schema linter...\n")
 
