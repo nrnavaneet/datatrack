@@ -22,6 +22,8 @@ Creates a `.datatrack/` folder with configuration.
 
 Once installed, you can start using the `datatrack` CLI directly.
 
+For a guided command order, see [`examples/workflow.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/workflow.md) in the repository.
+
 ## Option 2: Install from GitHub (For Development & Contribution)
 
 Use this method if you intend to modify or contribute to the project.

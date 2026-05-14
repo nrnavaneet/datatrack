@@ -140,6 +140,8 @@ datatrack pipeline run
 
 Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
 
+A narrative walkthrough from `init` to `pipeline run` lives under [`examples/workflow.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/workflow.md).
+
 ## 10. When something goes wrong
 
 See [Troubleshooting](TROUBLESHOOTING.md) for disconnect issues, missing snapshots, and driver errors.

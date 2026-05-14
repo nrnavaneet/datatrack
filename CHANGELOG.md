@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.16] — 2026-05
+
+- Add an **examples workflow** document that orders `init` through `pipeline run` for onboarding.
+
 ## [1.2.15] — 2026-05
 
 - Run **CI on a weekly cron** against `main` in addition to pushes and manual dispatch.
