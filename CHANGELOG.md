@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.44] — 2026-05
+
+- Add **Documentation style** guidance for voice, links, and changelog bullets across the doc set.
+
 ## [1.2.43] — 2026-05
 
 - Add **Credits** for maintainer attribution and upstream library acknowledgement.

@@ -18,6 +18,7 @@ Start here and jump to the guide you need.
 | [EditorConfig](../.editorconfig) | Shared indentation and newline defaults for editors |
 | [MANIFEST.in](../MANIFEST.in) | Extra files included in Python source distributions |
 | [Makefile](../Makefile) | `make test` / `make lint` / `make clean` shortcuts from the repo root |
+| [Documentation style](DOCUMENTATION_STYLE.md) | Voice, linking, and changelog conventions for this repo |
 | [Credits](CREDITS.md) | Maintainer, community, and upstream library acknowledgement |
 | [Roadmap](ROADMAP.md) | Informal priorities and non-goals for the project |
 | [Support](SUPPORT.md) | Where to ask questions and what to include in bug reports |

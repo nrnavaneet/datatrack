@@ -5,6 +5,8 @@
 Thank you for your interest in contributing!
 **Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone. Maintainer and attribution notes live in [Credits](../CREDITS.md).
 
+Documentation changes should follow [Documentation style](../DOCUMENTATION_STYLE.md) so tone, links, and changelog bullets stay consistent.
+
 ## Security
 
 Please read the root [**SECURITY.md**](../../SECURITY.md) in this repository before filing a public issue that may contain sensitive connection details. Treat shell history and CI logs as untrusted if they ever captured a `connect` URI.

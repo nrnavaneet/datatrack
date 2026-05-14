@@ -8,6 +8,8 @@
 - **Deterministic** — filesystem and DB name helpers are patched so snapshots do not touch real `.databases/` trees during unit runs.
 - **Smoke critical entrypoints** — `python -m datatrack --help` is exercised so module mode keeps working in minimal environments.
 
+Doc-only PRs should still follow [Documentation style](DOCUMENTATION_STYLE.md) for cross-links and changelog bullets.
+
 ## Commands
 
 ```bash

@@ -146,6 +146,7 @@ and less risk of schema-related outages.
 Please refer to the following docs for detailed guidance:
 
 - [Documentation home (all guides)](https://github.com/nrnavaneet/datatrack/tree/main/docs/README.md)
+- [Documentation style (voice and changelog)](https://github.com/nrnavaneet/datatrack/blob/main/docs/DOCUMENTATION_STYLE.md)
 - [Python modules (import surface)](https://github.com/nrnavaneet/datatrack/blob/main/docs/MODULES.md)
 - [Testing (pytest layout)](https://github.com/nrnavaneet/datatrack/blob/main/docs/TESTING.md) (includes packaging metadata consistency tests)
 - [CI overview](https://github.com/nrnavaneet/datatrack/blob/main/docs/CI.md)

@@ -156,4 +156,4 @@ For advanced use cases and integration into CI/CD, visit:
 
 **https://github.com/nrnavaneet/datatrack**
 
-Deeper module layout: [Architecture](ARCHITECTURE.md). Path constants are covered by [`tests/test_paths.py`](https://github.com/nrnavaneet/datatrack/blob/main/tests/test_paths.py).
+Deeper module layout: [Architecture](ARCHITECTURE.md). Path constants are covered by [`tests/test_paths.py`](https://github.com/nrnavaneet/datatrack/blob/main/tests/test_paths.py). Documentation conventions: [Documentation style](DOCUMENTATION_STYLE.md).
