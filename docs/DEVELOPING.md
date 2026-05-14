@@ -44,6 +44,8 @@ Hooks run Black, Ruff, isort, and basic file checks. Run them on all files after
 pre-commit run --all-files
 ```
 
+The `check-merge-conflict` hook rejects files that still contain Git conflict markers—fix merges locally before pushing.
+
 ## Version and changelog
 
 Release versions live in `pyproject.toml`. User-facing changes should have a short entry under the matching version in `CHANGELOG.md` in the same PR when behaviour or docs change materially.

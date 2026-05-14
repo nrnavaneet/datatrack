@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.55] — 2026-05
+
+- Enable **check-merge-conflict** in pre-commit and document it in CI, developing, and pull request checklists.
+
 ## [1.2.54] — 2026-05
 
 - Add an **Adopters** page for optional public references and link it from contributor and support docs.

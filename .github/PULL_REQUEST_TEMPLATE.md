@@ -19,3 +19,4 @@ python3 -m pytest tests/ -q
 - [ ] `pre-commit run --all-files` passes locally (or `make lint`)
 - [ ] No secrets or production URIs in commits
 - [ ] `CHANGELOG.md` and `pyproject.toml` versions updated if this PR is release-worthy
+- [ ] No unresolved merge conflict markers (`<<<<<<<`) slipped in (also caught by pre-commit `check-merge-conflict`)
