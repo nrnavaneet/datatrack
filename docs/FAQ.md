@@ -4,7 +4,7 @@
 
 ## Why does Datatrack only store one database URI?
 
-The CLI targets a single **active** project context: `.datatrack/db_link.yaml` holds one connection string so commands like `snapshot` and `pipeline run` do not need extra flags every time. Switch databases with `datatrack disconnect` followed by `datatrack connect <new-uri>`.
+The CLI targets a single **active** project context: `.datatrack/db_link.yaml` holds one connection string so commands like `snapshot` and `pipeline run` do not need extra flags every time. Switch databases with `datatrack disconnect` followed by `datatrack connect <new-uri>` (see [Usage §2b](USAGE.md#2b-clear-or-rotate-the-saved-uri)).
 
 ## Where do snapshots live on disk?
 

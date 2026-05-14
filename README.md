@@ -151,7 +151,7 @@ Please refer to the following docs for detailed guidance:
 - [Benchmark harness (local timings)](https://github.com/nrnavaneet/datatrack/tree/main/benchmark_tests)
 - [Developing locally](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md) (`datatrack` or `python -m datatrack`)
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md)
-- [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md)
+- [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md) (includes a dedicated **disconnect** section for rotating URIs)
 - [FAQ (common design questions)](https://github.com/nrnavaneet/datatrack/blob/main/docs/FAQ.md)
 - [Examples (workflow + minimal snapshot)](https://github.com/nrnavaneet/datatrack/tree/main/examples)
 - [Glossary](https://github.com/nrnavaneet/datatrack/blob/main/docs/GLOSSARY.md)

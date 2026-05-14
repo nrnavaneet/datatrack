@@ -22,6 +22,8 @@ Creates a `.datatrack/` folder with configuration.
 
 Once installed, you can start using the `datatrack` CLI directly.
 
+Rotating the active database always starts with `datatrack disconnect` before a new `connect` (details in [Usage](USAGE.md#2b-clear-or-rotate-the-saved-uri)).
+
 For a guided command order, see [`examples/workflow.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/workflow.md) in the repository.
 
 ## Option 2: Install from GitHub (For Development & Contribution)
