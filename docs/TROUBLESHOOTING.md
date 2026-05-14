@@ -49,6 +49,8 @@ pip install -e .
 python3 -m pytest tests/ -q
 ```
 
+If packaging experiments leave `build/` or `dist/` folders behind, run `make clean` from the repository root before opening a PR.
+
 Some commands still expect a configured `.datatrack/` tree; unit tests under `tests/` patch paths so they do not need a live database.
 
 Unfamiliar with Datatrack vocabulary? Skim the [Glossary](GLOSSARY.md).

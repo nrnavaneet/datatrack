@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.26] — 2026-05
+
+- Add a **`make clean`** target for local build and pytest cache directories, documented for contributors.
+
 ## [1.2.25] — 2026-05
 
 - Promote **`disconnect` + `connect`** guidance to its own usage section with anchors from installation and FAQ.
