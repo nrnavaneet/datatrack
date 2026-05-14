@@ -24,6 +24,8 @@
 
 Maintainers monitor issues asynchronously; Dependabot and scheduled CI noise is normal on busy weeks.
 
+GitHub Actions jobs use a finite **timeout**; if your PR shows “cancelled” after ~30 minutes, inspect logs for hung installs rather than assuming a flaky test.
+
 For broader direction (what the project is unlikely to take on soon), read [Roadmap](ROADMAP.md) before proposing large new subsystems.
 
 The **PyPI** package readme is intentionally short; it links back to GitHub for roadmap, compatibility, and deeper troubleshooting.

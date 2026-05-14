@@ -63,7 +63,7 @@ If packaging experiments leave `build/` or `dist/` folders behind, run `make cle
 
 Some commands still expect a configured `.datatrack/` tree; unit tests under `tests/` patch paths so they do not need a live database.
 
-If failures only show up on **GitHub Actions**, read [CI](CI.md#when-ci-fails) for the step-by-step triage list.
+If failures only show up on **GitHub Actions**, read [CI](CI.md#when-ci-fails) for the step-by-step triage list. Remember the workflow stops automatically after its configured **timeout**—compare elapsed minutes in the job summary.
 
 If snapshot filenames differ only by timezone between macOS and Linux runners, align `TZ` (often `UTC`) as in [Environment](ENVIRONMENT.md).
 

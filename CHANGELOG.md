@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.58] — 2026-05
+
+- Add a **30 minute timeout** to the GitHub Actions test job and document timeout behaviour for contributors.
+
 ## [1.2.57] — 2026-05
 
 - Add an **SPDX-License-Identifier** line to the MIT license file and note it from readme and credits docs.

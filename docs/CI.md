@@ -13,7 +13,7 @@ Steps in order:
 5. **pre-commit** on all files (includes `check-merge-conflict` for stray `<<<<<<<` markers).
 6. **`pytest -q tests/`** for the unit suite (includes packaging metadata checks, `paths.__all__` export tests, service module docstring checks, `python -m datatrack --help`, and path layout tests). Discovery defaults live in `pyproject.toml` under `[tool.pytest.ini_options]`.
 
-On GitHub you can also run **Actions → Datatrack CI → Run workflow** (`workflow_dispatch`). A **weekly schedule** (Mondays 12:00 UTC) re-runs the same job on `main` even without new commits.
+On GitHub you can also run **Actions → Datatrack CI → Run workflow** (`workflow_dispatch`). A **weekly schedule** (Mondays 12:00 UTC) re-runs the same job on `main` even without new commits. The `test` job has a **30 minute** wall-clock timeout so hung steps fail fast instead of consuming runner quota indefinitely.
 
 To reproduce locally:
 
