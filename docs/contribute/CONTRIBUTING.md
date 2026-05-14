@@ -72,6 +72,8 @@ Add or update unit tests if necessary.
 
 ### 5. Run Pre-commit Hooks
 
+See also [Architecture](../ARCHITECTURE.md) for where hooks fit in the module graph.
+
 Install and run pre-commit checks:
 
 ```bash

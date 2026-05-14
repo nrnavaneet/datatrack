@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.2] — 2026-05
+
+- New **Architecture** guide describing modules, snapshot lifecycle, and extension points.
+
 ## [1.2.1] — 2026-05
 
 - New **`datatrack doctor`** command and module for offline layout checks.

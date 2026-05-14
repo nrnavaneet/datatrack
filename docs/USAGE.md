@@ -142,3 +142,5 @@ See [Troubleshooting](TROUBLESHOOTING.md) for disconnect issues, missing snapsho
 For advanced use cases and integration into CI/CD, visit:
 
 **https://github.com/nrnavaneet/datatrack**
+
+Deeper module layout: [Architecture](ARCHITECTURE.md).
