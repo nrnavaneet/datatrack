@@ -154,6 +154,8 @@ Please refer to the following docs for detailed guidance:
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 - [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md)
 
+Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github).
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/nrnavaneet/datatrack/blob/main/LICENSE) file for details.

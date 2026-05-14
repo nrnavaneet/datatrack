@@ -9,6 +9,10 @@ Thank you for your interest in contributing!
 
 Please read the root [**SECURITY.md**](../../SECURITY.md) in this repository before filing a public issue that may contain sensitive connection details.
 
+## Opening issues and PRs
+
+Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) and [feature request](https://github.com/nrnavaneet/datatrack/issues/new/choose) templates when possible. Pull requests should follow `.github/PULL_REQUEST_TEMPLATE.md`.
+
 ## How to Contribute
 
 ### 1. Fork the Repo

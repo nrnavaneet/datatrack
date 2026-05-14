@@ -4,6 +4,7 @@ Start here and jump to the guide you need.
 
 | Document | What you will find |
 |----------|--------------------|
+| [Issue & PR templates](https://github.com/nrnavaneet/datatrack/tree/main/.github) | Bug reports, feature requests, pull request checklist |
 | [Security](../SECURITY.md) | How to report vulnerabilities responsibly |
 | [Architecture](ARCHITECTURE.md) | Modules, snapshot lifecycle, pipeline, extension points |
 | [Doctor](USAGE.md#0-doctor-sanity-check-layout) | `datatrack doctor` — quick layout checks without SQL |
