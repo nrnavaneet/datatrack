@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.60] — 2026-05
+
+- Add **Privacy** documentation describing local-first behaviour and third-party surfaces (PyPI, GitHub), and link it from the docs index, security, FAQ, support, and readme.
+
 ## [1.2.59] — 2026-05
 
 - Document **disk expectations** for the large benchmark profile and cross-link the harness from performance, modules, examples, and FAQ.

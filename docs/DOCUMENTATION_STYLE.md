@@ -11,6 +11,7 @@
 
 - Cross-link new pages from `docs/README.md` and, when user-facing, from the root `README.md` or `USAGE.md`.
 - Use relative links inside `docs/` (e.g. `[Usage](USAGE.md)`) so the tree works offline and on GitHub.
+- Keep **SECURITY** and **Privacy** pages short and actionable; point deep technical detail at the modules or CLI sections it belongs with.
 
 ## Changelog
 

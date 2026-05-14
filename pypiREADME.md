@@ -21,7 +21,7 @@ Because in modern data systems, your schema is your contract—and when it break
 
 ## Security
 
-See the repository **SECURITY.md** for how to report issues responsibly. Datatrack runs locally; protect your connection URIs and snapshot files like any other secret-bearing config. Remember that shells and CI logs may retain `connect` arguments—rotate credentials if they leak.
+See the repository **SECURITY.md** for how to report issues responsibly. Datatrack runs locally; protect your connection URIs and snapshot files like any other secret-bearing config. Remember that shells and CI logs may retain `connect` arguments—rotate credentials if they leak. For what stays on your machine versus what PyPI or GitHub may see, read **[docs/PRIVACY.md](https://github.com/nrnavaneet/datatrack/blob/main/docs/PRIVACY.md)** on GitHub.
 
 
 ## Performance & Cost Savings

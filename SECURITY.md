@@ -21,3 +21,5 @@ The **CI workflow** requests read-only `contents` permission for the default tok
 Scheduled CI on `main` helps catch upstream breakage when dependencies move between PRs; treat failing scheduled runs with the same urgency as `push` failures.
 
 Coordinated disclosure for security releases should follow both this document and [Releasing](RELEASING.md) so PyPI metadata and changelog entries stay aligned.
+
+For a short note on what Datatrack keeps local versus what PyPI/GitHub may see, read [Privacy](docs/PRIVACY.md) in this repository.

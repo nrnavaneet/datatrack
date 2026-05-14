@@ -9,6 +9,7 @@ Start here and jump to the guide you need.
 | [Pull request template](https://github.com/nrnavaneet/datatrack/blob/main/.github/PULL_REQUEST_TEMPLATE.md) | Reviewer checklist for risk notes, tests, and changelog alignment |
 | [Issue & PR templates](https://github.com/nrnavaneet/datatrack/tree/main/.github) | Bug reports, feature requests, pull request checklist |
 | [Security](../SECURITY.md) | How to report vulnerabilities responsibly |
+| [Privacy](PRIVACY.md) | Local-first data handling and third-party surfaces (PyPI, GitHub) |
 | [Benchmark harness](../benchmark_tests/README.md) | Manual SQLite timing script (not executed in CI) |
 | [Examples index](../examples/README.md) | Minimal snapshot fixture, workflow, and links to troubleshooting or performance follow-ups |
 | [Glossary](GLOSSARY.md) | Short definitions of snapshot, lint, verify, pipeline, doctor |

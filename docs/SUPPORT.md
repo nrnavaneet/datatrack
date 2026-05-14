@@ -22,6 +22,8 @@
 - Redacted connection URI shape (omit passwords).
 - Minimal CLI output showing the failure.
 
+GitHub Issues and Discussions are **public** unless you use a private fork or enterprise features your organisation provides. Do not paste production credentials into threads; rotate anything that slips into logs or shell history (see **SECURITY.md** and [Privacy](PRIVACY.md)).
+
 Maintainers monitor issues asynchronously; Dependabot and scheduled CI noise is normal on busy weeks.
 
 GitHub Actions jobs use a finite **timeout**; if your PR shows “cancelled” after ~30 minutes, inspect logs for hung installs rather than assuming a flaky test.
