@@ -41,6 +41,12 @@ datatrack connect postgresql+psycopg2://postgres:<password>@localhost:5432/<data
 datatrack connect sqlite:///.databases/<database-name>
 ```
 
+To point Datatrack at a different database, remove the saved link first, then connect again:
+
+```bash
+datatrack disconnect
+datatrack connect <new-uri>
+```
 
 ## 3. Take a Schema Snapshot
 
