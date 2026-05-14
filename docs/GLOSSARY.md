@@ -15,3 +15,5 @@
 For narrative context, see [Architecture](ARCHITECTURE.md) and the [FAQ](FAQ.md). Operational environment variables are listed in [Environment](ENVIRONMENT.md).
 
 Rule definitions ship in the repository-root `schema_rules.yaml`; treat unexpected key renames as breaking changes for `verify`.
+
+Worked examples without a live database live under [`examples/`](../examples/README.md).

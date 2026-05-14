@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.34] — 2026-05
+
+- Cross-link **examples** with troubleshooting and performance docs so local experiments have an obvious escalation path.
+
 ## [1.2.33] — 2026-05
 
 - Expand **security** guidance around shell history, CI logs, and redacted support questions across SECURITY, FAQ, and troubleshooting docs.

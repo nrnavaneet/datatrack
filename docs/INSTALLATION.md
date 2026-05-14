@@ -26,6 +26,8 @@ Rotating the active database always starts with `datatrack disconnect` before a 
 
 For a guided command order, see [`examples/workflow.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/workflow.md) in the repository.
 
+The [`examples/README.md`](https://github.com/nrnavaneet/datatrack/blob/main/examples/README.md) index links back to troubleshooting and performance docs if a local experiment misbehaves.
+
 ## Option 2: Install from GitHub (For Development & Contribution)
 
 Use this method if you intend to modify or contribute to the project.

@@ -8,7 +8,7 @@ Start here and jump to the guide you need.
 | [Issue & PR templates](https://github.com/nrnavaneet/datatrack/tree/main/.github) | Bug reports, feature requests, pull request checklist |
 | [Security](../SECURITY.md) | How to report vulnerabilities responsibly |
 | [Benchmark harness](../benchmark_tests/README.md) | Manual SQLite timing script (not executed in CI) |
-| [Examples index](../examples/README.md) | Minimal snapshot fixture and a reference CLI workflow |
+| [Examples index](../examples/README.md) | Minimal snapshot fixture, workflow, and links to troubleshooting or performance follow-ups |
 | [Glossary](GLOSSARY.md) | Short definitions of snapshot, lint, verify, pipeline, doctor |
 | [FAQ](FAQ.md) | Common questions about storage layout, lint vs verify, and testing |
 | [Performance](PERFORMANCE.md) | Benchmarks, parallelism, when to expect wins |

@@ -23,6 +23,8 @@ Benchmarks were run on a MacBook Pro M2, Python 3.11, using SQLite and PostgreSQ
 
 See `benchmark_tests/README.md` and `benchmark_tests/parallel_processing.py` in the repository for the harness used to generate comparable figures. Those scripts intentionally stay **out of CI**; run them locally when validating performance work.
 
+Hand-maintained YAML under [`examples/`](../examples/README.md) is useful for diffing tiny schemas without a live database.
+
 ## When I/O dominates
 
 If your database is remote, network latency may overshadow local CPU parallelism. Prefer running benchmarks close to the server or against a restored copy when tuning.

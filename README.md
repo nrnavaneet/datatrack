@@ -153,7 +153,7 @@ Please refer to the following docs for detailed guidance:
 - [Installation Guide](https://github.com/nrnavaneet/datatrack/tree/main/docs/INSTALLATION.md) (editable installs use `requirements.txt` + `pyproject.toml` together)
 - [Usage Instructions](https://github.com/nrnavaneet/datatrack/tree/main/docs/USAGE.md) (includes a dedicated **disconnect** section for rotating URIs)
 - [FAQ (common design questions)](https://github.com/nrnavaneet/datatrack/blob/main/docs/FAQ.md)
-- [Examples (workflow + minimal snapshot)](https://github.com/nrnavaneet/datatrack/tree/main/examples)
+- [Examples (workflow, minimal snapshot, troubleshooting links)](https://github.com/nrnavaneet/datatrack/tree/main/examples)
 - [Glossary](https://github.com/nrnavaneet/datatrack/blob/main/docs/GLOSSARY.md)
 - [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md) (includes locale notes for Rich output)
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) (also summarised briefly on PyPI via `pypiREADME.md`)
