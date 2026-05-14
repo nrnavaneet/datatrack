@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.30] — 2026-05
+
+- Clarify **`schema_rules.yaml`** header comments and cross-link verify behaviour from the FAQ, glossary, and troubleshooting guides.
+
 ## [1.2.29] — 2026-05
 
 - Document how **`tests/test_paths.py`** guards export and snapshot directory layout alongside architecture notes.

@@ -16,7 +16,7 @@ No. CI and the default `tests/` suite patch filesystem and database discovery so
 
 ## What is the difference between `lint` and `verify`?
 
-**Lint** applies lightweight naming and structural heuristics to the latest snapshot YAML. **Verify** enforces declarative rules from `schema_rules.yaml` (reserved words, casing, and similar policies). Run both in CI; `pipeline run` executes them in a sensible order alongside snapshotting and diffing.
+**Lint** applies lightweight naming and structural heuristics to the latest snapshot YAML. **Verify** enforces declarative rules from `schema_rules.yaml` (reserved words, casing, and similar policies). The YAML shape is part of the public contract—see the header comments in the repository file before renaming keys. Run both in CI; `pipeline run` executes them in a sensible order alongside snapshotting and diffing.
 
 ## Which environment variables matter for the CLI?
 

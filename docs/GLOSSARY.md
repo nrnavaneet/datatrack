@@ -13,3 +13,5 @@
 | **Export base** | The `.databases/exports/` directory tree where per-database artefacts are stored; see `datatrack.paths`. |
 
 For narrative context, see [Architecture](ARCHITECTURE.md) and the [FAQ](FAQ.md). Operational environment variables are listed in [Environment](ENVIRONMENT.md).
+
+Rule definitions ship in the repository-root `schema_rules.yaml`; treat unexpected key renames as breaking changes for `verify`.

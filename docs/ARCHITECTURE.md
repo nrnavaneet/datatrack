@@ -28,7 +28,7 @@ The smallest hand-authored snapshot used in docs lives in [`examples/sample_snap
 ## Adding behaviour
 
 - **New CLI command**: register in `cli.py`, implement in a new module or extend an existing one, document in `docs/USAGE.md`, add tests under `tests/`.
-- **New rule**: extend `schema_rules.yaml` and the parsing logic in `linter.py` / `verifier.py` together so lint and verify stay aligned.
+- **New rule**: extend `schema_rules.yaml` and the parsing logic in `linter.py` / `verifier.py` together so lint and verify stay aligned. Comments at the top of `schema_rules.yaml` describe stability expectations for keys.
 
 ## Testing strategy
 

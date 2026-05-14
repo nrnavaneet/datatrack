@@ -49,6 +49,7 @@ pip install -e .
   ```
 
 - Follow code style (PEP8, Black) and ensure changes are meaningful.
+- When you change `schema_rules.yaml`, update `linter.py` / `verifier.py` together and extend tests or docs so CI stays green.
 
 ### 4. Test Your Changes
 
