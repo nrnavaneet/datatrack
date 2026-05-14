@@ -244,7 +244,7 @@ Runs `lint`, `snapshot`, `verify`, `diff`, and `export` together.
 
 ## Contributing
 
-Bug reports and feature ideas belong on [GitHub Issues](https://github.com/nrnavaneet/datatrack/issues); code contributions should follow [`docs/contribute/CONTRIBUTING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) and [`docs/DEVELOPING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md). Maintainer-facing release steps live in [`docs/RELEASING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md).
+Bug reports and feature ideas belong on [GitHub Issues](https://github.com/nrnavaneet/datatrack/issues); code contributions should follow [`docs/contribute/CONTRIBUTING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) and [`docs/DEVELOPING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/DEVELOPING.md). Maintainer-facing release steps live in [`docs/RELEASING.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md). Informal priorities and non-goals are summarised in [`docs/ROADMAP.md`](https://github.com/nrnavaneet/datatrack/blob/main/docs/ROADMAP.md); compatibility and support links live under `docs/` on GitHub.
 
 For advanced use cases and integration into CI/CD, visit:
 

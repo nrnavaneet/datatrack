@@ -6,7 +6,7 @@ This document is for **maintainers** cutting a PyPI release of `datatrack-core`.
 
 The shorter **`pypiREADME.md`** file ships on PyPI; it now includes a compact **Contributing** section that points back to these longer guides on GitHub.
 
-## Checklist
+PyPI readers should follow links from that readme to **Roadmap**, **Compatibility**, and **Support** pages when planning larger changes.
 
 1. Ensure `main` is green (push CI and weekly schedule).
 2. Update **`pyproject.toml`** `version = "x.y.z"`.

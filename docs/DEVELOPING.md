@@ -57,3 +57,4 @@ When cutting releases locally, `python -m build` respects `MANIFEST.in` for sdis
 - [Benchmark harness](../benchmark_tests/README.md) — optional local timings that complement [Performance](PERFORMANCE.md).
 - [Releasing](RELEASING.md) — maintainer-facing PyPI checklist (contributors can skim for versioning norms).
 - [Roadmap](ROADMAP.md) — informal priorities so proposals match project scope.
+- [PyPI readme](https://github.com/nrnavaneet/datatrack/blob/main/pypiREADME.md) — short entry point that links back to these guides.
