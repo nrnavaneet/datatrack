@@ -9,9 +9,12 @@ Use this guide when you clone the repository to add features or fix bugs. End us
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -e ".[dev]"
+pip install -r requirements.txt
+pip install -e .
 pre-commit install
 ```
+
+The `datatrack` console script is the usual entrypoint; in a checkout you can also run `python3 -m datatrack --help` after an editable install.
 
 Run the full test suite before opening a PR:
 

@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.8] — 2026-05
+
+- Support **`python -m datatrack`** via `datatrack/__main__.py`, with a smoke test and usage doc updates.
+
 ## [1.2.7] — 2026-05
 
 - Root **Makefile** with `install-editable`, `test`, and `lint` targets; documented in CI and contributor docs.

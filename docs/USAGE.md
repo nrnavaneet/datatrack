@@ -7,8 +7,11 @@ Datatrack is a CLI tool for tracking, linting, verifying, and exporting database
 ## Helpful Commands
 
 Datatrack comes with built-in help and guidance for every command. Use this to quickly learn syntax and options:
+
 ```bash
 datatrack --help
+# or, equivalent when running from a checkout with an editable install:
+python3 -m datatrack --help
 or
 datatrack -h
 ```
