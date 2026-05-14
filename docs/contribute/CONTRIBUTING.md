@@ -5,6 +5,10 @@
 Thank you for your interest in contributing!
 **Datatrack** is a lightweight CLI tool to track schema changes across database versions. Your contributions—big or small—help make this project better for everyone.
 
+## Security
+
+Please read the root [**SECURITY.md**](../../SECURITY.md) in this repository before filing a public issue that may contain sensitive connection details.
+
 ## How to Contribute
 
 ### 1. Fork the Repo

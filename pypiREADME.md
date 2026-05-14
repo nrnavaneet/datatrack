@@ -17,6 +17,11 @@ Because in modern data systems, your schema is your contract—and when it break
 - Compare schema snapshots (diff)
 - Export to JSON/YAML for auditing or CI
 - Full pipeline in one command
+- `datatrack doctor` for offline layout checks
+
+## Security
+
+See the repository **SECURITY.md** for how to report issues responsibly. Datatrack runs locally; protect your connection URIs and snapshot files like any other secret-bearing config.
 
 
 ## Performance & Cost Savings

@@ -152,6 +152,7 @@ Please refer to the following docs for detailed guidance:
 - [Environment variables](https://github.com/nrnavaneet/datatrack/tree/main/docs/ENVIRONMENT.md)
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md)
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
+- [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md)
 
 ## License
 
