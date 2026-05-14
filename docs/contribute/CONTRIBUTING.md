@@ -17,6 +17,8 @@ Use the [bug report](https://github.com/nrnavaneet/datatrack/issues/new/choose) 
 
 For a fuller local workflow (venv layout, pytest, pre-commit summary), see [Developing](../DEVELOPING.md). Editor defaults for line endings and Python indentation live in the root `.editorconfig`.
 
+Dependency bumps for Actions and Python packages may arrive as **Dependabot** pull requests; please run tests locally before approving.
+
 ### 1. Fork the Repo
 
 Click the **"Fork"** button at the top right of [the repository](https://github.com/nrnavaneet/datatrack) and clone your fork:

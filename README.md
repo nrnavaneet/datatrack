@@ -156,7 +156,7 @@ Please refer to the following docs for detailed guidance:
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 - [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md)
 
-Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github). After cloning, `make test` and `make lint` mirror the CI pytest and pre-commit steps. An [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) file keeps basic formatting defaults aligned across editors.
+Issue and PR templates live under [`.github/`](https://github.com/nrnavaneet/datatrack/tree/main/.github). After cloning, `make test` and `make lint` mirror the CI pytest and pre-commit steps. An [`.editorconfig`](https://github.com/nrnavaneet/datatrack/blob/main/.editorconfig) file keeps basic formatting defaults aligned across editors. **Dependabot** opens weekly dependency update PRs for Actions and pip.
 
 ## License
 

@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.11] — 2026-05
+
+- Enable **Dependabot** for GitHub Actions and pip with a weekly schedule, and document reviewer expectations.
+
 ## [1.2.10] — 2026-05
 
 - Add **EditorConfig** defaults for Python, YAML, and the Makefile.
