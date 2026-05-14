@@ -12,6 +12,16 @@ DB_LINK_FILE = CONFIG_DIR / "db_link.yaml"
 DATABASES_DIR = Path(".databases")
 EXPORT_BASE = DATABASES_DIR / "exports"
 
+__all__ = [
+    "CONFIG_DIR",
+    "CONFIG_FILE",
+    "DB_LINK_FILE",
+    "DATABASES_DIR",
+    "EXPORT_BASE",
+    "snapshot_dir",
+    "export_dir",
+]
+
 
 def snapshot_dir(db_name: str) -> Path:
     """Directory where YAML snapshots for ``db_name`` are stored."""

@@ -23,6 +23,7 @@ make test
 | `tests/commands/` | CLI-adjacent behaviour (e.g. diff with patched paths). |
 | `tests/test_paths.py` | Directory layout contracts. |
 | `tests/test_doctor.py` | Offline doctor formatting. |
+| `tests/test_packaging_meta.py` | `pyproject.toml` / `CHANGELOG.md` consistency checks. |
 | `tests/test_module_invocation.py` | `python -m datatrack` smoke. |
 | `tests/conftest.py` | Reserved for shared fixtures. |
 

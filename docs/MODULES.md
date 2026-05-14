@@ -7,7 +7,7 @@ Datatrack is primarily a **CLI**, but several packages are safe to import from a
 | Module | Role |
 |--------|------|
 | `datatrack.cli` | Typer application (`app`) and command registration. |
-| `datatrack.paths` | Canonical `.datatrack/`, `.databases/exports/`, snapshot and export directory helpers. |
+| `datatrack.paths` | Canonical `.datatrack/`, `.databases/exports/`, snapshot and export directory helpers (`__all__` lists stable public names). |
 | `datatrack.tracker` | Snapshot creation via SQLAlchemy introspection. |
 | `datatrack.diff` | Compare two snapshot YAML files. |
 | `datatrack.linter` / `datatrack.verifier` | Lint and verify latest snapshot against rules. |

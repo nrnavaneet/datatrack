@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.39] — 2026-05
+
+- Declare **`__all__`** on `datatrack.paths` and add tests that keep `pyproject.toml` and `CHANGELOG.md` versions aligned.
+
 ## [1.2.38] — 2026-05
 
 - Add a **Support** page with issue etiquette, redaction expectations, and links to FAQ and troubleshooting.
