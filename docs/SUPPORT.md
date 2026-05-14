@@ -21,3 +21,5 @@
 - Minimal CLI output showing the failure.
 
 Maintainers monitor issues asynchronously; Dependabot and scheduled CI noise is normal on busy weeks.
+
+For broader direction (what the project is unlikely to take on soon), read [Roadmap](ROADMAP.md) before proposing large new subsystems.

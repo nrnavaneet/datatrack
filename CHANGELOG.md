@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. Versions follow the package version in `pyproject.toml`.
 
+## [1.2.42] — 2026-05
+
+- Publish an informal **Roadmap** and link it from support and contributor-facing docs.
+
 ## [1.2.41] — 2026-05
 
 - Add a **Compatibility** guide for Python, database drivers, and terminal or locale considerations.

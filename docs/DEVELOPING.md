@@ -56,3 +56,4 @@ When cutting releases locally, `python -m build` respects `MANIFEST.in` for sdis
 - [Contributing](contribute/CONTRIBUTING.md) — branch naming and review expectations.
 - [Benchmark harness](../benchmark_tests/README.md) — optional local timings that complement [Performance](PERFORMANCE.md).
 - [Releasing](RELEASING.md) — maintainer-facing PyPI checklist (contributors can skim for versioning norms).
+- [Roadmap](ROADMAP.md) — informal priorities so proposals match project scope.

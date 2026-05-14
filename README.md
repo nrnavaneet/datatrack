@@ -163,6 +163,7 @@ Please refer to the following docs for detailed guidance:
 - [Contributing Guide](https://github.com/nrnavaneet/datatrack/blob/main/docs/contribute/CONTRIBUTING.md) (also summarised briefly on PyPI via `pypiREADME.md`)
 - [Code of Conduct](https://github.com/nrnavaneet/datatrack/tree/main/docs/contribute/CODE_OF_CONDUCT.md)
 - [Support (bug report checklist)](https://github.com/nrnavaneet/datatrack/blob/main/docs/SUPPORT.md)
+- [Roadmap (informal priorities)](https://github.com/nrnavaneet/datatrack/blob/main/docs/ROADMAP.md)
 - [Security](https://github.com/nrnavaneet/datatrack/blob/main/SECURITY.md) (includes guidance on shell history and leaked connection strings)
 - [Releasing (maintainers)](https://github.com/nrnavaneet/datatrack/blob/main/docs/RELEASING.md) (`MANIFEST.in` shapes the sdist)
 
